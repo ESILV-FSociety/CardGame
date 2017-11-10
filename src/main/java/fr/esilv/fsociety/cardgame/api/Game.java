@@ -35,11 +35,9 @@ public class Game {
 	}
 
 	// properties for the currentPlayer
-
 	public Player getCurrentPlayer() {
 		return currentPlayer;
 	}
-
 	public void setCurrentPlayer(Player currentPlayer) {
 		this.currentPlayer = currentPlayer;
 	}
@@ -57,6 +55,7 @@ public class Game {
 
 			//click on the deck
 			PlayerDrawCard();// the current player draw a card
+			// we place the card in the hand of the currentPlayer
 
 			//
 			// the player choose a card to play
