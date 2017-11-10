@@ -1,4 +1,5 @@
 package fr.esilv.fsociety.cardgame.api;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -6,42 +7,32 @@ import javafx.scene.image.ImageView;
 
 public class Board {
 
-    private List<Card> hand;
-    private List<Card> kingdom;
-    private int position;
+    private ArrayList<Card> hand;
+    private ArrayList<Card> kingdom;
 
-
-
-    public Board(List<Card> hand, List<Card> kingdom, int position) {
-        super();
-        this.hand = hand;
-        this.kingdom = kingdom;
-        this.position = position;
+    public Board() {
+        this.hand = new ArrayList<Card>();
+        this.kingdom = new ArrayList<Card>();
     }
 
-    public List<Card> getHand() {
+    public ArrayList<Card> getHand() {
         return hand;
     }
-    
-    public void setHand(List<Card> hand) {
+
+    public void setHand(ArrayList<Card> hand) {
         this.hand = hand;
     }
-    
-    public List<Card> getKingdom() {
+
+    public ArrayList<Card> getKingdom() {
         return kingdom;
     }
-    
-    public void setKingdom(List<Card> kingdom) {
+
+    public void setKingdom(ArrayList<Card> kingdom) {
         this.kingdom = kingdom;
     }
 
-    public int getPosition() {
-        return position;
-    }
-    
-    public void setPosition(int position) {
-        this.position = position;
-    }
+
+    // for this code below, we will see later
 
 	public ImageView[] handToImageViews() {
 		return this.toImageView(hand);
