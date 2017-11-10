@@ -21,6 +21,7 @@ public class MainController extends Application {
 		ins = this;
 		
 	}
+
 	
 	private Game theGame; //the game reference
 	
