@@ -1,5 +1,4 @@
 package fr.esilv.fsociety.cardgame.api.races;
-
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
 

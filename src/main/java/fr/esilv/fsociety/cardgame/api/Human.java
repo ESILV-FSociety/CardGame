@@ -9,4 +9,6 @@ public class Human extends Player {
     public Human() {
         super(1);
     }
+
+    //Need to create all the functionalities (interactions of a human)
 }

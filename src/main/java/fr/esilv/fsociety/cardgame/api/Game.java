@@ -15,25 +15,26 @@ public class Game {
 	// 1 dealer
 	private Dealer dealer;
 
+	//define here the controllers
+	//BoardController (for the BoardOverview.fxml)
+	//LoginController (for the LoginController.fxml)
+
 	// at the beginning
 	public Game() {
 		this.p1 = new AI();
 		this.p2 = new Human();
 		this.dealer = new Dealer();
-
 	}
 
-	// returns the player that wills start
+	// returns the player that will start
 	public Player StartPlayer(Player p1, Player p2){
 		Random rand = new Random();
 		int n = rand.nextInt(2);
 		if(n == 0) return p1;
 		else return p2;
-
-
 	}
 
-	//Porperties for the currentPlayer
+	// properties for the currentPlayer
 
 	public Player getCurrentPlayer() {
 		return currentPlayer;
@@ -47,13 +48,17 @@ public class Game {
 
 		// initialize windows: stage and scene and all the elements (it's here that we will call all the controllers)
 		// display the login view
-		// ... then display the GameOverview
+		//click on buttons, add some text (for the name)
+		//switch to the GameOverview
 
-		this.currentPlayer = StartPlayer(p1,p2);
+		this.currentPlayer = StartPlayer(p1,p2); // choose the currentPlayer (on start only)
 
-		while(emptyHands() == false){  // while all hands
+		while(emptyHands() == false){  // while all hands are not empty
 
-			// the player draw a card
+			//click on the deck
+			PlayerDrawCard();// the current player draw a card
+
+			//
 			// the player choose a card to play
 			// the player finish his move choice
 
@@ -82,9 +87,16 @@ public class Game {
 		if ( p1.getBoard().getHand().isEmpty() && p2.getBoard().getHand().isEmpty()) return true;
 		else return false;
 	}
-
+	// method where the currentPlayer draw a card (the card is added to his hand)
+	public void PlayerDrawCard(){
+		currentPlayer.getBoard().getHand().add(dealer.GetCard());
+	}
 	public void DrawCard(){
 		this.dealer.GetCard();
+	}
+
+	public void changePlayer(){
+
 	}
 
 	/**
