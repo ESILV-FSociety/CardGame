@@ -8,12 +8,11 @@ public class AI extends Player{
         super(0);
     }
 
-    public void chooseCardToPlay(){
+    public Card chooseCardToPlay(){
         ArrayList<Card> list = this.getBoard().getHand();
-        //int r = Math.random(list.size());
+        //int r = Math.random();
         Card card = this.getBoard().getHand().get(0);
-
-
+        return card;
     }
 
     public void retrieveCardFromDeck(){
