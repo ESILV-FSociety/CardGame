@@ -33,7 +33,7 @@ public class Board {
 
 
     // for this code below, we will see later
-
+    /*
 	public ImageView[] handToImageViews() {
 		return this.toImageView(hand);
 	}
@@ -50,6 +50,7 @@ public class Board {
 		
 		return list.toArray(new ImageView[0]);		
 	}
+	*/
 
     
     //TODO show function

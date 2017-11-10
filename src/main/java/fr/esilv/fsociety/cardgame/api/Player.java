@@ -1,44 +1,22 @@
 package fr.esilv.fsociety.cardgame.api;
 
-import java.util.List;
-/* BEFORE
 public class Player {
 
-    private Board board;
-
-    public Player(Board board) {
-    	this.board = board;
-    }
-
-    public Player(List<Card> hand, List<Card> kingdom, int pos) {
-    	this(new Board(hand, kingdom, pos));
-    }
-
-    public Board getBoard() {
-    	return this.board;
-    }
-
-
-    public int getScore() {
-    	return 0;
-    }
-}
-*/
-// AFTER
-
-
-
-public class Player {
+    //idPlayer of AI is 0
+    //idPlayer of the Human is 1
 
     private int idPLayer;
-    private String name;
     private Board board;
     private int score;
+    private String name;
 
     public Player(int idPLayer) {
         this.idPLayer = idPLayer;
+
+        if(this.idPLayer == 0) this.name = "AI";
+        else this.name = "Human";
+
         this.board = new Board();
-        this.name = "";
         this.score = 0;
     }
 
@@ -48,14 +26,6 @@ public class Player {
 
     public void setIdPLayer(int idPLayer) {
         this.idPLayer = idPLayer;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public void setBoard(Board board) {
@@ -84,4 +54,3 @@ public class Player {
     // draw card
     // use card
 }
-
