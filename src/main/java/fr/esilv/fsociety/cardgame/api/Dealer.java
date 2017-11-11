@@ -22,13 +22,14 @@ public class Dealer {
 	//Method that allows to mix the deck
 	public void MixDeck(){
 		Collections.shuffle(this.Deck);
-	}
+	} // unit test => no (no need)
 
+	// property
 	public ArrayList<Card> getDeck() {
 		return Deck;
 	}
 
-	//get card from the deck
+	//get card from the deck after shuffled it // unit test => yes
 	public Card GetCard(){
 		this.MixDeck();
 		return this.Deck.get(0);

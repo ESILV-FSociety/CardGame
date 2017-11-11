@@ -10,12 +10,10 @@ public class BoardTest {
     //test of the method addCardToHand
     public void addCardToHand() throws Exception {
         Game game = new Game();
-        game.StartPlayer();
+        game.startingPlayer();
         Card card = new Goblin();
         int n = game.getCurrentPlayer().getBoard().getHand().size();
         game.getCurrentPlayer().getBoard().addCardToHand(card);
-        assertEquals(game.getCurrentPlayer().getBoard().getHand().size(),n + 1);
-
         assertEquals(card,game.getCurrentPlayer().getBoard().getHand().get(n));
     }
 

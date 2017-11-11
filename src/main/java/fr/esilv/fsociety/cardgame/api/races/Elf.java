@@ -6,7 +6,7 @@ import fr.esilv.fsociety.cardgame.api.Game;
 public class Elf extends Card {
 
 	public Elf() {
-		super("Elf","CardGame\\src\\main\\java\\resources\\fr.esilv.fsociety.cardgame\\cards\\elf.png");
+		super("Elf","CardGame\\src\\main\\java\\resources\\fr.esilv.fsociety.cardgame\\Cards\\elf.png");
 	}
 
 	public void activatePower(){

@@ -44,6 +44,14 @@ public class Player {
         return board;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     /**
      * Calculate the score
      * @return

@@ -1,3 +1,4 @@
+import fr.esilv.fsociety.cardgame.Controller.GameOverviewController;
 import fr.esilv.fsociety.cardgame.api.Game;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,9 +9,9 @@ public class GameTest {
 
     @Test
     //Test that idPlayer is 1 or 0
-    public void startPlayer() throws Exception {
+    public void startingPlayer() throws Exception {
         Game game = new Game();
-        game.StartPlayer();
+        game.startingPlayer();
         assertTrue(game.getCurrentPlayer().getIdPLayer() == 1 || game.getCurrentPlayer().getIdPLayer() == 0);
     }
 

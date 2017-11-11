@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Path;
 import javafx.stage.Stage;
+import sun.plugin.javascript.navig.AnchorArray;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -18,12 +19,12 @@ public class Launcher extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        /*
+
         try {
             // problem with the path ...
 
-            //System.out.println(new File(".").getCanonicalPath());
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/resources/fr.esilv.fsociety.cardgame/GameOverview.fxml"));
+            System.out.println(new File(".").getCanonicalPath());
+            FXMLLoader loader = new FXMLLoader(Launcher.class.getResource("/GameOverview.fxml"));
             Parent root = loader.load();
             primaryStage.setTitle("Game");
             primaryStage.setScene(new Scene(root, 1200, 800));
@@ -31,17 +32,16 @@ public class Launcher extends Application{
         } catch (Exception e) {
             System.out.println(e);
         }
-        */
-        try {
+/*        try {
             //initialize the game
             Game game = new Game();
             // random current player on start
-            game.StartPlayer();
+            game.startingPlayer();
             //size of hand before :
             int n = game.getCurrentPlayer().getBoard().getHand().size();
             System.out.println("size : " + n);
             //draw a card and add it to his hand
-            game.PlayerDrawCard();
+            game.drawCard();
             // size of the hand after drawing a card
             n = game.getCurrentPlayer().getBoard().getHand().size();
             System.out.println("size : " + n);
@@ -51,6 +51,7 @@ public class Launcher extends Application{
         } catch (Exception e) {
             System.out.println(e);
         }
+        */
     }
 
 

@@ -10,5 +10,5 @@ public class Human extends Player {
         super(1);
     }
 
-    //Need to create all the functionalities (interactions of a human)
+    //Need to create all functionnalities (interactions of a human)
 }

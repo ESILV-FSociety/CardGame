@@ -5,7 +5,7 @@ import fr.esilv.fsociety.cardgame.api.Game;
 public class Goblin extends Card {
 
 	public Goblin() {
-		super("Goblin","CardGame\\src\\main\\java\\resources\\fr.esilv.fsociety.cardgame\\cards\\goblin.png");
+		super("Goblin","CardGame\\src\\main\\java\\resources\\fr.esilv.fsociety.cardgame\\Cards\\goblin.png");
 	}
 
 	public void activatePower(){

@@ -6,7 +6,7 @@ import fr.esilv.fsociety.cardgame.api.Game;
 public class Dryad extends Card {
 
 	public Dryad() {
-		super("Dryad","CardGame\\src\\main\\java\\resources\\fr.esilv.fsociety.cardgame\\cards\\dryad.png");
+		super("Dryad","CardGame\\src\\main\\java\\resources\\fr.esilv.fsociety.cardgame\\Cards\\dryad.png");
 	}
 
 	public void activatePower(){

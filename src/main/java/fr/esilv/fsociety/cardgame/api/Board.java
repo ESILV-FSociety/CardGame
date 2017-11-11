@@ -35,11 +35,6 @@ public class Board {
         this.getHand().add(card);
     }
 
-    // update hand ( in the view) when a card is added, removed or reorganized
-    public void updateHand(){
-
-    }
-
 
     // for this code below, we will see later
     /*
