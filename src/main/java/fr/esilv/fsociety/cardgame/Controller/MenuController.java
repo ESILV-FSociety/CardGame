@@ -1,4 +1,4 @@
-package main.java.fr.esilv.fsociety.cardgame.Controller;
+package fr.esilv.fsociety.cardgame.Controller;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
