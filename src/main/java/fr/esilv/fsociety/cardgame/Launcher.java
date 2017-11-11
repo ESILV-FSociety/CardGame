@@ -4,7 +4,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Path;
 import javafx.stage.Stage;
+
+import java.io.File;
+
 
 public class Launcher extends Application{
 
@@ -12,7 +16,9 @@ public class Launcher extends Application{
     public void start(Stage primaryStage) throws Exception {
         try {
             // problem with the path ...
-            FXMLLoader loader = new FXMLLoader(Launcher.class.getResource("fr.esilv.fsociety.cardgame/GameOverview.fxml"));
+
+            //System.out.println(new File(".").getCanonicalPath());
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/main/java/resources/fr.esilv.fsociety.cardgame/GameOverview.fxml"));
             Parent root = loader.load();
             primaryStage.setTitle("Game");
             primaryStage.setScene(new Scene(root, 1200, 800));
