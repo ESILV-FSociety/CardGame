@@ -1,4 +1,4 @@
-package fr.esilv.fsociety.cardgame.controller;
+/*package fr.esilv.fsociety.cardgame.Controller;
 
 import fr.esilv.fsociety.cardgame.api.Board;
 import fr.esilv.fsociety.cardgame.api.Card;
@@ -71,3 +71,4 @@ public class MainController extends Application {
     
   
 }
+*/

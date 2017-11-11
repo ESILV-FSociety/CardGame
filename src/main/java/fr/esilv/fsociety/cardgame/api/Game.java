@@ -1,8 +1,6 @@
 package fr.esilv.fsociety.cardgame.api;
 import java.util.Random;
-/**
- * Represents the 2 boards and more generally the game taking place
- */
+
 public class Game {
 
 	// 2 players
@@ -16,8 +14,9 @@ public class Game {
 	private Dealer dealer;
 
 	//define here the controllers
-	//BoardController (for the BoardOverview.fxml)
+	//GameOverviewController (for the GameOverview.fxml)
 	//LoginController (for the LoginController.fxml)
+	//MenuController (for the Menu.fxml)
 
 	// at the beginning
 	public Game() {
@@ -51,7 +50,7 @@ public class Game {
 
 		this.currentPlayer = StartPlayer(p1,p2); // choose the currentPlayer (on start only)
 
-		while(emptyHands() == false){  // while all hands are not empty
+		while(!emptyHands()){  // while all hands are not empty
 
 			//click on the deck
 			PlayerDrawCard();// the current player draw a card
@@ -81,10 +80,10 @@ public class Game {
 	*
 	*
 	* */
-	// returns 1 if both hands are empty else otherwise
+	// returns 1 if both hands are empty, 0 otherwise
 	public boolean emptyHands(){
 		if ( p1.getBoard().getHand().isEmpty() && p2.getBoard().getHand().isEmpty()) return true;
-		else return false;
+		return false;
 	}
 	// method where the currentPlayer draw a card (the card is added to his hand)
 	public void PlayerDrawCard(){
@@ -94,9 +93,16 @@ public class Game {
 		this.dealer.GetCard();
 	}
 
-	public void changePlayer(){
+	// returns the player that will play next
+	public int changePlayer(){
+		if (this.currentPlayer.getIdPLayer() == 0) return 1;
+		else return 0;
 
 	}
+
+
+
+
 
 	/**
 	 * The card c was clicked
