@@ -5,7 +5,6 @@ package fr.esilv.fsociety.cardgame.api;
 * each Card object created will take a name and the url of the file
 */
 
-
 public abstract class Card {
 	private String name; // name of the card
 	private String img; //location of the card (folder to be defined

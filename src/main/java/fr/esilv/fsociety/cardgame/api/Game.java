@@ -1,4 +1,6 @@
 package fr.esilv.fsociety.cardgame.api;
+import fr.esilv.fsociety.cardgame.Controller.GameOverviewController;
+
 import java.util.Random;
 
 public class Game {
@@ -14,31 +16,55 @@ public class Game {
 	private Dealer dealer;
 
 	//define here the controllers
+	private GameOverviewController gameoverviewcontroller;
 	//GameOverviewController (for the GameOverview.fxml)
 	//LoginController (for the LoginController.fxml)
 	//MenuController (for the Menu.fxml)
 
-	// at the beginning
+	// Initialize the Game Object
 	public Game() {
 		this.p1 = new AI();
 		this.p2 = new Human();
 		this.dealer = new Dealer();
+		this.gameoverviewcontroller = new GameOverviewController();
+		ConnectToGameOverviewController();
 	}
 
-	// returns the player that will start
-	public Player StartPlayer(Player p1, Player p2){
+	// Connection between the Game and the GameOverviewController
+	public void ConnectToGameOverviewController(){
+		this.gameoverviewcontroller.setGame(this);
+	}
+
+	// Modify the this.currentPlayer (Player that will start)
+	public void StartPlayer(){
 		Random rand = new Random();
 		int n = rand.nextInt(2);
-		if(n == 0) return p1;
-		else return p2;
+		if(n == 0) this.currentPlayer = this.p1;
+		else this.currentPlayer = this.p2;
 	}
 
-	// properties for the currentPlayer
+	// properties
 	public Player getCurrentPlayer() {
 		return currentPlayer;
 	}
 	public void setCurrentPlayer(Player currentPlayer) {
 		this.currentPlayer = currentPlayer;
+	}
+
+	public Dealer getDealer() {
+		return dealer;
+	}
+
+	public Player getP1() {
+		return p1;
+	}
+
+	public Player getP2() {
+		return p2;
+	}
+
+	public GameOverviewController getGameoverviewcontroller() {
+		return gameoverviewcontroller;
 	}
 
 	public void start(Player p1, Player p2){
@@ -48,7 +74,7 @@ public class Game {
 		//click on buttons, add some text (for the name)
 		//switch to the GameOverview
 
-		this.currentPlayer = StartPlayer(p1,p2); // choose the currentPlayer (on start only)
+		StartPlayer(); // choose the currentPlayer (on start only)
 
 		while(!emptyHands()){  // while all hands are not empty
 
@@ -87,7 +113,7 @@ public class Game {
 	}
 	// method where the currentPlayer draw a card (the card is added to his hand)
 	public void PlayerDrawCard(){
-		currentPlayer.getBoard().getHand().add(dealer.GetCard());
+		this.currentPlayer.getBoard().getHand().add(dealer.GetCard());
 	}
 	public void DrawCard(){
 		this.dealer.GetCard();

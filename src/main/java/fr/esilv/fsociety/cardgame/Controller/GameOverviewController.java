@@ -1,5 +1,6 @@
 package fr.esilv.fsociety.cardgame.Controller;
 
+import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -10,44 +11,50 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 
-
 public class GameOverviewController {
 
     private Game game;
 
-@FXML
-private GridPane HumanKingdom;
+    @FXML
+    private GridPane HumanKingdom;
 
-@FXML
-private HBox HumanHand;
+    @FXML
+    private HBox HumanHand;
 
-@FXML
-private Text AiName;
+    @FXML
+    private Text AiName;
 
-@FXML
-private Text AiScore;
+    @FXML
+    private Text AiScore;
 
-@FXML
-private ImageView DeckImageView;
+    @FXML
+    private ImageView DeckImageView;
 
-@FXML
-private Text HumanScore;
+    @FXML
+    private Text HumanScore;
 
-@FXML
-private Text HumanName;
+    @FXML
+    private Text HumanName;
 
-@FXML
-private HBox AiHand;
+    @FXML
+    private HBox AiHand;
 
-@FXML
-private GridPane AiKingdom;
+    @FXML
+    private GridPane AiKingdom;
 
-@FXML
-private void ClickOnDeck(MouseEvent event) {
+    @FXML
+    private void ClickOnDeck(MouseEvent event) {
+
+        // The Player draw a Card:
+         // a card is added to his hand
+        this.game.PlayerDrawCard();
+         // We update the hand
+
+        //Card  = this.game.getCurrentPlayer().getBoard().getHand()
 
 
 
-}
+    }
 
     //Test method that will be deleted in the future
     //Test de display of a picture
@@ -57,7 +64,7 @@ private void ClickOnDeck(MouseEvent event) {
         HumanKingdom.getChildren().add(new ImageView(image));
     }
 
-    //CONNECT this controller class with the game class
+    //CONNECT this controller class and the game class
     public void setGame(Game game){
         this.game = game;
     }
