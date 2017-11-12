@@ -5,7 +5,7 @@ import fr.esilv.fsociety.cardgame.api.Game;
 public class Korrigan extends Card {
 
 	public Korrigan() {
-		super("Korrigan","CardGame\\src\\main\\java\\resources\\fr.esilv.fsociety.cardgame\\Cards\\korrigan.png");
+		super("Korrigan","fr/esilv/fsociety/cardgame/Cards/korrigan.png");
 	}
 
 	public void activatePower(){

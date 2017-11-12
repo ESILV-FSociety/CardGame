@@ -2,6 +2,7 @@ package fr.esilv.fsociety.cardgame.Controller;
 
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
+import fr.esilv.fsociety.cardgame.api.Player;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,8 +17,6 @@ public class GameOverviewController {
 
     private Game game;
     private String humanName; // new name of the player
-    private ArrayList<Card> humanKingdomCards; // each cards on the kingdom will be contain in the list
-    private ArrayList<Card> aiKingdomCards; // same here
 
     @FXML
     private GridPane HumanKingdom;
@@ -50,48 +49,64 @@ public class GameOverviewController {
     private void ClickOnDeck(MouseEvent event) { // only used
 
         this.game.drawCard(this.game.getP2());
-        updateDisplayHands();
+        updateDisplayHand();
 
     }
     //this.game.start(); to be called after entering the name (by the login view)
 
 
-    public void DisplaySth(){
+    public void DisplaySth() {
         Image image = new Image("CardGame\\src\\main\\java\\resources\\fr.esilv.fsociety.cardgame\\cardPictures\\goblin.png");
         HumanKingdom.getChildren().add(new ImageView(image));
     }
 
-    public void initialize(){
-        updateDisplayHands();
-        updateDisplayKingdoms();
-        updateDisplayScore();
-        updateDisplayName();
+    public void initialize() {
+        //initialize the game
+        this.game = new Game();
+        //Rename the player
+        this.humanName = "Name";
+        updateDisplayName(humanName);
+        //display the score
+        updateDisplayScores();
+        // random current player on start
+        game.startingPlayer(); // set the currentPlayer => 2 cases : if human else AI
+        //each player draw 5 cards
+        game.playersDraw5Cards();
+
+        updateDisplayHand();
+
+
+
+        // updateDisplayHands();
+        //updateDisplayKingdoms();
+
+
     }
 
-    public void updateDisplayScore(){
+    private void updateDisplayScores() {
         AiScore.setText(String.valueOf(this.game.getP1().getScore()));
         HumanScore.setText(String.valueOf(this.game.getP2().getScore()));
     }
 
-    public void updateDisplayName(){ // one time ONLY
+    private void updateDisplayName(String name) { // one time ONLY
+        this.game.getP2().setName(name);
         AiScore.setText(this.game.getP1().getName());
         HumanName.setText(this.game.getP2().getName());
     }
 
-    public void updateDisplayHands(){
-
-        ArrayList<Card> list = this.game.getCurrentPlayer().getBoard().getHand();
-        int s = list.size();
-        for(int i = 0; i < s; i++){
-            Image img = new Image(list.get(i).getImg());
+    private void updateDisplayHand() {
+        for (Card item : this.game.getCurrentPlayer().getBoard().getHand()) {
+            Image img = new Image(item.getImg());
+            HumanHand.getChildren().add(new ImageView(img));
         }
     }
 
-    public void updateDisplayKingdoms(){
+    private void updateDisplayKingdoms() {
+
 
     }
 
-    public void start(){
+    public void start() {
         //initialize the game
         Game game = new Game();
         // random current player on start
@@ -99,7 +114,9 @@ public class GameOverviewController {
         //each player draw 5 cards
         game.playersDraw5Cards();
         //initialize boards (human + AI)
-        initialize();
+
+    }
+}/* initialize();
 
         if(game.isHuman()){
             // wait on deck clicked
@@ -136,4 +153,5 @@ public class GameOverviewController {
         this.game = game;
     }
 
-}
+
+*/

@@ -15,25 +15,17 @@ public class Game {
     // 1 dealer
     private Dealer dealer;
 
-    //define here the controllers
-    private GameOverviewController gameoverviewcontroller;
-    //GameOverviewController (for the GameOverview.fxml)
-    //LoginController (for the LoginController.fxml)
-    //MenuController (for the Menu.fxml)
-
     // Initialize the Game Objects
     public Game() {
         this.p1 = new AI();
         this.p2 = new Human();
         this.dealer = new Dealer();
-        this.gameoverviewcontroller = new GameOverviewController();
-        ConnectToGameOverviewController();
     }
 
     // Connection between the Game and the GameOverviewController // unit test => no (no need)
-    public void ConnectToGameOverviewController() {
+  /*  private void ConnectToGameOverviewController() {
         this.gameoverviewcontroller.setGame(this);
-    }
+    }*/
 
     // Modify the this.currentPlayer (Player that will start) // unit test => yes
     public void startingPlayer() {
@@ -61,9 +53,9 @@ public class Game {
     public Player getP2() {
         return p2;
     }
-    public GameOverviewController getGameoverviewcontroller() {
+   /* public GameOverviewController getGameoverviewcontroller() {
         return gameoverviewcontroller;
-    }
+    }*/
 /*
     public Card PlayCard() {
         int n = this.getCurrentPlayer().getBoard().getHand().size();
@@ -79,20 +71,18 @@ public class Game {
             this.getP1().getBoard().addCardToHand(this.dealer.GetCard());
             this.getP2().getBoard().addCardToHand((this.dealer.GetCard()));
         }
-    }
+    } // on start
     // method where the currentPlayer draw a card (the card is added to his hand)
     public void drawCard(Player player) {
         player.getBoard().getHand().add(dealer.GetCard());
-    }
+    } // a every turn
     // method that return true for human, false otherwise
     public boolean isHuman(){
-        if(this.currentPlayer.getIdPLayer() == 1) return true;
-        else return false;
+        return this.currentPlayer.getIdPLayer() == 1;
     }
     // returns 1 if both hands are empty, 0 otherwise
     public boolean emptyHands() {
-        if (p1.getBoard().getHand().isEmpty() && p2.getBoard().getHand().isEmpty()) return true;
-        return false;
+        return p1.getBoard().getHand().isEmpty() && p2.getBoard().getHand().isEmpty();
     }
     // returns the player that will play next
     public Player changePlayer() {
@@ -103,11 +93,6 @@ public class Game {
 
 
 
-    /**
-     * The card c was clicked
-     *
-     * @param c
-     */
     public void onClick(Card c) {
 
     }

@@ -23,7 +23,7 @@ public class GameTest {
         assertNotNull(game.getP1());
         assertNotNull(game.getP2());
         assertNotNull(game.getDealer());
-        assertNotNull(game.getGameoverviewcontroller());
+
     }
 
 }

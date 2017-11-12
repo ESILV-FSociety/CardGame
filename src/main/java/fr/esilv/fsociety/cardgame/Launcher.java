@@ -1,8 +1,8 @@
 package fr.esilv.fsociety.cardgame;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 
@@ -12,12 +12,13 @@ public class Launcher extends Application{
     public void start(Stage primaryStage) throws Exception {
 
     try {
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fr.esilv.fsociety.cardgame/GameOverview.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 1200, 800));
+        AnchorPane root = (AnchorPane) FXMLLoader.load(Launcher.class.getResource("/fr/esilv/fsociety/cardgame/GameOverview.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Awesome Game");
         primaryStage.show();
     }catch(Exception e){
-        System.out.println(e);
+        e.printStackTrace();
     }
 /*        try {
             //initialize the game
