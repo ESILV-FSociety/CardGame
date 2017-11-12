@@ -1,4 +1,4 @@
-/*package fr.esilv.fsociety.cardgame.Controller;
+package fr.esilv.fsociety.cardgame.Controller;
 
 import fr.esilv.fsociety.cardgame.api.Board;
 import fr.esilv.fsociety.cardgame.api.Card;
@@ -33,7 +33,7 @@ public class MainController extends Application {
 	
 	@FXML
 	private HBox bottomKingdom;
-	
+/*
 	@FXML
 	public void initialize() {
 		theGame = new Game(); // New Game !
@@ -46,9 +46,10 @@ public class MainController extends Application {
         this.refreshGraphic(this.bottomHand, this.bottomKingdom, Game.BOTTOM_PLAYER);
         System.out.print(this.bottomHand.getChildren().size());
 	}
+	*/
 	  
    
-    
+    /*
     private void refreshGraphic(HBox hand, HBox kingdom, int pl) {
     	hand.getChildren().clear();
     	kingdom.getChildren().clear();
@@ -58,6 +59,7 @@ public class MainController extends Application {
     	hand.getChildren().addAll(b.handToImageViews());
     	kingdom.getChildren().addAll(b.kingdomToImageViews());    	
     }
+    */
     
     public void onClick(Card c) {
     	this.theGame.onClick(c);
@@ -69,6 +71,5 @@ public class MainController extends Application {
 		
 	}
     
-  
+
 }
-*/

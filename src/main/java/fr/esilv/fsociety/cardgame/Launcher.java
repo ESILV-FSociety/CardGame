@@ -1,17 +1,9 @@
 package fr.esilv.fsociety.cardgame;
-import fr.esilv.fsociety.cardgame.api.Card;
-import fr.esilv.fsociety.cardgame.api.Game;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Path;
 import javafx.stage.Stage;
-import sun.plugin.javascript.navig.AnchorArray;
-
-import java.io.File;
-import java.util.ArrayList;
 
 
 public class Launcher extends Application{
@@ -19,19 +11,14 @@ public class Launcher extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-
-        try {
-            // problem with the path ...
-
-            System.out.println(new File(".").getCanonicalPath());
-            FXMLLoader loader = new FXMLLoader(Launcher.class.getResource("/GameOverview.fxml"));
-            Parent root = loader.load();
-            primaryStage.setTitle("Game");
-            primaryStage.setScene(new Scene(root, 1200, 800));
-            primaryStage.show();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+    try {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fr.esilv.fsociety.cardgame/GameOverview.fxml"));
+        primaryStage.setTitle("Hello World");
+        primaryStage.setScene(new Scene(root, 1200, 800));
+        primaryStage.show();
+    }catch(Exception e){
+        System.out.println(e);
+    }
 /*        try {
             //initialize the game
             Game game = new Game();
