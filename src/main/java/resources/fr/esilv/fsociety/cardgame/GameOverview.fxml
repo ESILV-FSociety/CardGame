@@ -66,36 +66,12 @@
                            <children>
                               <HBox fx:id="HumanHand" alignment="CENTER" prefHeight="116.0" prefWidth="538.0" spacing="10.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="7.0">
                                  <children>
-                                    <ImageView fitHeight="100.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="100.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="100.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="100.0" fitWidth="90.0" layoutX="14.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="100.0" fitWidth="90.0" layoutX="214.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </ImageView>
-                                    <ImageView fitHeight="100.0" fitWidth="90.0" layoutX="54.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
-                                       <HBox.margin>
-                                          <Insets />
-                                       </HBox.margin>
-                                    </ImageView>
+                                    <ImageView fx:id="hhcard1" fitHeight="100.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="hhcard2" fitHeight="100.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="hhcard3" fitHeight="100.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="hhcard4" fitHeight="100.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="hhcard5" fitHeight="100.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="hhcard6" fitHeight="100.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
                                  </children></HBox>
                            </children>
                         </AnchorPane>
@@ -117,7 +93,7 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Text fx:id="AiName" strokeType="OUTSIDE" strokeWidth="0.0" text="AI" underline="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                        <Text fx:id="AiName" strokeType="OUTSIDE" strokeWidth="0.0" text="AI" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                            <font>
                               <Font size="29.0" />
                            </font>
@@ -127,17 +103,19 @@
                               <Font size="29.0" />
                            </font>
                         </Text>
-                        <ImageView fx:id="DeckImageView" fitHeight="150.0" fitWidth="100.0" onMouseClicked="#ClickOnDeck" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                        <ImageView fx:id="DeckImageView" fitHeight="100.0" fitWidth="90.0" onMouseClicked="#ClickOnDeck" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
                         <Text fx:id="HumanScore" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                            <font>
                               <Font size="29.0" />
                            </font>
                         </Text>
-                        <Text fx:id="HumanName" strokeType="OUTSIDE" strokeWidth="0.0" text="Human" underline="true" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                        <Text fx:id="HumanName" strokeType="OUTSIDE" strokeWidth="0.0" text="Human" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                            <font>
                               <Font size="29.0" />
                            </font>
                         </Text>
+                        <ImageView fx:id="DeckCardAI" fitHeight="100.0" fitWidth="90.0" layoutX="35.0" layoutY="411.0" onMouseClicked="#ClickOnDeck" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+                        <ImageView fx:id="DeckCardHuman" fitHeight="100.0" fitWidth="90.0" layoutX="10.0" layoutY="214.0" onMouseClicked="#ClickOnDeck" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
                      </children>
                   </GridPane>
                </children>

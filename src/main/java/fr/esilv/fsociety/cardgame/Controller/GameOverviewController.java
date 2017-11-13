@@ -2,9 +2,7 @@ package fr.esilv.fsociety.cardgame.Controller;
 
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
-import fr.esilv.fsociety.cardgame.api.Player;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -12,40 +10,70 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
+
+import javax.swing.*;
+import java.net.URL;
 import java.util.ArrayList;
+
 
 public class GameOverviewController {
 
     private Game game;
     private String humanName; // new name of the player
 
-    @FXML
-    private GridPane HumanKingdom;
+    //--------------------------------------------------
+
+    // Human
 
     @FXML
+    private GridPane HumanKingdom;
+    @FXML
     private HBox HumanHand;
+    @FXML
+    private Text HumanScore;
+    @FXML
+    private Text HumanName;
+    @FXML
+    private ImageView DeckCardHuman;
+
+    //--------------------------------------------------
+
+    //AI
 
     @FXML
     private Text AiName;
-
     @FXML
     private Text AiScore;
+    @FXML
+    private HBox AiHand;
+    @FXML
+    private GridPane AiKingdom;
+    @FXML
+    private ImageView DeckCardAI;
 
+    //--------------------------------------------------
+
+    //Deck
     @FXML
     private ImageView DeckImageView;
 
-    @FXML
-    private Text HumanScore;
 
-    @FXML
-    private Text HumanName;
 
+    //--------------------------------------
     @FXML
-    private HBox AiHand;
-
+    private ImageView hhcard1;
     @FXML
-    private GridPane AiKingdom;
+    private ImageView hhcard2;
+    @FXML
+    private ImageView hhcard3;
+    @FXML
+    private ImageView hhcard4;
+    @FXML
+    private ImageView hhcard5;
+    @FXML
+    private ImageView hhcard6;
 
+    //-------------------------------------
     @FXML
     private void ClickOnDeck(MouseEvent event) { // only used
 
@@ -54,21 +82,21 @@ public class GameOverviewController {
 
     }
 
+    @FXML
+    private void ClickOnHand(MouseEvent event){
+
+
+    }
+
 
     //this.game.start(); to be called after entering the name (by the login view)
 
 
-    public void DisplaySth() {
-        Image image = new Image("CardGame\\src\\main\\java\\resources\\fr.esilv.fsociety.cardgame\\cardPictures\\goblin.png");
-        HumanKingdom.getChildren().add(new ImageView(image));
-    }
-
     public void initialize() {
-        HumanHand.setAlignment(Pos.CENTER);
-        //initialize the game
+        //Step 1 : initialize the game
         this.game = new Game();
         //Rename the player
-        this.humanName = "Name";
+        this.humanName = "Max";
         updateDisplayName(humanName);
         //display the score
         updateDisplayScores();
@@ -78,7 +106,7 @@ public class GameOverviewController {
         game.playersDraw5Cards();
 
         updateDisplayHand();
-
+        updateDisplayKingdoms();
 
 
         // updateDisplayHands();
@@ -87,21 +115,50 @@ public class GameOverviewController {
 
     }
 
+    private void turn(){
+
+    }
+
+    // OK works
     private void updateDisplayScores() {
         AiScore.setText(String.valueOf(this.game.getP1().getScore()));
         HumanScore.setText(String.valueOf(this.game.getP2().getScore()));
     }
 
+    // OK works
     private void updateDisplayName(String name) { // one time ONLY
         this.game.getP2().setName(name);
         AiScore.setText(this.game.getP1().getName());
         HumanName.setText(this.game.getP2().getName());
     }
-
+    // OK (to be reviewed later) but works
     private void updateDisplayHand() {
-        for (Card item : this.game.getCurrentPlayer().getBoard().getHand()) {
-            Image img = new Image(item.getImg());
-            HumanHand.getChildren().add(new ImageView(img));
+
+        ArrayList<Card> list = this.game.getCurrentPlayer().getBoard().getHand();
+        ArrayList<String> list_url = new ArrayList<String>();
+
+        //retrieve all the url
+        for (int i = 0; i < list.size(); i++) {
+            String image_URL = getClass().getClassLoader().getResource(list.get(i).getImg()).toString();
+            list_url.add(image_URL);
+        }
+        if(list_url.size() >= 1) {
+            hhcard1.setImage(new Image(list_url.get(0)));
+            if(list_url.size() >= 2){
+                hhcard2.setImage(new Image(list_url.get(1)));
+                if(list_url.size() >= 3){
+                    hhcard3.setImage(new Image(list_url.get(2)));
+                    if(list_url.size() >= 4){
+                        hhcard4.setImage(new Image(list_url.get(3)));
+                        if(list_url.size() >= 5){
+                            hhcard5.setImage(new Image(list_url.get(4)));
+                            if(list_url.size() == 6){
+                                hhcard6.setImage(new Image(list_url.get(5)));
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
