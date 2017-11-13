@@ -2,6 +2,7 @@ package fr.esilv.fsociety.cardgame.Controller;
 
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
+import fr.esilv.fsociety.cardgame.api.Human;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,7 +29,7 @@ public class GameOverviewController {
     @FXML
     private GridPane HumanKingdom;
     @FXML
-    private HBox HumanHand;
+    private GridPane HumanHand;
     @FXML
     private Text HumanScore;
     @FXML
@@ -56,9 +57,8 @@ public class GameOverviewController {
     //Deck
     @FXML
     private ImageView DeckImageView;
-
-
-
+    @FXML
+    private GridPane DeckPanel;
     //--------------------------------------
     @FXML
     private ImageView hhcard1;
@@ -77,9 +77,8 @@ public class GameOverviewController {
     @FXML
     private void ClickOnDeck(MouseEvent event) { // only used
 
-        this.game.drawCard(this.game.getP2());
+        this.game.drawCard(this.game.getCurrentPlayer());
         updateDisplayHand();
-
     }
 
     @FXML
@@ -93,6 +92,9 @@ public class GameOverviewController {
 
 
     public void initialize() {
+        HumanKingdom.setGridLinesVisible(true);
+        initializeDeck();
+        initializeImageViews();
         //Step 1 : initialize the game
         this.game = new Game();
         //Rename the player
@@ -105,19 +107,24 @@ public class GameOverviewController {
         //each player draw 5 cards
         game.playersDraw5Cards();
 
+        updateDisplayDeck();
         updateDisplayHand();
         updateDisplayKingdoms();
-
-
-        // updateDisplayHands();
-        //updateDisplayKingdoms();
-
-
     }
 
-    private void turn(){
-
+    private void initializeDeck(){
+        DeckImageView.fitWidthProperty().bind(DeckPanel.widthProperty());
     }
+private void initializeImageViews(){
+
+
+    hhcard1.fitWidthProperty().bind(HumanHand.widthProperty());
+    hhcard2.fitWidthProperty().bind(HumanHand.widthProperty());
+    hhcard3.fitWidthProperty().bind(HumanHand.widthProperty());
+    hhcard4.fitWidthProperty().bind(HumanHand.widthProperty());
+    hhcard5.fitWidthProperty().bind(HumanHand.widthProperty());
+    hhcard6.fitWidthProperty().bind(HumanHand.widthProperty());
+}
 
     // OK works
     private void updateDisplayScores() {
@@ -160,6 +167,13 @@ public class GameOverviewController {
                 }
             }
         }
+        initializeImageViews();
+    }
+
+    private void updateDisplayDeck(){
+        String image_URL = getClass().getClassLoader().getResource("fr/esilv/fsociety/cardgame/Cards/deck.png").toString();
+        DeckImageView.setImage(new Image(image_URL));
+        DeckImageView.fitWidthProperty().bind(DeckPanel.widthProperty());
     }
 
     private void updateDisplayKingdoms() {
