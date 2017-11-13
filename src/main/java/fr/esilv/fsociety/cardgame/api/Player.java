@@ -1,6 +1,6 @@
 package fr.esilv.fsociety.cardgame.api;
 
-public class Player {
+public abstract class Player {
 
     //idPlayer of AI is 0
     //idPlayer of the Human is 1

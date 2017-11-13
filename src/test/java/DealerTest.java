@@ -17,4 +17,11 @@ public class DealerTest {
 
     }
 
+    @Test
+    public void TestDealerAttributes(){
+        Dealer dealer = new Dealer();
+        assertNotNull(dealer.getDeck());
+        assertEquals(dealer.getDeck().size(),6);
+    }
+
 }

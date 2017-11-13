@@ -8,10 +8,8 @@ public class Game {
     // 2 players
     private Player p1;
     private Player p2;
-
     // 1 current player
     private Player currentPlayer;
-
     // 1 dealer
     private Dealer dealer;
 
@@ -85,9 +83,9 @@ public class Game {
         return p1.getBoard().getHand().isEmpty() && p2.getBoard().getHand().isEmpty();
     }
     // returns the player that will play next
-    public Player changePlayer() {
-        if (this.currentPlayer.getIdPLayer() == 0) return p2;
-        else return p1;
+    public void changePlayer() {
+        if (this.currentPlayer.getIdPLayer() == 0) this.currentPlayer = this.p2;
+        else this.currentPlayer = p1;
     }
 
 

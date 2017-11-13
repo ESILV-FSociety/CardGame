@@ -27,7 +27,7 @@ public class CardTest {
         }
 
         @Test
-        public void TestContent(){
+        public void TestCardAttributes(){
             Elf elf = new Elf();
             Troll troll = new Troll();
             Korrigan korrigan = new Korrigan();

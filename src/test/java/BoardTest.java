@@ -14,11 +14,6 @@ public class BoardTest {
         Card card = new Goblin();
         int n = game.getCurrentPlayer().getBoard().getHand().size();
         game.getCurrentPlayer().getBoard().addCardToHand(card);
-        assertEquals(card,game.getCurrentPlayer().getBoard().getHand().get(n));
+        assertEquals(card, game.getCurrentPlayer().getBoard().getHand().get(n));
     }
-
-    @Test
-    public void updateHand() throws Exception {
-    }
-
 }

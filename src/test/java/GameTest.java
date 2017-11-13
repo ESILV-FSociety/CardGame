@@ -6,9 +6,49 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class GameTest {
+    @Test
+    public void isHuman() throws Exception {
+    }
 
     @Test
-    //Test that idPlayer is 1 or 0
+    public void emptyHands() throws Exception {
+        Game game = new Game();
+        assertTrue(game.emptyHands());
+        game.drawCard(game.getP1());
+        assertFalse(game.emptyHands());
+        game.drawCard(game.getP2());
+        assertFalse(game.emptyHands());
+    }
+
+    @Test
+    public void changePlayer() throws Exception {
+        Game game = new Game();
+        game.setCurrentPlayer(game.getP1());
+        game.changePlayer();
+        assertEquals(game.getCurrentPlayer(),game.getP2());
+
+
+    }
+
+    @Test
+    public void playersDraw5Cards() throws Exception {
+        Game game = new Game();
+        game.playersDraw5Cards();
+        assertEquals(game.getP1().getBoard().getHand().size(),5);
+        assertEquals(game.getP2().getBoard().getHand().size(),5);
+    }
+
+    @Test
+    public void drawCard() throws Exception {
+    Game game = new Game();
+    game.drawCard(game.getP2());
+    game.drawCard(game.getP1());
+    assertEquals(game.getP1().getBoard().getHand().size(),1);
+    assertEquals(game.getP2().getBoard().getHand().size(),1);
+    }
+
+    @Test
+    //Test that idPlayer is 1 or 0 (Human or AI)
     public void startingPlayer() throws Exception {
         Game game = new Game();
         game.startingPlayer();
@@ -23,7 +63,6 @@ public class GameTest {
         assertNotNull(game.getP1());
         assertNotNull(game.getP2());
         assertNotNull(game.getDealer());
-
     }
 
 }

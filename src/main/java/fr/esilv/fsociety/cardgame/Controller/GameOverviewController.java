@@ -4,6 +4,7 @@ import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
 import fr.esilv.fsociety.cardgame.api.Player;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -52,6 +53,8 @@ public class GameOverviewController {
         updateDisplayHand();
 
     }
+
+
     //this.game.start(); to be called after entering the name (by the login view)
 
 
@@ -61,6 +64,7 @@ public class GameOverviewController {
     }
 
     public void initialize() {
+        HumanHand.setAlignment(Pos.CENTER);
         //initialize the game
         this.game = new Game();
         //Rename the player
