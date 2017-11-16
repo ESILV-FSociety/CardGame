@@ -26,8 +26,6 @@ public class GameTest {
         game.setCurrentPlayer(game.getP1());
         game.changePlayer();
         assertEquals(game.getCurrentPlayer(),game.getP2());
-
-
     }
 
     @Test
