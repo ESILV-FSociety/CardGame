@@ -35,7 +35,7 @@ public class Game {
 
     // properties
     public Player getCurrentPlayer() {
-        return currentPlayer;
+        return this.currentPlayer;
     }
 
     public void setCurrentPlayer(Player currentPlayer) {
