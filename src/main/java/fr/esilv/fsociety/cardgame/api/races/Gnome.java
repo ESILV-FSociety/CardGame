@@ -5,7 +5,7 @@ import fr.esilv.fsociety.cardgame.api.Game;
 public class Gnome extends Card {
 
 	public Gnome() {
-		super("Gnome","fr/esilv/fsociety/cardgame/Cards/gnome.png");
+		super("Gnome", "images/gnome.png");
 	}
 
 	public void activatePower(){
