@@ -2,7 +2,6 @@ package fr.esilv.fsociety.cardgame.Controller;
 
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
-import fr.esilv.fsociety.cardgame.api.Human;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,8 +11,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
 
-import javax.swing.*;
-import java.net.URL;
 import java.util.ArrayList;
 
 
@@ -171,7 +168,7 @@ private void initializeImageViews(){
     }
 
     private void updateDisplayDeck(){
-        String image_URL = getClass().getClassLoader().getResource("fr/esilv/fsociety/cardgame/Cards/deck.png").toString();
+        String image_URL = getClass().getClassLoader().getResource("images/deck.png").toString();
         DeckImageView.setImage(new Image(image_URL));
         DeckImageView.fitWidthProperty().bind(DeckPanel.widthProperty());
     }

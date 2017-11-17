@@ -5,7 +5,7 @@ import fr.esilv.fsociety.cardgame.api.Game;
 public class Korrigan extends Card {
 
 	public Korrigan() {
-		super("Korrigan","fr/esilv/fsociety/cardgame/Cards/korrigan.png");
+		super("Korrigan", "images/korrigan.png");
 	}
 
 	public void activatePower(){
