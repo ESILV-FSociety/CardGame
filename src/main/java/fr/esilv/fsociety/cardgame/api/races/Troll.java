@@ -5,7 +5,7 @@ import fr.esilv.fsociety.cardgame.api.Game;
 public class Troll extends Card {
 
 	public Troll() {
-		super("Troll", "troll.png");
+		super("Troll", "images/troll.png");
 	}
 
 	public void activatePower(){

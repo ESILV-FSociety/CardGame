@@ -1,4 +1,4 @@
-import fr.esilv.fsociety.cardgame.Controller.GameOverviewController;
+import fr.esilv.fsociety.cardgame.controller.GameOverviewController;
 import fr.esilv.fsociety.cardgame.api.Game;
 import org.junit.Before;
 import org.junit.Test;
