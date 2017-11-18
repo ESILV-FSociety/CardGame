@@ -1,5 +1,6 @@
-package fr.esilv.fsociety.cardgame.Controller;
+package fr.esilv.fsociety.cardgame.controller;
 
+import fr.esilv.fsociety.cardgame.Launcher;
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
 import javafx.fxml.FXML;
@@ -71,6 +72,16 @@ public class GameOverviewController {
     private ImageView hhcard6;
 
     //-------------------------------------
+
+    Launcher application;
+
+    public GameOverviewController(Launcher application){
+        this.application = application;
+    }
+
+
+
+
     @FXML
     private void ClickOnDeck(MouseEvent event) { // only used
 

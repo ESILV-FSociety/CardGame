@@ -1,4 +1,4 @@
-package fr.esilv.fsociety.cardgame.Controller;
+package fr.esilv.fsociety.cardgame.controller;
 
 import fr.esilv.fsociety.cardgame.api.Board;
 import fr.esilv.fsociety.cardgame.api.Card;

@@ -1,41 +1,36 @@
-package fr.esilv.fsociety.cardgame.Controller;
+package fr.esilv.fsociety.cardgame.controller;
 
 import fr.esilv.fsociety.cardgame.Launcher;
-import javafx.application.Application;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.TextField;
+
+import javafx.scene.control.Button;
+
 import javafx.stage.Stage;
 
 
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class MenuController implements Initializable {
 
-    Launcher controller;
+public class MenuController extends Stage {
+
+    Launcher application;
 
     @FXML
+    private Button btn;
+
+   public MenuController(Launcher application){
+       this.application = application;
+   }
+
+   public void init(){
+       btn.setOnAction(event -> {
+           try {
+               application.startGame();
+           } catch (Exception e) {
+               e.printStackTrace();
+           }
+       });
+   }
 
 
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-
-    }
-
-
-
-    public void play(){
-
-
-
-
-    }
-    
-    
-
-    public void start(Stage primaryStage) throws Exception {
-
-    }
 }
