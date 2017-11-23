@@ -17,16 +17,16 @@ import java.util.Hashtable;
 
 public class GameOverviewController {
 
-
-
-    private static final Hashtable<String,String> hash_image_path = new Hashtable<String,String>(){{
-        put("Dryad","images/dryad.png");
-        put("Elf","images/elf.png");
-        put("Gnome","images/gnome.png");
-        put("Goblin","images/goblin.png");
-        put("Korrigan","images/korrigan.png");
-        put("Troll","images/troll.png");
+    private static final Hashtable<Integer,String> hash_image_path = new Hashtable<Integer,String>(){{
+        put(0,"images/dryad.png");
+        put(1,"images/elf.png");
+        put(2,"images/gnome.png");
+        put(3,"images/goblin.png");
+        put(4,"images/korrigan.png");
+        put(5,"images/troll.png");
     }};
+
+
 
 
 
@@ -34,7 +34,8 @@ public class GameOverviewController {
 
     private String humanName; // new name of the player
 
-
+@FXML
+private GridPane BoardsPanel;
 
     // Player
 
@@ -84,6 +85,14 @@ public class GameOverviewController {
     @FXML
     private ImageView hhcard6;
 
+    private Hashtable<Integer,ImageView> hash_hhcard = new Hashtable<Integer,ImageView>(){{
+        put(0,hhcard1 = new ImageView());
+        put(1,hhcard2 = new ImageView());
+        put(2,hhcard3 = new ImageView());
+        put(3,hhcard4 = new ImageView());
+        put(4,hhcard5 = new ImageView());
+        put(5,hhcard6 = new ImageView());
+    }};
 
     @FXML
     private void ClickOnDeck(MouseEvent event) { // only used
@@ -91,30 +100,25 @@ public class GameOverviewController {
         this.game.drawCard();
         //updateDisplayHand();
     }
-
     @FXML
     private void ClickOnHand(MouseEvent event){
-
 
     }
 
     Launcher application;
 
+
+
     public GameOverviewController(Launcher application){
         this.application = application;
     }
 
-
-
-
-
-
-
     //this.game.start(); to be called after entering the name (by the login view)
-
 
     public void initialize() {
 
+        BoardsPanel.setGridLinesVisible(true);
+        DeckPanel.setGridLinesVisible(true);
         initializeDeck();
   //      initializeImageViews();
         this.game = new Game();
@@ -123,12 +127,12 @@ public class GameOverviewController {
         game.startingPlayer();
         game.playersDraw5Cards();
         updateDisplayDeck();
-        //updateDisplayHand();
+        updateDisplayHand();
         updateDisplayKingdoms();
     }
 
     private void initializeDeck(){
-//        DeckImageView.fitWidthProperty().bind(DeckPanel.widthProperty());
+       DeckImageView.fitWidthProperty().bind(DeckPanel.widthProperty());
     }
 
 
@@ -141,38 +145,22 @@ public class GameOverviewController {
     // OK works
 
     // OK (to be reviewed later) but works
-   /*
+
     private void updateDisplayHand() {
 
-        ArrayList<Card> list = this.game.getCurrentPlayer().getBoard().getHand();
-        ArrayList<String> list_url = new ArrayList<String>();
+       int [] list = this.game.getCurrentPlayer().getBoard().getHand();
+        String[] list_url = new String [6];
 
         //retrieve all the url
-        for (int i = 0; i < list.size(); i++) {
-            String image_URL = getClass().getClassLoader().getResource(hash_image_path.get(list.get(i).getName())).toString();
-            list_url.add(image_URL);
-        }
-        if(list_url.size() >= 1) {
-            hhcard1.setImage(new Image(list_url.get(0)));
-            if(list_url.size() >= 2){
-                hhcard2.setImage(new Image(list_url.get(1)));
-                if(list_url.size() >= 3){
-                    hhcard3.setImage(new Image(list_url.get(2)));
-                    if(list_url.size() >= 4){
-                        hhcard4.setImage(new Image(list_url.get(3)));
-                        if(list_url.size() >= 5){
-                            hhcard5.setImage(new Image(list_url.get(4)));
-                            if(list_url.size() == 6){
-                                hhcard6.setImage(new Image(list_url.get(5)));
-                            }
-                        }
-                    }
-                }
+        for (int i = 0; i < list.length; i++) {
+            if(list[i] != 0){
+
+            list_url[i] = getClass().getClassLoader().getResource(hash_image_path.get(i)).toString();
+            hash_hhcard.get(i).setImage(new Image(list_url[i]));
             }
         }
-        initializeImageViews();
     }
-    */
+
 
     private void updateDisplayDeck(){
         String image_URL = getClass().getClassLoader().getResource("images/deck.png").toString();
