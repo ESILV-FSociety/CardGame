@@ -12,9 +12,9 @@ public class GnomeTest {
         Game game = new Game();
         Gnome gob = new Gnome();
         game.startingPlayer();
-        int SizeBeforeGnomePlayed = game.getCurrentPlayer().getBoard().getHand().size();// size n
+        int SizeBeforeGnomePlayed = game.getCurrentPlayer().getBoard().getHand()[0];// size n
         gob.activatePower(game);
-        int SizeAfterGnomePlayed = game.getCurrentPlayer().getBoard().getHand().size();
+        int SizeAfterGnomePlayed = game.getCurrentPlayer().getBoard().getHand()[0];
         assertEquals(SizeBeforeGnomePlayed + 2, SizeAfterGnomePlayed);
 
     }

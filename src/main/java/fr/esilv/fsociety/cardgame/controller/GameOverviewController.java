@@ -19,7 +19,7 @@ public class GameOverviewController {
 
 
 
-    private static final Hashtable<String,String> hash = new Hashtable<String,String>(){{
+    private static final Hashtable<String,String> hash_image_path = new Hashtable<String,String>(){{
         put("Dryad","images/dryad.png");
         put("Elf","images/elf.png");
         put("Gnome","images/gnome.png");
@@ -28,7 +28,10 @@ public class GameOverviewController {
         put("Troll","images/troll.png");
     }};
 
+
+
     private Game game;
+
     private String humanName; // new name of the player
 
 
@@ -85,8 +88,8 @@ public class GameOverviewController {
     @FXML
     private void ClickOnDeck(MouseEvent event) { // only used
 
-        this.game.drawCard(this.game.getCurrentPlayer());
-        updateDisplayHand();
+        this.game.drawCard();
+        //updateDisplayHand();
     }
 
     @FXML
@@ -113,31 +116,21 @@ public class GameOverviewController {
     public void initialize() {
 
         initializeDeck();
-        initializeImageViews();
+  //      initializeImageViews();
         this.game = new Game();
         this.humanName = "Max";
-        updateDisplayName(humanName);
         updateDisplayScores();
         game.startingPlayer();
         game.playersDraw5Cards();
         updateDisplayDeck();
-        updateDisplayHand();
+        //updateDisplayHand();
         updateDisplayKingdoms();
     }
 
     private void initializeDeck(){
-        DeckImageView.fitWidthProperty().bind(DeckPanel.widthProperty());
+//        DeckImageView.fitWidthProperty().bind(DeckPanel.widthProperty());
     }
-private void initializeImageViews(){
 
-
-    hhcard1.fitWidthProperty().bind(HumanHand.widthProperty());
-    hhcard2.fitWidthProperty().bind(HumanHand.widthProperty());
-    hhcard3.fitWidthProperty().bind(HumanHand.widthProperty());
-    hhcard4.fitWidthProperty().bind(HumanHand.widthProperty());
-    hhcard5.fitWidthProperty().bind(HumanHand.widthProperty());
-    hhcard6.fitWidthProperty().bind(HumanHand.widthProperty());
-}
 
     // OK works
     private void updateDisplayScores() {
@@ -146,12 +139,9 @@ private void initializeImageViews(){
     }
 
     // OK works
-    private void updateDisplayName(String name) { // one time ONLY
-        this.game.getP2().setName(name);
-        AiScore.setText(this.game.getP1().getName());
-        HumanName.setText(this.game.getP2().getName());
-    }
+
     // OK (to be reviewed later) but works
+   /*
     private void updateDisplayHand() {
 
         ArrayList<Card> list = this.game.getCurrentPlayer().getBoard().getHand();
@@ -159,7 +149,7 @@ private void initializeImageViews(){
 
         //retrieve all the url
         for (int i = 0; i < list.size(); i++) {
-            String image_URL = getClass().getClassLoader().getResource(hash.get(list.get(i).getName())).toString();
+            String image_URL = getClass().getClassLoader().getResource(hash_image_path.get(list.get(i).getName())).toString();
             list_url.add(image_URL);
         }
         if(list_url.size() >= 1) {
@@ -182,11 +172,12 @@ private void initializeImageViews(){
         }
         initializeImageViews();
     }
+    */
 
     private void updateDisplayDeck(){
         String image_URL = getClass().getClassLoader().getResource("images/deck.png").toString();
         DeckImageView.setImage(new Image(image_URL));
-        DeckImageView.fitWidthProperty().bind(DeckPanel.widthProperty());
+        //DeckImageView.fitWidthProperty().bind(DeckPanel.widthProperty());
     }
 
     private void updateDisplayKingdoms() {

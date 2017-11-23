@@ -8,17 +8,11 @@ package fr.esilv.fsociety.cardgame.api;
 public abstract class Card {
 	private String name; // name of the card
 
-	private String img; //location of the card (folder to be defined)
-
-
 	public Card(String name) {
 		this.name = name;
-
 	}
+
 	public String getName() {
 		return name;
 	}
-
-
-
 }

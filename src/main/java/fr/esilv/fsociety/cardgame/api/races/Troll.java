@@ -10,7 +10,7 @@ public class Troll extends Card {
 		super("Troll");
 	}
 
-	public void activatePower(Player j1, Player j2){
+	/*public void activatePower(Player j1, Player j2){
 		ArrayList<Card> tempKingdom  =  new ArrayList<>();
 		System.out.println("Troll activated");
 		tempKingdom = j1.getBoard().getKingdom();
@@ -19,5 +19,5 @@ public class Troll extends Card {
 
 		// swap the cards in front of you with the cards in front of your opponent
 	}
-
+*/
 }
