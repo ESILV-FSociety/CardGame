@@ -95,7 +95,7 @@ private GridPane BoardsPanel;
     }};
 
     @FXML
-    private void ClickOnDeck(MouseEvent event) { // only used
+     void ClickOnDeck(MouseEvent event) { // only used
 
         this.game.drawCard();
         //updateDisplayHand();
@@ -104,6 +104,10 @@ private GridPane BoardsPanel;
     private void ClickOnHand(MouseEvent event){
 
     }
+
+
+
+
 
     Launcher application;
 
@@ -148,7 +152,7 @@ private GridPane BoardsPanel;
 
     private void updateDisplayHand() {
 
-       int [] list = this.game.getCurrentPlayer().getBoard().getHand();
+        int [] list = this.game.getCurrentPlayer().getBoard().getHand();
         String[] list_url = new String [6];
 
         //retrieve all the url
@@ -156,9 +160,16 @@ private GridPane BoardsPanel;
             if(list[i] != 0){
 
             list_url[i] = getClass().getClassLoader().getResource(hash_image_path.get(i)).toString();
+
             hash_hhcard.get(i).setImage(new Image(list_url[i]));
             }
+            else{
+                String image_URL = getClass().getClassLoader().getResource("images/empty.png").toString();
+                hash_hhcard.get(i).setImage(new Image(image_URL));
+            }
+
         }
+
     }
 
 

@@ -19,8 +19,8 @@ public class Launcher extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        //startMenu();
-        startGame();
+        startMenu();
+
     }
 
 
@@ -46,7 +46,7 @@ public class Launcher extends Application{
         Parent root = fxmlLoader.load();
         Game = new Stage();
         Game.setTitle("Game");
-        Game.setScene(new Scene(root, 1000, 800));
+        Game.setScene(new Scene(root));
         Game.show();
 
     }
