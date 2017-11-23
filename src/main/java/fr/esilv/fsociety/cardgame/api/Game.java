@@ -26,6 +26,7 @@ public class Game {
         else this.currentPlayer = this.p2;
     }
 
+
     public Player getCurrentPlayer() {
         return this.currentPlayer;
     }

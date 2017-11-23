@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ab41eabc-1af5-42a4-a8f1-f0b108c7abc9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/fr/esilv/fsociety/cardgame/GameTest.java" afterPath="$PROJECT_DIR$/src/test/java/fr/esilv/fsociety/cardgame/GameTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/fr/esilv/fsociety/cardgame/api/Game.java" afterPath="$PROJECT_DIR$/src/main/java/fr/esilv/fsociety/cardgame/api/Game.java" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -26,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/fr/esilv/fsociety/cardgame/api/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-181">
-              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state relative-caret-position="42">
+              <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -113,11 +113,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/fr/esilv/fsociety/cardgame/GameTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-525">
-              <caret line="3" column="45" lean-forward="false" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
+            <state relative-caret-position="21">
+              <caret line="2" column="43" lean-forward="true" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -153,10 +153,10 @@
         <option value="$PROJECT_DIR$/src/test/java/GameTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/fr/esilv/fsociety/cardgame/races/Goblin.java" />
         <option value="$PROJECT_DIR$/src/test/java/fr/esilv/fsociety/cardgame/api/races/GoblinTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/fr/esilv/fsociety/cardgame/api/Game.java" />
         <option value="$PROJECT_DIR$/src/main/java/fr/esilv/fsociety/cardgame/controller/GameOverviewController.java" />
         <option value="$PROJECT_DIR$/src/main/java/fr/esilv/fsociety/cardgame/api/races/Goblin.java" />
         <option value="$PROJECT_DIR$/src/test/java/fr/esilv/fsociety/cardgame/GameTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/fr/esilv/fsociety/cardgame/api/Game.java" />
       </list>
     </option>
   </component>
@@ -447,8 +447,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1511104583579</updated>
-      <workItem from="1511428187173" duration="151000" />
+      <workItem from="1511428187173" duration="510000" />
     </task>
+    <task id="LOCAL-00001" summary="Commit fix #2">
+      <created>1511428375112</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1511428375112</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -457,7 +465,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="198000" />
+    <option name="totallyTimeSpent" value="557000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -530,6 +538,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
+    <MESSAGE value="Commit fix #2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit fix #2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -889,18 +899,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/fr/esilv/fsociety/cardgame/api/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/fr/esilv/fsociety/cardgame/GameTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-181">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="21">
+          <caret line="2" column="43" lean-forward="true" selection-start-line="2" selection-start-column="43" selection-end-line="2" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/fr/esilv/fsociety/cardgame/GameTest.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/fr/esilv/fsociety/cardgame/api/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-525">
-          <caret line="3" column="45" lean-forward="false" selection-start-line="3" selection-start-column="45" selection-end-line="3" selection-end-column="45" />
+        <state relative-caret-position="42">
+          <caret line="3" column="24" lean-forward="true" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
           <folding />
         </state>
       </provider>
