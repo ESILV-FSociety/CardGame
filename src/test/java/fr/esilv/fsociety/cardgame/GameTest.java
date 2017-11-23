@@ -1,6 +1,7 @@
 package fr.esilv.fsociety.cardgame;
 
 import fr.esilv.fsociety.cardgame.api.Game;
+import fr.esilv.fsociety.cardgame.api.Player;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -23,7 +24,8 @@ public class GameTest {
     @Test
     public void changePlayer() throws Exception {
         Game game = new Game();
-        game.setCurrentPlayer(game.getP1());
+        Player p1 = game.getP1();
+        game.setCurrentPlayer(p1);
         game.changePlayer();
         assertEquals(game.getCurrentPlayer(),game.getP2());
     }

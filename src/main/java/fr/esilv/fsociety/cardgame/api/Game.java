@@ -1,5 +1,6 @@
 package fr.esilv.fsociety.cardgame.api;
 
+import fr.esilv.fsociety.cardgame.controller.GameOverviewController;
 import java.util.Random;
 
 public class Game {
@@ -24,6 +25,7 @@ public class Game {
         if (n == 0) this.currentPlayer = this.p1;
         else this.currentPlayer = this.p2;
     }
+
 
     public Player getCurrentPlayer() {
         return this.currentPlayer;

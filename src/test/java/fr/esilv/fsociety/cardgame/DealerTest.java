@@ -2,10 +2,9 @@ package fr.esilv.fsociety.cardgame;
 
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Dealer;
-import fr.esilv.fsociety.cardgame.api.Game;
 import org.junit.Test;
-
-import java.util.ArrayList;
+//import fr.esilv.fsociety.cardgame.api.Game;
+//import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
