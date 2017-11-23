@@ -70,7 +70,7 @@ private GridPane BoardsPanel;
     @FXML
     private GridPane DeckPanel;
 
-    //Human Kingdom
+    //Human Hand
 
     @FXML
     private ImageView hhcard1;
@@ -98,14 +98,6 @@ private GridPane BoardsPanel;
 
     }
 
-
-
-
-
-
-
-
-
     public GameOverviewController(Launcher application){
         this.application = application;
     }
@@ -114,6 +106,7 @@ private GridPane BoardsPanel;
 
     public void initialize() {
 
+        //initialize the hashtable taht will contain match the ImageViews (HumanHand)
         this.hash_hhcard = new Hashtable<Integer,ImageView>(){{
             put(0,hhcard1);
             put(1,hhcard2);
@@ -123,13 +116,16 @@ private GridPane BoardsPanel;
             put(5,hhcard6);
         }};
 
+        //optional
         BoardsPanel.setGridLinesVisible(true);
         DeckPanel.setGridLinesVisible(true);
-        initializeDeck();
-  //      initializeImageViews();
+
         this.game = new Game();
         this.humanName = "Max";
+
+        initializeDeck();
         updateDisplayScores();
+
         game.startingPlayer();
         game.playersDraw5Cards();
         updateDisplayDeck();
@@ -142,18 +138,10 @@ private GridPane BoardsPanel;
     private void initializeDeck(){
        DeckImageView.fitWidthProperty().bind(DeckPanel.widthProperty());
     }
-
-
-    // OK works
     private void updateDisplayScores() {
         AiScore.setText(String.valueOf(this.game.getP1().getScore()));
         HumanScore.setText(String.valueOf(this.game.getP2().getScore()));
     }
-
-    // OK works
-
-    // OK (to be reviewed later) but works
-
     private void updateDisplayHand() {
 
         int [] list = this.game.getCurrentPlayer().getBoard().getHand();
@@ -171,20 +159,14 @@ private GridPane BoardsPanel;
                 String image_URL = getClass().getClassLoader().getResource("images/empty.png").toString();
                 this.hash_hhcard.get(i).setImage(new Image(image_URL));
             }
-
         }
-
     }
-
 
     private void updateDisplayDeck(){
         String image_URL = getClass().getClassLoader().getResource("images/deck.png").toString();
         DeckImageView.setImage(new Image(image_URL));
-        //DeckImageView.fitWidthProperty().bind(DeckPanel.widthProperty());
     }
-
     private void updateDisplayKingdoms() {
-
 
     }
 
