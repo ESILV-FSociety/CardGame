@@ -2,6 +2,9 @@ package fr.esilv.fsociety.cardgame.api.races;
 
 import org.junit.Test;
 import fr.esilv.fsociety.cardgame.api.Game;
+import org.junit.runner.RunWith;
+
+import java.util.Currency;
 
 import static org.junit.Assert.*;
 
