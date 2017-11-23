@@ -1,13 +1,16 @@
+package fr.esilv.fsociety.cardgame;
+
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
-import fr.esilv.fsociety.cardgame.api.races.Goblin;
+import fr.esilv.fsociety.cardgame.races.Goblin;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class BoardTest {
     @Test
-    //test of the method addCardToHand
+
+    // Test that the card is added to the hand of the player
     public void addCardToHand() throws Exception {
         Game game = new Game();
         game.startingPlayer();

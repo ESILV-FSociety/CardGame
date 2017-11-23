@@ -1,6 +1,6 @@
-import fr.esilv.fsociety.cardgame.controller.GameOverviewController;
+package fr.esilv.fsociety.cardgame;
+
 import fr.esilv.fsociety.cardgame.api.Game;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

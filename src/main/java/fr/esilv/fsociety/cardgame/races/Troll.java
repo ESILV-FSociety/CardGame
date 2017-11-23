@@ -1,4 +1,4 @@
-package fr.esilv.fsociety.cardgame.api.races;
+package fr.esilv.fsociety.cardgame.races;
 import fr.esilv.fsociety.cardgame.api.Board;
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Troll extends Card {
 
 	public Troll() {
-		super("Troll", "images/troll.png");
+		super("Troll");
 	}
 
 	public void activatePower(Player j1, Player j2){
@@ -20,12 +20,6 @@ public class Troll extends Card {
 		j2.getBoard().setKingdom(tempKingdom);
 
 		// swap the cards in front of you with the cards in front of your opponent
-	}
-
-	@Override
-	public void activate(Game theGame) {
-		//TODO
-
 	}
 
 }

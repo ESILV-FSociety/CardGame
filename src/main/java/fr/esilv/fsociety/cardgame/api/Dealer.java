@@ -1,14 +1,16 @@
 package fr.esilv.fsociety.cardgame.api;
-import fr.esilv.fsociety.cardgame.api.races.*;
+
+
+
+import fr.esilv.fsociety.cardgame.races.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Dealer {
 
-	private ArrayList<Card> Deck; // will contain all the different races
+	private ArrayList<Card> Deck;
 
-	// add the different races to the ArrayList
 	public Dealer() {
 		Deck = new ArrayList<Card>();
 		Deck.add(new Goblin());
@@ -19,17 +21,14 @@ public class Dealer {
 		Deck.add(new Korrigan());
 	}
 
-	//Method that allows to mix the deck
 	public void MixDeck(){
 		Collections.shuffle(this.Deck);
-	} // unit test => no (no need)
+	}
 
-	// property
 	public ArrayList<Card> getDeck() {
 		return Deck;
 	}
 
-	//get card from the deck after shuffled it // unit test => yes
 	public Card GetCard(){
 		this.MixDeck();
 		return this.Deck.get(0);

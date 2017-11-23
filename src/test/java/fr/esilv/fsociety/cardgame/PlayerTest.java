@@ -1,3 +1,5 @@
+package fr.esilv.fsociety.cardgame;
+
 import fr.esilv.fsociety.cardgame.api.AI;
 import fr.esilv.fsociety.cardgame.api.Human;
 import fr.esilv.fsociety.cardgame.api.Player;

@@ -10,19 +10,29 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-
-
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 
 public class GameOverviewController {
 
+
+
+    private static final Hashtable<String,String> hash = new Hashtable<String,String>(){{
+        put("Dryad","images/dryad.png");
+        put("Elf","images/elf.png");
+        put("Gnome","images/gnome.png");
+        put("Goblin","images/goblin.png");
+        put("Korrigan","images/korrigan.png");
+        put("Troll","images/troll.png");
+    }};
+
     private Game game;
     private String humanName; // new name of the player
 
-    //--------------------------------------------------
 
-    // Human
+
+    // Player
 
     @FXML
     private GridPane HumanKingdom;
@@ -35,9 +45,7 @@ public class GameOverviewController {
     @FXML
     private ImageView DeckCardHuman;
 
-    //--------------------------------------------------
-
-    //AI
+    // Computer
 
     @FXML
     private Text AiName;
@@ -50,14 +58,15 @@ public class GameOverviewController {
     @FXML
     private ImageView DeckCardAI;
 
-    //--------------------------------------------------
-
     //Deck
+
     @FXML
     private ImageView DeckImageView;
     @FXML
     private GridPane DeckPanel;
-    //--------------------------------------
+
+    //Human Kingdom
+
     @FXML
     private ImageView hhcard1;
     @FXML
@@ -70,16 +79,6 @@ public class GameOverviewController {
     private ImageView hhcard5;
     @FXML
     private ImageView hhcard6;
-
-    //-------------------------------------
-
-    Launcher application;
-
-    public GameOverviewController(Launcher application){
-        this.application = application;
-    }
-
-
 
 
     @FXML
@@ -95,26 +94,31 @@ public class GameOverviewController {
 
     }
 
+    Launcher application;
+
+    public GameOverviewController(Launcher application){
+        this.application = application;
+    }
+
+
+
+
+
+
 
     //this.game.start(); to be called after entering the name (by the login view)
 
 
     public void initialize() {
-        HumanKingdom.setGridLinesVisible(true);
+
         initializeDeck();
         initializeImageViews();
-        //Step 1 : initialize the game
         this.game = new Game();
-        //Rename the player
         this.humanName = "Max";
         updateDisplayName(humanName);
-        //display the score
         updateDisplayScores();
-        // random current player on start
-        game.startingPlayer(); // set the currentPlayer => 2 cases : if human else AI
-        //each player draw 5 cards
+        game.startingPlayer();
         game.playersDraw5Cards();
-
         updateDisplayDeck();
         updateDisplayHand();
         updateDisplayKingdoms();
@@ -154,7 +158,7 @@ private void initializeImageViews(){
 
         //retrieve all the url
         for (int i = 0; i < list.size(); i++) {
-            String image_URL = getClass().getClassLoader().getResource(list.get(i).getImg()).toString();
+            String image_URL = getClass().getClassLoader().getResource(hash.get(list.get(i).getName())).toString();
             list_url.add(image_URL);
         }
         if(list_url.size() >= 1) {

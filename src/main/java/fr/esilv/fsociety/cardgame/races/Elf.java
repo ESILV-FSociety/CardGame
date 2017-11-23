@@ -1,4 +1,4 @@
-package fr.esilv.fsociety.cardgame.api.races;
+package fr.esilv.fsociety.cardgame.races;
 
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
@@ -6,15 +6,16 @@ import fr.esilv.fsociety.cardgame.api.Game;
 public class Elf extends Card {
 
 	public Elf() {
-		super("Elf", "images/elf.png");
+		super("Elf");
 	}
+
 
 	public void activatePower(){
 		// copy and use the power of one of the card in front of you
 
 	}
 
-	@Override
+
 	public void activate(Game theGame) {
 		//TODO
 

@@ -1,6 +1,5 @@
 package fr.esilv.fsociety.cardgame.controller;
 
-import fr.esilv.fsociety.cardgame.api.Board;
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
 import javafx.application.Application;
@@ -62,7 +61,7 @@ public class MainController extends Application {
     */
     
     public void onClick(Card c) {
-    	this.theGame.onClick(c);
+    	//this.theGame.onClick(c);
     }
 
 	@Override

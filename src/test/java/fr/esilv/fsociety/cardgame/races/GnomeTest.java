@@ -1,5 +1,6 @@
-package fr.esilv.fsociety.cardgame.api.races;
+package fr.esilv.fsociety.cardgame.races;
 
+import fr.esilv.fsociety.cardgame.races.Gnome;
 import org.junit.Test;
 import fr.esilv.fsociety.cardgame.api.Game;
 
@@ -13,7 +14,7 @@ public class GnomeTest {
         Gnome gob = new Gnome();
         game.startingPlayer();
         int SizeBeforeGnomePlayed = game.getCurrentPlayer().getBoard().getHand().size();// size n
-        gob.activate(game);
+        gob.activatePower(game);
         int SizeAfterGnomePlayed = game.getCurrentPlayer().getBoard().getHand().size();
         assertEquals(SizeBeforeGnomePlayed + 2, SizeAfterGnomePlayed);
 

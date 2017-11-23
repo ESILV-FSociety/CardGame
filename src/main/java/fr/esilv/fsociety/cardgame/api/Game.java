@@ -1,29 +1,21 @@
 package fr.esilv.fsociety.cardgame.api;
 
-import fr.esilv.fsociety.cardgame.controller.GameOverviewController;
 import java.util.Random;
 
 public class Game {
 
-    // 2 players
     private Player p1;
     private Player p2;
-    // 1 current player
+
     private Player currentPlayer;
-    // 1 dealer
+
     private Dealer dealer;
 
-    // Initialize the Game Objects
     public Game() {
         this.p1 = new AI();
         this.p2 = new Human();
         this.dealer = new Dealer();
     }
-
-    // Connection between the Game and the GameOverviewController // unit test => no (no need)
-  /*  private void ConnectToGameOverviewController() {
-        this.gameoverviewcontroller.setGame(this);
-    }*/
 
     // Modify the this.currentPlayer (Player that will start) // unit test => yes
     public void startingPlayer() {
@@ -33,7 +25,6 @@ public class Game {
         else this.currentPlayer = this.p2;
     }
 
-    // properties
     public Player getCurrentPlayer() {
         return this.currentPlayer;
     }
@@ -51,19 +42,7 @@ public class Game {
     public Player getP2() {
         return p2;
     }
-   /* public GameOverviewController getGameoverviewcontroller() {
-        return gameoverviewcontroller;
-    }*/
-/*
-    public Card PlayCard() {
-        int n = this.getCurrentPlayer().getBoard().getHand().size();
-        Random rand;
-        int r = rand.nextInt(n);
-        Card card r = this.getCurrentPlayer().getBoard().getHand().get(r);
 
-
-    }
-    */
     public void playersDraw5Cards(){
         for(int i = 0; i < 5; i++){
             this.getP1().getBoard().addCardToHand(this.dealer.GetCard());
@@ -87,12 +66,4 @@ public class Game {
         if (this.currentPlayer.getIdPLayer() == 0) this.currentPlayer = this.p2;
         else this.currentPlayer = p1;
     }
-
-
-
-
-    public void onClick(Card c) {
-
-    }
-
 }

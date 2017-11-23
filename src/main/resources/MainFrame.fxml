@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.esilv.fsociety.cardgame.Controller.MainController">
+<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="637.0" prefWidth="832.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.esilv.fsociety.cardgame.controller.MainController">
    <children>
       <AnchorPane id="topBoard" layoutX="69.0" layoutY="16.0" prefHeight="269.0" prefWidth="721.0" style="-fx-border-color: black;" />
       <AnchorPane id="bottomBoard" layoutX="71.0" layoutY="324.0" prefHeight="307.0" prefWidth="721.0" style="-fx-border-color: black;">

@@ -1,11 +1,11 @@
-package fr.esilv.fsociety.cardgame.api.races;
+package fr.esilv.fsociety.cardgame.races;
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
 
 public class Korrigan extends Card {
 
 	public Korrigan() {
-		super("Korrigan", "images/korrigan.png");
+		super("Korrigan");
 	}
 
 	public void activatePower(){
@@ -13,7 +13,7 @@ public class Korrigan extends Card {
 
 	}
 
-	@Override
+
 	public void activate(Game theGame) {
 		//TODO
 

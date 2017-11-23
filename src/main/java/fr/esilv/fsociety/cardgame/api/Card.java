@@ -7,28 +7,15 @@ package fr.esilv.fsociety.cardgame.api;
 
 public abstract class Card {
 	private String name; // name of the card
-	private String img; //location of the card (folder to be defined
 
-	public Card(String name, String img) {
+	public Card(String name) {
 		this.name = name;
-		this.img = img;
-	}
 
+	}
 	public String getName() {
 		return name;
 	}
 
-	public String getImg() {
-		return img;
-	}
-
-	/**
-	 * Activates this Card's effect on the game
-	 * @param theGame
-	 */
-	public abstract void activate(Game theGame);
-
-	//TODO show function
 
 
 }

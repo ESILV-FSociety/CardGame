@@ -1,3 +1,5 @@
+package fr.esilv.fsociety.cardgame;
+
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Dealer;
 import fr.esilv.fsociety.cardgame.api.Game;
