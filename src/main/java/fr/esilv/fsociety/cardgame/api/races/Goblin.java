@@ -7,8 +7,23 @@ public class Goblin extends Card {
 		super("Goblin");
 	}
 
+<<<<<<< Updated upstream:src/main/java/fr/esilv/fsociety/cardgame/races/Goblin.java
 	public void activatePower(){
 		// switch your hand with you opponent
 
 	}
+=======
+//	public void activatePower(){
+//		// switch your hand with you opponent
+//
+//	}
+
+	@Override
+	public void activate(Game theGame) {
+		int prevPlayer = theGame.getCurrentPlayer().getIdPLayer();
+		theGame.changePlayer();
+		theGame.changePlayer();
+	}
+
+>>>>>>> Stashed changes:src/main/java/fr/esilv/fsociety/cardgame/api/races/Goblin.java
 }

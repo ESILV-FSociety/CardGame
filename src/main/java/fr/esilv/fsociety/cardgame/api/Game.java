@@ -1,5 +1,9 @@
 package fr.esilv.fsociety.cardgame.api;
 
+<<<<<<< Updated upstream
+=======
+import fr.esilv.fsociety.cardgame.Controller.GameOverviewController;
+>>>>>>> Stashed changes
 import java.util.Random;
 
 public class Game {

@@ -1,14 +1,9 @@
-package fr.esilv.fsociety.cardgame.controller;
+package fr.esilv.fsociety.cardgame.Controller;
 
 import fr.esilv.fsociety.cardgame.Launcher;
 import javafx.fxml.FXML;
-
 import javafx.scene.control.Button;
-
 import javafx.stage.Stage;
-
-
-
 
 public class MenuController extends Stage {
 
