@@ -1,6 +1,6 @@
 package fr.esilv.fsociety.cardgame;
-import fr.esilv.fsociety.cardgame.Controller.GameOverviewController;
-import fr.esilv.fsociety.cardgame.Controller.MenuController;
+import fr.esilv.fsociety.cardgame.controller.GameOverviewController;
+import fr.esilv.fsociety.cardgame.controller.MenuController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

@@ -14,7 +14,7 @@ public class GoblinTest {
         int prevPlayer = testGame.getCurrentPlayer().getIdPLayer();
         testGoblin.activate(testGame);
         int curPlayer = testGame.getCurrentPlayer().getIdPLayer();
-        assertEquals(curPlayer, prevPlayer);s
+        assertEquals(curPlayer, prevPlayer);
 
     }
 
