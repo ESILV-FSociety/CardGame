@@ -1,7 +1,6 @@
-package fr.esilv.fsociety.cardgame.races;
+package fr.esilv.fsociety.cardgame.api.races;
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
-import fr.esilv.fsociety.cardgame.api.Dealer;
 
 public class Gnome extends Card {
 

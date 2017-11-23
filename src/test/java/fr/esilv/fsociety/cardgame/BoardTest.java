@@ -2,7 +2,7 @@ package fr.esilv.fsociety.cardgame;
 
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
-import fr.esilv.fsociety.cardgame.races.Goblin;
+import fr.esilv.fsociety.cardgame.api.races.Goblin;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

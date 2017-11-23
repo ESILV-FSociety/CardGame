@@ -1,7 +1,5 @@
-package fr.esilv.fsociety.cardgame.races;
-import fr.esilv.fsociety.cardgame.api.Board;
+package fr.esilv.fsociety.cardgame.api.races;
 import fr.esilv.fsociety.cardgame.api.Card;
-import fr.esilv.fsociety.cardgame.api.Game;
 import fr.esilv.fsociety.cardgame.api.Player;
 
 import java.util.ArrayList;

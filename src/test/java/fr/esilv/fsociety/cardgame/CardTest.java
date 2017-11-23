@@ -1,7 +1,6 @@
 package fr.esilv.fsociety.cardgame;
 
-import fr.esilv.fsociety.cardgame.races.*;
-import fr.esilv.fsociety.cardgame.races.*;
+import fr.esilv.fsociety.cardgame.api.races.*;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

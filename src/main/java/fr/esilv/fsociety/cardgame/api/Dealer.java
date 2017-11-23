@@ -2,7 +2,7 @@ package fr.esilv.fsociety.cardgame.api;
 
 
 
-import fr.esilv.fsociety.cardgame.races.*;
+import fr.esilv.fsociety.cardgame.api.races.*;
 
 import java.util.ArrayList;
 import java.util.Collections;

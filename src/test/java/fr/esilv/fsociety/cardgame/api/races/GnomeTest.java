@@ -1,6 +1,5 @@
-package fr.esilv.fsociety.cardgame.races;
+package fr.esilv.fsociety.cardgame.api.races;
 
-import fr.esilv.fsociety.cardgame.races.Gnome;
 import org.junit.Test;
 import fr.esilv.fsociety.cardgame.api.Game;
 

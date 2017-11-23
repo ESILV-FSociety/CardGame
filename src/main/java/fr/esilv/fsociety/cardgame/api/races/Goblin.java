@@ -1,6 +1,5 @@
-package fr.esilv.fsociety.cardgame.races;
+package fr.esilv.fsociety.cardgame.api.races;
 import fr.esilv.fsociety.cardgame.api.Card;
-import fr.esilv.fsociety.cardgame.api.Game;
 
 public class Goblin extends Card {
 
