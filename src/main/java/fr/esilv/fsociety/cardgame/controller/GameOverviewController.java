@@ -28,7 +28,7 @@ public class GameOverviewController {
 
 
 
-
+    Launcher application;
 
     private Game game;
 
@@ -85,20 +85,13 @@ private GridPane BoardsPanel;
     @FXML
     private ImageView hhcard6;
 
-    private Hashtable<Integer,ImageView> hash_hhcard = new Hashtable<Integer,ImageView>(){{
-        put(0,hhcard1 = new ImageView());
-        put(1,hhcard2 = new ImageView());
-        put(2,hhcard3 = new ImageView());
-        put(3,hhcard4 = new ImageView());
-        put(4,hhcard5 = new ImageView());
-        put(5,hhcard6 = new ImageView());
-    }};
+    private Hashtable<Integer,ImageView> hash_hhcard;
 
     @FXML
      void ClickOnDeck(MouseEvent event) { // only used
 
         this.game.drawCard();
-        //updateDisplayHand();
+        updateDisplayHand();
     }
     @FXML
     private void ClickOnHand(MouseEvent event){
@@ -109,7 +102,7 @@ private GridPane BoardsPanel;
 
 
 
-    Launcher application;
+
 
 
 
@@ -120,6 +113,15 @@ private GridPane BoardsPanel;
     //this.game.start(); to be called after entering the name (by the login view)
 
     public void initialize() {
+
+        this.hash_hhcard = new Hashtable<Integer,ImageView>(){{
+            put(0,hhcard1);
+            put(1,hhcard2);
+            put(2,hhcard3);
+            put(3,hhcard4);
+            put(4,hhcard5);
+            put(5,hhcard6);
+        }};
 
         BoardsPanel.setGridLinesVisible(true);
         DeckPanel.setGridLinesVisible(true);
@@ -133,6 +135,8 @@ private GridPane BoardsPanel;
         updateDisplayDeck();
         updateDisplayHand();
         updateDisplayKingdoms();
+
+
     }
 
     private void initializeDeck(){
@@ -161,11 +165,11 @@ private GridPane BoardsPanel;
 
             list_url[i] = getClass().getClassLoader().getResource(hash_image_path.get(i)).toString();
 
-            hash_hhcard.get(i).setImage(new Image(list_url[i]));
+            this.hash_hhcard.get(i).setImage(new Image(list_url[i]));
             }
             else{
                 String image_URL = getClass().getClassLoader().getResource("images/empty.png").toString();
-                hash_hhcard.get(i).setImage(new Image(image_URL));
+                this.hash_hhcard.get(i).setImage(new Image(image_URL));
             }
 
         }
