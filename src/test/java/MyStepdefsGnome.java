@@ -29,7 +29,7 @@ public class MyStepdefsGnome {
     @Then("^The number of cards in my hand is (\\d+)$")
     public void theNumberOfCardsInMyHandIs(int arg0) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        assertEquals(game.getCurrentPlayer().getBoard().getHand().size(), is(arg0));
+        assertEquals(game.getCurrentPlayer().getBoard().getHand().length, is(arg0));
         throw new PendingException();
     }
 
@@ -43,14 +43,14 @@ public class MyStepdefsGnome {
     @Then("^The card mooves to the board$")
     public void theCardMoovesToTheBoard() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        assertEquals(game.getCurrentPlayer().getBoard().getHand().size(), is(0));
+        assertEquals(game.getCurrentPlayer().getBoard().getHand().length, is(0));
         throw new PendingException();
     }
 
     @And("^The power is activate and I have (\\d+) cards in my hand$")
     public void thePowerIsActivateAndIHaveCardsInMyHand(int arg0) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
-        assertEquals(game.getCurrentPlayer().getBoard().getHand().size(), is(arg0));
+        assertEquals(game.getCurrentPlayer().getBoard().getHand().length, is(arg0));
         throw new PendingException();
     }
 }

@@ -27,6 +27,7 @@ public class Board {
             put(5,new Troll());
         }};
     }
+
     public int[] getHand() {
         return hand;
     }
@@ -42,7 +43,6 @@ public class Board {
     public void setKingdom(int[] kingdom) {
         this.kingdom = kingdom;
     }
-
 
     public void addCardToHand(Card card){
         switch(card.getName()){
@@ -69,8 +69,12 @@ public class Board {
         }
     }
 
-    public void removeCardFromHand(int index){
-        this.getHand()[index] -= 1;
+    public boolean emptyHand() {
+
+        for (int i = 0; i < this.getHand().length; i++) {
+            if (this.hand[i] != 0) return false;
+        }
+        return true;
     }
 
     public Hashtable<Integer,Card> GetHastable(){

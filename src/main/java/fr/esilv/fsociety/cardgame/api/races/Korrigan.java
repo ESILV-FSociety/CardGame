@@ -14,9 +14,12 @@ public class Korrigan extends Card {
 	}
 
 
-	public void activate(Game theGame) {
-		//TODO
-
+	public int [] activate(Game game) {
+		System.out.println("Korrigan activated");
+		int index1 = game.stealCard();
+		int index2 = game.stealCard();
+		int [] array = {index1,index2};
+		return array;
 	}
 
 }
