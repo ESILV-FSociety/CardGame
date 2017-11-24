@@ -1,20 +1,32 @@
 package fr.esilv.fsociety.cardgame.api;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 
+import fr.esilv.fsociety.cardgame.api.races.*;
 import javafx.scene.image.ImageView;
+
+import static javax.swing.UIManager.put;
 
 public class Board {
 
     private int[] hand;
     private int[] kingdom;
+    private Hashtable<Integer,Card> hash_int_card;
 
     public Board() {
         this.hand = new int[6];
         this.kingdom = new int[6];
+        this.hash_int_card = new Hashtable<Integer,Card>(){{
+            put(0,new Gnome());
+            put(1,new Korrigan());
+            put(2,new Goblin());
+            put(3,new Elf());
+            put(4,new Dryad());
+            put(5,new Troll());
+        }};
     }
-
     public int[] getHand() {
         return hand;
     }
@@ -30,6 +42,7 @@ public class Board {
     public void setKingdom(int[] kingdom) {
         this.kingdom = kingdom;
     }
+
 
     public void addCardToHand(Card card){
         switch(card.getName()){
@@ -60,6 +73,9 @@ public class Board {
         this.getHand()[index] -= 1;
     }
 
+    public Hashtable<Integer,Card> GetHastable(){
+        return hash_int_card;
+    }
 
     // for this code below, we will see later
     /*
