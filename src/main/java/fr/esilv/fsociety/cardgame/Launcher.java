@@ -16,6 +16,7 @@ public class Launcher extends Application{
     Stage Menu;
     Stage Game;
 
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
