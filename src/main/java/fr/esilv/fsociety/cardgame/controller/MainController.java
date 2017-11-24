@@ -1,4 +1,4 @@
-package fr.esilv.fsociety.cardgame.Controller;
+package fr.esilv.fsociety.cardgame.controller;
 
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
@@ -8,14 +8,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class MainController extends Application {
+public class Maincontroller extends Application {
 
-	private static MainController ins; // singleton
-	public static  MainController getInstance() {
+	private static Maincontroller ins; // singleton
+	public static  Maincontroller getInstance() {
 		return ins;
 	}
 	
-	public MainController() {
+	public Maincontroller() {
 		System.out.println("");
 		ins = this;
 		

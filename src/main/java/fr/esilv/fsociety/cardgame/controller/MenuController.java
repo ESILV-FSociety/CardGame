@@ -1,18 +1,18 @@
-package fr.esilv.fsociety.cardgame.Controller;
+package fr.esilv.fsociety.cardgame.controller;
 
 import fr.esilv.fsociety.cardgame.Launcher;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class MenuController extends Stage {
+public class Menucontroller extends Stage {
 
     Launcher application;
 
     @FXML
     private Button btn;
 
-   public MenuController(Launcher application){
+   public Menucontroller(Launcher application){
        this.application = application;
    }
 

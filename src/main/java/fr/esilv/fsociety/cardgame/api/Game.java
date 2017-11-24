@@ -1,6 +1,6 @@
 package fr.esilv.fsociety.cardgame.api;
 
-import fr.esilv.fsociety.cardgame.controller.GameOverviewController;
+import fr.esilv.fsociety.cardgame.controller.GameOverviewcontroller;
 import java.util.Random;
 
 public class Game {
@@ -26,6 +26,9 @@ public class Game {
         else this.currentPlayer = this.p2;
     }
 
+    public Player getOpponnent(){
+        return this.getCurrentPlayer().getIdPLayer() == 0 ? p2 : p1;
+    }
 
     public Player getCurrentPlayer() {
         return this.currentPlayer;

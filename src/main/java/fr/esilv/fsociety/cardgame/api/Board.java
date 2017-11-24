@@ -1,7 +1,6 @@
 package fr.esilv.fsociety.cardgame.api;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Random;
 
 import javafx.scene.image.ImageView;
 
@@ -35,6 +34,17 @@ public class Board {
         this.getHand().add(card);
     }
 
+    public Card getRandomCard(Game game){
+        ArrayList<Card> Kingdom = game.getOpponnent().getBoard().getKingdom();
+        Random randomize = new Random();
+        Card RandCard = Kingdom.get(randomize.nextInt(Kingdom.size()));
+        return RandCard;
+    }
+
+    public void addCardToKingdom(Card card){
+        this.getKingdom().add(card);
+
+    }
 
     // for this code below, we will see later
     /*

@@ -3,7 +3,6 @@ package fr.esilv.fsociety.cardgame.controller;
 import fr.esilv.fsociety.cardgame.Launcher;
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
-
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,11 +10,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+
 import java.util.ArrayList;
 import java.util.Hashtable;
 
 
-public class GameOverviewController {
+public class GameOverviewcontroller {
 
 
 
@@ -97,7 +97,7 @@ public class GameOverviewController {
 
     Launcher application;
 
-    public GameOverviewController(Launcher application){
+    public GameOverviewcontroller(Launcher application){
         this.application = application;
     }
 

@@ -1,6 +1,6 @@
 package fr.esilv.fsociety.cardgame;
-import fr.esilv.fsociety.cardgame.Controller.GameOverviewController;
-import fr.esilv.fsociety.cardgame.Controller.MenuController;
+import fr.esilv.fsociety.cardgame.controller.GameOverviewcontroller;
+import fr.esilv.fsociety.cardgame.controller.Menucontroller;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -27,7 +27,7 @@ public class Launcher extends Application{
     public void startMenu() throws Exception {
         final URL url = getResource("MenuOverview.fxml");
         final FXMLLoader fxmlLoader = new FXMLLoader(url);
-        MenuController controller = new MenuController(this);
+        Menucontroller controller = new Menucontroller(this);
         fxmlLoader.setController(controller);
         Parent root = fxmlLoader.load();
         Menu = new Stage();
@@ -41,7 +41,7 @@ public class Launcher extends Application{
     public void startGame() throws Exception{
         final URL url = getResource("GameOverview.fxml");
         final FXMLLoader fxmlLoader = new FXMLLoader(url);
-        GameOverviewController controller = new GameOverviewController(this);
+        GameOverviewcontroller controller = new GameOverviewcontroller(this);
         fxmlLoader.setController(controller);
         Parent root = fxmlLoader.load();
         Game = new Stage();
