@@ -52,20 +52,20 @@ public class Game {
         }
     } // on start
     // method where the currentPlayer draw a card (the card is added to his hand)
-    public void drawCard(Player player) {
-        player.getBoard().getHand().add(dealer.GetCard());
+    public void drawCard() {
+        this.currentPlayer.getBoard().addCardToHand(dealer.GetCard());
     } // a every turn
     // method that return true for human, false otherwise
     public boolean isHuman(){
-        return this.currentPlayer.getIdPLayer() == 1;
+        return this.currentPlayer.getClass().toString() == "Human";
     }
     // returns 1 if both hands are empty, 0 otherwise
     public boolean emptyHands() {
-        return p1.getBoard().getHand().isEmpty() && p2.getBoard().getHand().isEmpty();
+        return p1.getBoard().getHand().length == 0 && p2.getBoard().getHand().length == 0;
     }
     // returns the player that will play next
     public void changePlayer() {
-        if (this.currentPlayer.getIdPLayer() == 0) this.currentPlayer = this.p2;
+        if (this.currentPlayer.getClass().getSimpleName() == "Human") this.currentPlayer = this.p2;
         else this.currentPlayer = p1;
     }
 }

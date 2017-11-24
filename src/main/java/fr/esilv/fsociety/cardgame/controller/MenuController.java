@@ -1,4 +1,4 @@
-package fr.esilv.fsociety.cardgame.Controller;
+package fr.esilv.fsociety.cardgame.controller;
 
 import fr.esilv.fsociety.cardgame.Launcher;
 import javafx.fxml.FXML;

@@ -7,32 +7,57 @@ import javafx.scene.image.ImageView;
 
 public class Board {
 
-    private ArrayList<Card> hand;
-    private ArrayList<Card> kingdom;
+    private int[] hand;
+    private int[] kingdom;
 
     public Board() {
-        this.hand = new ArrayList<Card>();
-        this.kingdom = new ArrayList<Card>();
+        this.hand = new int[6];
+        this.kingdom = new int[6];
     }
 
-    public ArrayList<Card> getHand() {
+    public int[] getHand() {
         return hand;
     }
 
-    public void setHand(ArrayList<Card> hand) {
+    public void setHand(int[] hand) {
         this.hand = hand;
     }
 
-    public ArrayList<Card> getKingdom() {
+    public int[] getKingdom() {
         return kingdom;
     }
 
-    public void setKingdom(ArrayList<Card> kingdom) {
+    public void setKingdom(int[] kingdom) {
         this.kingdom = kingdom;
     }
 
     public void addCardToHand(Card card){
-        this.getHand().add(card);
+        switch(card.getName()){
+            case "Gnome":
+                this.hand[0] += 1;
+                break;
+            case "Korrigan":
+                this.hand[1] += 1;
+                break;
+            case "Goblin":
+                this.hand[2] += 1;
+                break;
+            case "Elf":
+                this.hand[3] += 1;
+                break;
+            case "Dryad":
+                this.hand[4] += 1;
+                break;
+            case "Troll":
+                this.hand[5] += 1;
+                break;
+            default:
+                break;
+        }
+    }
+
+    public void removeCardFromHand(int index){
+        this.getHand()[index] -= 1;
     }
 
 

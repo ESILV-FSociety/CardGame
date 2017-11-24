@@ -16,6 +16,7 @@ public class DealerTest {
         Card card = dealer.GetCard();
         assertEquals(card,dealer.getDeck().get(0));
 
+
     }
 
     @Test

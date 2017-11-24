@@ -1,6 +1,6 @@
 package fr.esilv.fsociety.cardgame;
-import fr.esilv.fsociety.cardgame.Controller.GameOverviewController;
-import fr.esilv.fsociety.cardgame.Controller.MenuController;
+import fr.esilv.fsociety.cardgame.controller.GameOverviewController;
+import fr.esilv.fsociety.cardgame.controller.MenuController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,8 +19,9 @@ public class Launcher extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        //startMenu();
-        startGame();
+        startMenu();
+
+
     }
 
 
@@ -46,7 +47,7 @@ public class Launcher extends Application{
         Parent root = fxmlLoader.load();
         Game = new Stage();
         Game.setTitle("Game");
-        Game.setScene(new Scene(root, 1000, 800));
+        Game.setScene(new Scene(root));
         Game.show();
 
     }
