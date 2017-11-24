@@ -1,3 +1,4 @@
+/*
 package fr.esilv.fsociety.cardgame;
 
 import fr.esilv.fsociety.cardgame.api.Game;
@@ -65,4 +66,11 @@ public class GameTest {
         assertNotNull(game.getDealer());
     }
 
-}
+    @Test
+    public void isHumanTest(){
+        Game game = new Game();
+        Player p = game.getP1();//human
+        assertTrue(game.isHuman());
+    }
+
+}*/

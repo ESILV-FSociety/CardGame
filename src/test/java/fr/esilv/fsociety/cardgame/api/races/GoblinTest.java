@@ -11,10 +11,10 @@ public class GoblinTest {
         Game testGame = new Game();
         Goblin testGoblin = new Goblin();
         testGame.startingPlayer();
-        int prevPlayer = testGame.getCurrentPlayer().getIdPLayer();
+        String prevPlayer = testGame.getCurrentPlayer().getClass().getSimpleName();
         testGoblin.activate(testGame);
-        int curPlayer = testGame.getCurrentPlayer().getIdPLayer();
-        assertEquals(curPlayer, prevPlayer);s
+        String curPlayer = testGame.getCurrentPlayer().getClass().getSimpleName();
+        assertEquals(curPlayer, prevPlayer);
 
     }
 

@@ -16,7 +16,7 @@ public class Dealer {
 		Deck.add(new Goblin());
 		Deck.add(new Dryad());
 		Deck.add(new Gnome());
-		Deck.add(new Goblin());
+		Deck.add(new Elf());
 		Deck.add(new Troll());
 		Deck.add(new Korrigan());
 	}
