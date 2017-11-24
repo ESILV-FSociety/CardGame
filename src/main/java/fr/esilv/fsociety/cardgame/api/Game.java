@@ -1,6 +1,8 @@
 package fr.esilv.fsociety.cardgame.api;
 
 import fr.esilv.fsociety.cardgame.controller.GameOverviewController;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Game {
@@ -9,6 +11,7 @@ public class Game {
     private Player p2;
 
     private Player currentPlayer;
+    private Player opponentPlayer;
 
     private Dealer dealer;
 
@@ -22,14 +25,22 @@ public class Game {
     public void startingPlayer() {
         Random rand = new Random();
         int n = rand.nextInt(2);
-        if (n == 0) this.currentPlayer = this.p1;
-        else this.currentPlayer = this.p2;
+        if (n == 0) {
+            this.currentPlayer = this.p1;
+            this.opponentPlayer = this.p2;
+        }
+        else {
+            this.currentPlayer = this.p2;
+            this.opponentPlayer = this.p1;
+        }
     }
 
 
     public Player getCurrentPlayer() {
         return this.currentPlayer;
     }
+
+    public Player getOpponentPlayer() { return this.opponentPlayer;}
 
     public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
@@ -59,13 +70,42 @@ public class Game {
     public boolean isHuman(){
         return this.currentPlayer.getClass().toString() == "Human";
     }
-    // returns 1 if both hands are empty, 0 otherwise
-    public boolean emptyHands() {
-        return p1.getBoard().getHand().length == 0 && p2.getBoard().getHand().length == 0;
-    }
+
     // returns the player that will play next
     public void changePlayer() {
         if (this.currentPlayer.getClass().getSimpleName() == "Human") this.currentPlayer = this.p2;
         else this.currentPlayer = p1;
     }
+
+    //Steal a card in your hand's opponent
+    public int stealCard(){
+
+        Random random = new Random();
+        int rand = random.nextInt(6);
+
+        if(!this.opponentPlayer.getBoard().emptyHand()) {
+
+            int n = this.opponentPlayer.getBoard().getHand()[rand];
+            while (n == 0) {
+                rand = random.nextInt(6);
+                n = this.opponentPlayer.getBoard().getHand()[rand];
+            }
+            this.opponentPlayer.getBoard().getHand()[rand] -= 1;
+            this.currentPlayer.getBoard().getHand()[rand] += 1;
+        }
+
+        return rand;
+
+
+
+
+
+
+
+        }
+
+
+
+
+
 }

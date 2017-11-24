@@ -16,6 +16,8 @@ public abstract class Player {
     }
 
 
+
+
     public void setBoard(Board board) {
         this.board = board;
     }
@@ -31,4 +33,10 @@ public abstract class Player {
     public Board getBoard() {
         return board;
     }
+
+    public boolean isHuman(){
+        if(this.getClass().getName() =="Human") return true;
+        else return false;
+        }
+
 }

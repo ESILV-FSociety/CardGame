@@ -31,8 +31,8 @@ public class Board {
         this.kingdom = kingdom;
     }
 
-    public void addCardToHand(Card card){
-        switch(card.getName()){
+    public void addCardToHand(Card card) {
+        switch (card.getName()) {
             case "Gnome":
                 this.hand[0] += 1;
                 break;
@@ -55,10 +55,20 @@ public class Board {
                 break;
         }
     }
+    //return the number of races where the index is superior to 0
 
-    public void removeCardFromHand(int index){
-        this.getHand()[index] -= 1;
+    public boolean emptyHand() {
+
+        for (int i = 0; i < this.getHand().length; i++) {
+            if (this.hand[i] != 0) return false;
+        }
+        return true;
     }
+
+
+
+
+
 
 
     // for this code below, we will see later
