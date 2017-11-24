@@ -1,5 +1,6 @@
 package fr.esilv.fsociety.cardgame.controller;
 
+import com.sun.javafx.font.freetype.HBGlyphLayout;
 import fr.esilv.fsociety.cardgame.Launcher;
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
@@ -8,9 +9,13 @@ import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
@@ -18,11 +23,11 @@ import java.util.Hashtable;
 public class GameOverviewController {
 
     private static final Hashtable<Integer,String> hash_image_path = new Hashtable<Integer,String>(){{
-        put(0,"images/dryad.png");
-        put(1,"images/elf.png");
-        put(2,"images/gnome.png");
-        put(3,"images/goblin.png");
-        put(4,"images/korrigan.png");
+        put(0,"images/gnome.png");
+        put(1,"images/korrigan.png");
+        put(2,"images/goblin.png");
+        put(3,"images/elf.png");
+        put(4,"images/dryad.png");
         put(5,"images/troll.png");
     }};
 
@@ -40,9 +45,9 @@ private GridPane BoardsPanel;
     // Player
 
     @FXML
-    private GridPane HumanKingdom;
+    private HBox HumanKingdom;
     @FXML
-    private GridPane HumanHand;
+    private HBox HumanHand;
     @FXML
     private Text HumanScore;
     @FXML
@@ -59,7 +64,7 @@ private GridPane BoardsPanel;
     @FXML
     private HBox AiHand;
     @FXML
-    private GridPane AiKingdom;
+    private HBox AiKingdom;
     @FXML
     private ImageView DeckCardAI;
 
@@ -71,6 +76,20 @@ private GridPane BoardsPanel;
     private GridPane DeckPanel;
 
     //Human Hand
+
+    @FXML
+    private Text hhncard1;
+    @FXML
+    private Text hhncard2;
+    @FXML
+    private Text hhncard3;
+    @FXML
+    private Text hhncard4;
+    @FXML
+    private Text hhncard5;
+    @FXML
+    private Text hhncard6;
+
 
     @FXML
     private ImageView hhcard1;
@@ -86,6 +105,7 @@ private GridPane BoardsPanel;
     private ImageView hhcard6;
 
     private Hashtable<Integer,ImageView> hash_hhcard;
+    private Hashtable<Integer,Text> hash_hhncard;
 
     @FXML
      void ClickOnDeck(MouseEvent event) { // only used
@@ -116,6 +136,16 @@ private GridPane BoardsPanel;
             put(5,hhcard6);
         }};
 
+        //initialize the hashtable that will contain the number of the Card
+        this.hash_hhncard = new Hashtable<Integer,Text>(){{
+            put(0,hhncard1);
+            put(1,hhncard2);
+            put(2,hhncard3);
+            put(3,hhncard4);
+            put(4,hhncard5);
+            put(5,hhncard6);
+        }};
+
         //optional
         BoardsPanel.setGridLinesVisible(true);
         DeckPanel.setGridLinesVisible(true);
@@ -135,6 +165,10 @@ private GridPane BoardsPanel;
 
     }
 
+    private void initElements(){
+
+    }
+
     private void initializeDeck(){
        DeckImageView.fitWidthProperty().bind(DeckPanel.widthProperty());
     }
@@ -151,11 +185,15 @@ private GridPane BoardsPanel;
         for (int i = 0; i < list.length; i++) {
             if(list[i] != 0){
 
+
             list_url[i] = getClass().getClassLoader().getResource(hash_image_path.get(i)).toString();
 
+            int n = this.game.getCurrentPlayer().getBoard().getHand()[i];
+            this.hash_hhncard.get(i).setText(String.valueOf(n));
             this.hash_hhcard.get(i).setImage(new Image(list_url[i]));
             }
             else{
+                hash_hhncard.get(i).setText("0");
                 String image_URL = getClass().getClassLoader().getResource("images/empty.png").toString();
                 this.hash_hhcard.get(i).setImage(new Image(image_URL));
             }

@@ -56,7 +56,9 @@ public class Board {
         }
     }
 
-
+    public void removeCardFromHand(int index){
+        this.getHand()[index] -= 1;
+    }
 
 
     // for this code below, we will see later
