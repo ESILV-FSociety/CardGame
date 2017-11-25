@@ -10,8 +10,8 @@ import java.util.Hashtable;
 import static org.junit.Assert.*;
 
 public class BoardTest {
-    @Test
 
+    @Test
     // Test that the card is added to the hand of the player
     public void addCardToHand() throws Exception {
         Game game = new Game();

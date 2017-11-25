@@ -7,18 +7,15 @@ public class Goblin extends Card {
 	public Goblin() {
 		super("Goblin");
 	}
-	public void activatePower(){
-		// switch your hand with you opponent
+
+	public void activatePower(Game game){
+		// switch your hand with your opponent
 
 	}
-//	public void activatePower(){
-//		// switch your hand with you opponent
-//
-//	}
 
-	public void activate(Game theGame) {
+	public void activate(Game game) {
 //
-		theGame.changePlayer();
-		theGame.changePlayer();
+		game.changePlayer();
+		game.changePlayer();
 	}
 }

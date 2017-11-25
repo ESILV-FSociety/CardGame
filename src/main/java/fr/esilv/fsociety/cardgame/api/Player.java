@@ -5,7 +5,6 @@ public abstract class Player {
     //idPlayer of AI is 0
     //idPlayer of the Human is 1
 
-
     private Board board;
     private int score;
 
@@ -14,9 +13,6 @@ public abstract class Player {
         this.board = new Board();
         this.score = 0;
     }
-
-
-
 
     public void setBoard(Board board) {
         this.board = board;
@@ -37,6 +33,5 @@ public abstract class Player {
     public boolean isHuman(){
         if(this.getClass().getName() =="Human") return true;
         else return false;
-        }
-
+    }
 }

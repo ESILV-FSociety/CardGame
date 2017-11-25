@@ -7,31 +7,33 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class KorriganTest {
+
     @Test
     public void activate() throws Exception {
+
+        int [] arrayIndex = new int [2];
         Game game = new Game();
         game.startingPlayer();
         game.playersDraw5Cards();
-        int x0= game.getCurrentPlayer().getBoard().getHand()[0];
-        int x1= game.getCurrentPlayer().getBoard().getHand()[1];
-        int x2= game.getCurrentPlayer().getBoard().getHand()[2];
-        int x3= game.getCurrentPlayer().getBoard().getHand()[3];
-        int x4= game.getCurrentPlayer().getBoard().getHand()[4];
-        int x5= game.getCurrentPlayer().getBoard().getHand()[5];
 
-        //BON MATHIEU ECOUTE MOI BIEN, TOI MEME TU SAIS T'ES UN BG, DONC QUAND TU REVIENDRAS ICI TU SAURAS QUE TU DEVRAS CREER UNE FONCNTION QUI COMPTE LE NOMBRE TOTAL DE CARTE DANS LA MAIN, KISS BG
+        //Get the hand (of the two players) # BEFORE
+        int [] arrayCurrentPlayer = game.getCurrentPlayer().getBoard().getHand().clone();
+        int [] arrayOpponentPlayer = game.getOpponentPlayer().getBoard().getHand().clone();
 
         Korrigan kor = new Korrigan();
-        int [] array = kor.activate(game);
-        //save the indexes where cards were added
-        int n1 = game.getCurrentPlayer().getBoard().getHand()[array[0]];
-        int n2 = game.getOpponentPlayer().getBoard().getHand()[array[1]];
-        assertEquals(game.getCurrentPlayer().getBoard().getHand()[n1],n1 + 1);
-        assertEquals(game.getCurrentPlayer().getBoard().getHand()[n1],n2 + 1);
 
-        assertEquals(game.getOpponentPlayer().getBoard().getHand()[n1],n1 );
+        //steal the card of the opponent and add it to our hand (at the end we return the index (that corresponds to the race))
+        arrayIndex[0] = kor.stealCard(game);
+        arrayIndex[1] = kor.stealCard(game);
 
+        //Get the hand (of the two players) # AFTER
+        int [] arrayCurrentPlayer2 = game.getCurrentPlayer().getBoard().getHand();
+        int [] arrayOpponentPlayer2 = game.getOpponentPlayer().getBoard().getHand();
 
+        //Then we compare the two
+        for(int i = 0; i < arrayIndex.length; i++){
+            assertEquals(arrayCurrentPlayer2[arrayIndex[i]],arrayCurrentPlayer[arrayIndex[i]]+1);
+            assertEquals(arrayOpponentPlayer[arrayIndex[i]]-1,arrayOpponentPlayer2[arrayIndex[i]]);
+        }
     }
-
 }

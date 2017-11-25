@@ -8,6 +8,7 @@ public class Gnome extends Card {
 		super("Gnome");
 	}
 
+	@Override
 	public void activatePower(Game game) {
 
 		//System.out.println("Gnome activated");

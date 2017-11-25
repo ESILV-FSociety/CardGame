@@ -2,24 +2,33 @@ package fr.esilv.fsociety.cardgame.api.races;
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
 
+import java.util.Random;
+
 public class Korrigan extends Card {
 
-	public Korrigan() {
-		super("Korrigan");
+	private int[] testArray;
+
+	public Korrigan() { super("Korrigan");	}
+
+	public void activatePower(Game game) {
+		stealCard(game);
+		stealCard(game);
 	}
 
-	public void activatePower(){
-		// draw 2 random cards within your opponent hand
+	public int stealCard(Game game) {
+
+		Random random = new Random();
+		int rand = random.nextInt(6);
+
+		int n = game.getOpponentPlayer().getBoard().getHand()[rand];
+		while (n == 0) {
+			rand = random.nextInt(6);
+			n = game.getOpponentPlayer().getBoard().getHand()[rand];
+		}
+		game.getOpponentPlayer().getBoard().getHand()[rand] -= 1;
+		game.getCurrentPlayer().getBoard().getHand()[rand] += 1;
+
+		return rand;
 
 	}
-
-
-	public int [] activate(Game game) {
-		System.out.println("Korrigan activated");
-		int index1 = game.stealCard();
-		int index2 = game.stealCard();
-		int [] array = {index1,index2};
-		return array;
-	}
-
 }

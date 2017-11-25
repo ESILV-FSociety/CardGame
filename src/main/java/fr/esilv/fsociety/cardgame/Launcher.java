@@ -19,12 +19,8 @@ public class Launcher extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         startMenu();
-
-
     }
-
 
     public void startMenu() throws Exception {
         final URL url = getResource("MenuOverview.fxml");
@@ -50,7 +46,6 @@ public class Launcher extends Application{
         Game.setTitle("Game");
         Game.setScene(new Scene(root));
         Game.show();
-
     }
 
     public static void main(String[] args) {

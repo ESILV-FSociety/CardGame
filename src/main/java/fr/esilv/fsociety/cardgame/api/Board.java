@@ -44,6 +44,7 @@ public class Board {
         this.kingdom = kingdom;
     }
 
+
     public void addCardToHand(Card card){
         switch(card.getName()){
             case "Gnome":
@@ -71,10 +72,16 @@ public class Board {
 
     public boolean emptyHand() {
 
+
         for (int i = 0; i < this.getHand().length; i++) {
-            if (this.hand[i] != 0) return false;
+            if (!emptyRacesOnIndex(i)) return false;
         }
         return true;
+    }
+
+    public boolean emptyRacesOnIndex(int index){
+        if(this.hand[index] != 0) return false;
+        else return true;
     }
 
     public Hashtable<Integer,Card> GetHastable(){

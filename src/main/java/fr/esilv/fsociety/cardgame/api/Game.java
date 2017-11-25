@@ -77,24 +77,6 @@ public class Game {
         else this.currentPlayer = p1;
     }
 
-    //Steal a card in your hand's opponent
-    public int stealCard(){
-
-        Random random = new Random();
-        int rand = random.nextInt(6);
-
-        if(!this.opponentPlayer.getBoard().emptyHand()) {
-
-            int n = this.opponentPlayer.getBoard().getHand()[rand];
-            while (n == 0) {
-                rand = random.nextInt(6);
-                n = this.opponentPlayer.getBoard().getHand()[rand];
-            }
-            this.opponentPlayer.getBoard().getHand()[rand] -= 1;
-            this.currentPlayer.getBoard().getHand()[rand] += 1;
-        }
-
-        return rand;
 
 
 
@@ -102,7 +84,7 @@ public class Game {
 
 
 
-        }
+
 
 
 
