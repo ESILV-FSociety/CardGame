@@ -8,17 +8,18 @@ public class Gnome extends Card {
 		super("Gnome");
 	}
 
+	//Gnome : draw 2 cards
+
 	@Override
 	public void activatePower(Game game) {
 
-		//System.out.println("Gnome activated");
-		Card FirstCardPic=game.getDealer().GetCard();
-		game.getCurrentPlayer().getBoard().addCardToHand(FirstCardPic);
-		//System.out.println(FirstCardPic.toString());
-		Card SecondCardPic=game.getDealer().GetCard();
-		game.getCurrentPlayer().getBoard().addCardToHand(FirstCardPic);
-		//System.out.println(SecondCardPic.toString());
-
+		for(int i = 0; i < 2; i++){
+			Card card = game.getDealer().GetCard();
+			activatePowerBis(game,card);
+		}
 	}
 
+	public int activatePowerBis(Game game,Card card){
+		return game.getCurrentPlayer().getBoard().addCardToHand(card);
+	}
 }

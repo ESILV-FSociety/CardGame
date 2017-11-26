@@ -1,4 +1,4 @@
-/*
+
 package fr.esilv.fsociety.cardgame;
 
 import fr.esilv.fsociety.cardgame.api.Game;
@@ -8,52 +8,46 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class GameTest {
-    @Test
-    public void isHuman() throws Exception {
-    }
+
 
     @Test
     public void emptyHands() throws Exception {
         Game game = new Game();
+        game.startingPlayer();
         assertTrue(game.emptyHands());
-        game.drawCard(game.getP1());
+        game.drawCard();
         assertFalse(game.emptyHands());
-        game.drawCard(game.getP2());
+        game.changePlayer();
+        assertFalse(game.emptyHands());
+        game.drawCard();
         assertFalse(game.emptyHands());
     }
 
     @Test
     public void changePlayer() throws Exception {
         Game game = new Game();
-        Player p1 = game.getP1();
-        game.setCurrentPlayer(p1);
+        game.setCurrentPlayer(game.getP1());
+        game.setOpponentPlayer(game.getP2());
+        assertEquals(game.getCurrentPlayer().getString(),"AI");
+        assertEquals(game.getOpponentPlayer().getString(),"Human");
         game.changePlayer();
-        assertEquals(game.getCurrentPlayer(),game.getP2());
+        assertEquals(game.getCurrentPlayer().getString(),"Human");
+        assertEquals(game.getOpponentPlayer().getString(),"AI");
     }
 
     @Test
     public void playersDraw5Cards() throws Exception {
         Game game = new Game();
-        game.playersDraw5Cards();
-        assertEquals(game.getP1().getBoard().getHand().size(),5);
-        assertEquals(game.getP2().getBoard().getHand().size(),5);
-    }
-
-    @Test
-    public void drawCard() throws Exception {
-    Game game = new Game();
-    game.drawCard(game.getP2());
-    game.drawCard(game.getP1());
-    assertEquals(game.getP1().getBoard().getHand().size(),1);
-    assertEquals(game.getP2().getBoard().getHand().size(),1);
-    }
-
-    @Test
-    //Test that idPlayer is 1 or 0 (Human or AI)
-    public void startingPlayer() throws Exception {
-        Game game = new Game();
         game.startingPlayer();
-        assertTrue(game.getCurrentPlayer().getIdPLayer() == 1 || game.getCurrentPlayer().getIdPLayer() == 0);
+        game.playersDraw5Cards();
+        int n1 = 0;
+        int n2 = 0;
+        for(int i = 0; i < 6; i++){
+            n1 += game.getCurrentPlayer().getBoard().getHand()[i];
+            n2 += game.getOpponentPlayer().getBoard().getHand()[i];
+        }
+        assertEquals(n1,5);
+        assertEquals(n2,5);
     }
 
     @Test
@@ -65,12 +59,4 @@ public class GameTest {
         assertNotNull(game.getP2());
         assertNotNull(game.getDealer());
     }
-
-    @Test
-    public void isHumanTest(){
-        Game game = new Game();
-        Player p = game.getP1();//human
-        assertTrue(game.isHuman());
-    }
-
-}*/
+}

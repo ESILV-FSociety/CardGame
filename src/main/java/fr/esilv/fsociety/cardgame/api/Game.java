@@ -35,6 +35,9 @@ public class Game {
         }
     }
 
+    public void setOpponentPlayer(Player opponentPlayer) {
+        this.opponentPlayer = opponentPlayer;
+    }
 
     public Player getCurrentPlayer() {
         return this.currentPlayer;
@@ -49,9 +52,11 @@ public class Game {
     public Dealer getDealer() {
         return dealer;
     }
+
     public Player getP1() {
         return p1;
     }
+
     public Player getP2() {
         return p2;
     }
@@ -61,33 +66,21 @@ public class Game {
             this.getP1().getBoard().addCardToHand(this.dealer.GetCard());
             this.getP2().getBoard().addCardToHand((this.dealer.GetCard()));
         }
-    } // on start
+    }
     // method where the currentPlayer draw a card (the card is added to his hand)
     public void drawCard() {
         this.currentPlayer.getBoard().addCardToHand(dealer.GetCard());
-    } // a every turn
-    // method that return true for human, false otherwise
-    public boolean isHuman(){
-        return this.currentPlayer.getClass().toString() == "Human";
     }
+
+    public boolean emptyHands(){
+        return this.getCurrentPlayer().getBoard().emptyHand() && this.getOpponentPlayer().getBoard().emptyHand();
+      }
 
     // returns the player that will play next
     public void changePlayer() {
-        if (this.currentPlayer.getClass().getSimpleName() == "Human") this.currentPlayer = this.p2;
-        else this.currentPlayer = p1;
+        Player p = this.getOpponentPlayer();
+        this.setOpponentPlayer(this.getCurrentPlayer());
+        this.setCurrentPlayer(p);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

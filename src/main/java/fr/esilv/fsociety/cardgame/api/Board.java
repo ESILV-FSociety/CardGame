@@ -44,35 +44,41 @@ public class Board {
         this.kingdom = kingdom;
     }
 
-
-    public void addCardToHand(Card card){
+    public int addCardToHand(Card card){
+        int n = 0;
         switch(card.getName()){
             case "Gnome":
                 this.hand[0] += 1;
+                n = 0;
                 break;
             case "Korrigan":
                 this.hand[1] += 1;
+                n = 1;
                 break;
             case "Goblin":
                 this.hand[2] += 1;
+                n = 2;
                 break;
             case "Elf":
                 this.hand[3] += 1;
+                n = 3;
                 break;
             case "Dryad":
                 this.hand[4] += 1;
+                n = 4;
                 break;
             case "Troll":
                 this.hand[5] += 1;
+                n = 5;
                 break;
             default:
                 break;
         }
+        return n;
     }
 
     public boolean emptyHand() {
-
-
+        int n = 0;
         for (int i = 0; i < this.getHand().length; i++) {
             if (!emptyRacesOnIndex(i)) return false;
         }
@@ -80,8 +86,7 @@ public class Board {
     }
 
     public boolean emptyRacesOnIndex(int index){
-        if(this.hand[index] != 0) return false;
-        else return true;
+        return this.hand[index] == 0;
     }
 
     public Hashtable<Integer,Card> GetHastable(){

@@ -9,13 +9,12 @@ public class Goblin extends Card {
 	}
 
 	public void activatePower(Game game){
-		// switch your hand with your opponent
-
+		activatePowerBis(game);
 	}
 
-	public void activate(Game game) {
-//
-		game.changePlayer();
-		game.changePlayer();
+	public void activatePowerBis(Game game) {
+		int [] tempArray = game.getCurrentPlayer().getBoard().getHand().clone();
+		game.getCurrentPlayer().getBoard().setHand(game.getOpponentPlayer().getBoard().getHand());
+		game.getOpponentPlayer().getBoard().setHand(tempArray);
 	}
 }

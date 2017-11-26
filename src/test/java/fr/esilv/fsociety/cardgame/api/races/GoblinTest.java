@@ -6,16 +6,22 @@ import static org.junit.Assert.*;
 
 public class GoblinTest {
     @Test
-    public void activatePower() throws Exception {
+    public void activatePowerBis() throws Exception {
 
-        Game testGame = new Game();
-        Goblin testGoblin = new Goblin();
-        testGame.startingPlayer();
-        String prevPlayer = testGame.getCurrentPlayer().getClass().getSimpleName();
-        testGoblin.activate(testGame);
-        String curPlayer = testGame.getCurrentPlayer().getClass().getSimpleName();
-        assertEquals(curPlayer, prevPlayer);
+        Game game = new Game();
+        Goblin goblin = new Goblin();
+        game.startingPlayer();
 
+        int [] arrayCurrentPlayerBefore = game.getCurrentPlayer().getBoard().getHand().clone();
+        int [] arrayOpponentPlayerBefore = game.getCurrentPlayer().getBoard().getHand().clone();
+        goblin.activatePowerBis(game);
+        int [] arrayCurrentPlayerAfter = game.getCurrentPlayer().getBoard().getHand().clone();
+        int [] arrayOponentPlayerAfter = game.getCurrentPlayer().getBoard().getHand().clone();
+
+        for(int i = 0; i < 6; i++){
+            assertEquals(arrayCurrentPlayerBefore[i],arrayOponentPlayerAfter[i]);
+            assertEquals(arrayOpponentPlayerBefore[i],arrayCurrentPlayerAfter[i]);
+        }
     }
 
 
