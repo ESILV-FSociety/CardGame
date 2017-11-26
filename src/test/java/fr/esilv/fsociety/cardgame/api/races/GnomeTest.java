@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 public class GnomeTest {
     @Test
-    public void activatePowerBis() throws Exception {
+    public static void activatePowerBisGnome() throws Exception {
         int [] arrayIndex = new int [2];
         Game game = new Game();
         game.startingPlayer();

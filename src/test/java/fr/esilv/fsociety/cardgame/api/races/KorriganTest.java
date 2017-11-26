@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 public class KorriganTest {
 
     @Test
-    public void activatePowerBis() throws Exception {
+    public void activatePowerBisKorrigan() throws Exception {
 
         int [] arrayIndex = new int [2];
         Game game = new Game();

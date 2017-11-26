@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class ElfTest {
     @Test
-    public void activatePowerBis() throws Exception {
+    public void activatePowerBisElf() throws Exception {
         Game game = new Game();
         game.startingPlayer();
         game.playersDraw5Cards();
@@ -20,6 +20,8 @@ public class ElfTest {
         int n = elf.activatePowerBis(game);
 
         //uncompleted
+
+
     }
 
 }

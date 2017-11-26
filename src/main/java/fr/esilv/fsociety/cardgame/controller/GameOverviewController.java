@@ -22,28 +22,23 @@ import java.util.Hashtable;
 
 public class GameOverviewController {
 
-    private static final Hashtable<Integer,String> hash_image_path = new Hashtable<Integer,String>(){{
-        put(0,"images/gnome.png");
-        put(1,"images/korrigan.png");
-        put(2,"images/goblin.png");
-        put(3,"images/elf.png");
-        put(4,"images/dryad.png");
-        put(5,"images/troll.png");
+    private static final Hashtable<Integer, String> hash_image_path = new Hashtable<Integer, String>() {{
+        put(0, "images/gnome.png");
+        put(1, "images/korrigan.png");
+        put(2, "images/goblin.png");
+        put(3, "images/elf.png");
+        put(4, "images/dryad.png");
+        put(5, "images/troll.png");
     }};
 
-
-
     Launcher application;
-
     private Game game;
-
     private String humanName; // new name of the player
+    private Hashtable<Integer, ImageView> hash_hhcard;
+    private Hashtable<Integer, Text> hash_hhncard;
 
-@FXML
-private GridPane BoardsPanel;
-
-    // Player
-
+    @FXML
+    private GridPane BoardsPanel;
     @FXML
     private HBox HumanKingdom;
     @FXML
@@ -54,9 +49,6 @@ private GridPane BoardsPanel;
     private Text HumanName;
     @FXML
     private ImageView DeckCardHuman;
-
-    // Computer
-
     @FXML
     private Text AiName;
     @FXML
@@ -67,16 +59,10 @@ private GridPane BoardsPanel;
     private HBox AiKingdom;
     @FXML
     private ImageView DeckCardAI;
-
-    //Deck
-
     @FXML
     private ImageView DeckImageView;
     @FXML
     private GridPane DeckPanel;
-
-    //Human Hand
-
     @FXML
     private Text hhncard1;
     @FXML
@@ -89,8 +75,6 @@ private GridPane BoardsPanel;
     private Text hhncard5;
     @FXML
     private Text hhncard6;
-
-
     @FXML
     private ImageView hhcard1;
     @FXML
@@ -103,22 +87,19 @@ private GridPane BoardsPanel;
     private ImageView hhcard5;
     @FXML
     private ImageView hhcard6;
-
-    private Hashtable<Integer,ImageView> hash_hhcard;
-    private Hashtable<Integer,Text> hash_hhncard;
-
     @FXML
-     void ClickOnDeck(MouseEvent event) { // only used
+    void ClickOnDeck(MouseEvent event) { // only used
 
         this.game.drawCard();
         updateDisplayHand();
     }
+
     @FXML
-    private void ClickOnHand(MouseEvent event){
+    private void ClickOnHand(MouseEvent event) {
 
     }
 
-    public GameOverviewController(Launcher application){
+    public GameOverviewController(Launcher application) {
         this.application = application;
     }
 
@@ -127,23 +108,23 @@ private GridPane BoardsPanel;
     public void initialize() {
 
         //initialize the hashtable taht will contain match the ImageViews (HumanHand)
-        this.hash_hhcard = new Hashtable<Integer,ImageView>(){{
-            put(0,hhcard1);
-            put(1,hhcard2);
-            put(2,hhcard3);
-            put(3,hhcard4);
-            put(4,hhcard5);
-            put(5,hhcard6);
+        this.hash_hhcard = new Hashtable<Integer, ImageView>() {{
+            put(0, hhcard1);
+            put(1, hhcard2);
+            put(2, hhcard3);
+            put(3, hhcard4);
+            put(4, hhcard5);
+            put(5, hhcard6);
         }};
 
         //initialize the hashtable that will contain the number of the Card
-        this.hash_hhncard = new Hashtable<Integer,Text>(){{
-            put(0,hhncard1);
-            put(1,hhncard2);
-            put(2,hhncard3);
-            put(3,hhncard4);
-            put(4,hhncard5);
-            put(5,hhncard6);
+        this.hash_hhncard = new Hashtable<Integer, Text>() {{
+            put(0, hhncard1);
+            put(1, hhncard2);
+            put(2, hhncard3);
+            put(3, hhncard4);
+            put(4, hhncard5);
+            put(5, hhncard6);
         }};
 
         //optional
@@ -165,34 +146,35 @@ private GridPane BoardsPanel;
 
     }
 
-    private void initElements(){
+    private void initElements() {
 
     }
 
-    private void initializeDeck(){
-       DeckImageView.fitWidthProperty().bind(DeckPanel.widthProperty());
+    private void initializeDeck() {
+        DeckImageView.fitWidthProperty().bind(DeckPanel.widthProperty());
     }
+
     private void updateDisplayScores() {
         AiScore.setText(String.valueOf(this.game.getP1().getScore()));
         HumanScore.setText(String.valueOf(this.game.getP2().getScore()));
     }
+
     private void updateDisplayHand() {
 
-        int [] list = this.game.getCurrentPlayer().getBoard().getHand();
-        String[] list_url = new String [6];
+        int[] list = this.game.getCurrentPlayer().getBoard().getHand();
+        String[] list_url = new String[6];
 
         //retrieve all the url
         for (int i = 0; i < list.length; i++) {
-            if(list[i] != 0){
+            if (list[i] != 0) {
 
 
-            list_url[i] = getClass().getClassLoader().getResource(hash_image_path.get(i)).toString();
+                list_url[i] = getClass().getClassLoader().getResource(hash_image_path.get(i)).toString();
 
-            int n = this.game.getCurrentPlayer().getBoard().getHand()[i];
-            this.hash_hhncard.get(i).setText(String.valueOf(n));
-            this.hash_hhcard.get(i).setImage(new Image(list_url[i]));
-            }
-            else{
+                int n = this.game.getCurrentPlayer().getBoard().getHand()[i];
+                this.hash_hhncard.get(i).setText(String.valueOf(n));
+                this.hash_hhcard.get(i).setImage(new Image(list_url[i]));
+            } else {
                 hash_hhncard.get(i).setText("0");
                 String image_URL = getClass().getClassLoader().getResource("images/empty.png").toString();
                 this.hash_hhcard.get(i).setImage(new Image(image_URL));
@@ -200,10 +182,11 @@ private GridPane BoardsPanel;
         }
     }
 
-    private void updateDisplayDeck(){
+    private void updateDisplayDeck() {
         String image_URL = getClass().getClassLoader().getResource("images/deck.png").toString();
         DeckImageView.setImage(new Image(image_URL));
     }
+
     private void updateDisplayKingdoms() {
 
     }

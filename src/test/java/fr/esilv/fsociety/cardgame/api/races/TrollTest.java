@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 
 public class TrollTest {
     @Test
-    public void activatePowerBis() throws Exception {
+    public void activatePowerBisTroll() throws Exception {
 
         Game game = new Game();
         Troll troll = new Troll();

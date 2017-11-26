@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 public class GoblinTest {
     @Test
-    public void activatePowerBis() throws Exception {
+    public void activatePowerBisGoblin() throws Exception {
 
         Game game = new Game();
         Goblin goblin = new Goblin();
