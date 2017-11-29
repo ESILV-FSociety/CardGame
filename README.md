@@ -32,4 +32,4 @@ Elf : copy and use the power of one of the card in front of you
 Dryad : stole a card in front of your opponent and add it in front of you without activating its power.  
 Troll: swap the cards in front of you with the cards in front of your opponent  
 
-Development team: F-Society ESILV
+Development team: F-Society ESILV IBO 2
