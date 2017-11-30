@@ -12,7 +12,14 @@ public class Dryad extends Card {
 		super("Dryad");
 	}
 
-	public void activatePower(Game game){
+    @Override
+    public void activatePower(Game game) {
+        for(int i = 0; i < 2; i++) {
+            activatePowerBis(game);
+        }
+    }
+
+	public int activatePowerBis(Game game){
 		// stole a card in front of your opponent and add it in front of you without activating its power.
 		//TODO
 
@@ -24,6 +31,8 @@ public class Dryad extends Card {
         int rand= random.nextInt(n.length);
 
         game.getCurrentPlayer().getBoard().getKingdom()[rand]+= 1;
+
+        return rand;
 	}
 
 
