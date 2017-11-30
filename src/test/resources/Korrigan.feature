@@ -1,7 +1,7 @@
 Feature: Korrigan:
   #draw 2 random cards within your opponent hand
 
-  Scenario: activate power of the elf
+  Scenario: activate power of the korrigan
     Given a korrigan card in my hand
     When I choose to play the korrigan card
     Then the card is added to my kingdom
