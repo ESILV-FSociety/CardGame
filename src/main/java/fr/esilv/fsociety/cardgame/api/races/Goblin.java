@@ -15,6 +15,5 @@ public class Goblin extends Card {
 	public void activatePowerBis(Game game) {
 		int [] tempArray = game.getCurrentPlayer().getBoard().getHand().clone();
 		game.getCurrentPlayer().getBoard().setHand(game.getOpponentPlayer().getBoard().getHand());
-		game.getOpponentPlayer().getBoard().setHand(tempArray);
-	}
+		game.getOpponentPlayer().getBoard().setHand(tempArray);}
 }

@@ -30,7 +30,12 @@ public abstract class Player {
         return board;
     }
 
-    public String getString(){
+
+    public String getString() {
         return this.getClass().getSimpleName();
+    }
+
+    public boolean isHuman(){
+        return this.getClass().getName() == "Human";
     }
 }

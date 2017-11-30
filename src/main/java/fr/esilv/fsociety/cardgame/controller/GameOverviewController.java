@@ -200,6 +200,9 @@ public class GameOverviewController {
         game.playersDraw5Cards();
         //initialize boards (human + AI)
 
+        //TO-D0
+        // Game loop
+
     }
 }/* initialize();
 
