@@ -19,7 +19,6 @@ public class ElfTest {
 
         int n = elf.activatePowerBis(game);
 
-        //uncompleted
 
 
     }

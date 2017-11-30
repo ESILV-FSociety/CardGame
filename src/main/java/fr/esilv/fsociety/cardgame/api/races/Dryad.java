@@ -14,7 +14,12 @@ public class Dryad extends Card {
 
     @Override
     public void activatePower(Game game) {
-            activatePowerBis(game);
+        Random random = new Random();
+
+        // We need to copy a card that we have in our kingdom (<==> an index where the value is not equal to 0)
+        int n [] = game.getOpponentPlayer().getBoard().getKingdom();
+        int rand= random.nextInt(n.length);
+        game.getCurrentPlayer().getBoard().getKingdom()[rand]+= 1;
     }
 
 	public int activatePowerBis(Game game){
@@ -26,6 +31,7 @@ public class Dryad extends Card {
         // We need to copy a card that we have in our kingdom (<==> an index where the value is not equal to 0)
         int n [] = game.getOpponentPlayer().getBoard().getKingdom();
         int rand= random.nextInt(n.length);
+        game.getOpponentPlayer().getBoard().getKingdom()[rand]-= 1;
         game.getCurrentPlayer().getBoard().getKingdom()[rand]+= 1;
         return rand;
 	}
