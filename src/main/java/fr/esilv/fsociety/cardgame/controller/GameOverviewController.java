@@ -3,6 +3,7 @@ package fr.esilv.fsociety.cardgame.controller;
 import java.util.Hashtable;
 
 import fr.esilv.fsociety.cardgame.Launcher;
+import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -186,6 +187,17 @@ public class GameOverviewController {
     private void cardClicked(int cardId) {
     	System.out.println("Clicked on card id "+cardId);
     	
+    	if(this.game.getCurrentPlayer().getBoard().emptyRacesOnIndex(cardId))
+    		return;
+    	
+    	this.game.getCurrentPlayer().getBoard().getHand()[cardId] -= 1;
+    	this.game.getCurrentPlayer().getBoard().getKingdom()[cardId] += 1;
+    	
+    	this.updateDisplayKingdoms();
+    	this.updateDisplayHand();
+    	
+    	
+    	Card.CARD_MAP.get(cardId).activatePower(game);
     	
     }
 
@@ -195,7 +207,7 @@ public class GameOverviewController {
     }
 
     private void updateDisplayKingdoms() {
-
+    	//TODO
     }
 
     public void start() {

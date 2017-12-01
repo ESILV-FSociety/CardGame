@@ -8,7 +8,7 @@ public class Korrigan extends Card {
 
 	private int[] testArray;
 
-	public Korrigan() { super("Korrigan");	}
+	public Korrigan() { super(1, "Korrigan");	}
 
 	// Korrigan : draw 2 random cards within your opponent hand
 

@@ -5,7 +5,7 @@ import fr.esilv.fsociety.cardgame.api.Game;
 public class Goblin extends Card {
 
 	public Goblin() {
-		super("Goblin");
+		super(2, "Goblin");
 	}
 
 	public void activatePower(Game game){
@@ -15,5 +15,6 @@ public class Goblin extends Card {
 	public void activatePowerBis(Game game) {
 		int [] tempArray = game.getCurrentPlayer().getBoard().getHand().clone();
 		game.getCurrentPlayer().getBoard().setHand(game.getOpponentPlayer().getBoard().getHand());
-		game.getOpponentPlayer().getBoard().setHand(tempArray);}
+		game.getOpponentPlayer().getBoard().setHand(tempArray);
+	}
 }

@@ -9,7 +9,7 @@ public class Troll extends Card {
 
 	// swap the cards in front of you with the cards in front of your opponent
 	public Troll() {
-		super("Troll");
+		super(5, "Troll");
 	}
 
 	public void activatePower(Game game){

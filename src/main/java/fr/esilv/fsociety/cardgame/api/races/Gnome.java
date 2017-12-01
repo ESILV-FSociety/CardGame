@@ -5,7 +5,7 @@ import fr.esilv.fsociety.cardgame.api.Game;
 public class Gnome extends Card {
 
 	public Gnome() {
-		super("Gnome");
+		super(0, "Gnome");
 	}
 
 	//Gnome : draw 2 cards

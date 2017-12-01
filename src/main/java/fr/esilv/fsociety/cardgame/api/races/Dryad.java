@@ -9,7 +9,7 @@ public class Dryad extends Card {
 
 
 	public Dryad() {
-		super("Dryad");
+		super(4, "Dryad");
 	}
 
     @Override

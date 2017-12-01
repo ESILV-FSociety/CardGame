@@ -8,7 +8,7 @@ import java.util.Random;
 public class Elf extends Card {
 
 	public Elf() {
-		super("Elf");
+		super(3, "Elf");
 	}
 
 	// Elf : copy and use the power of one of the card in front of you
@@ -28,7 +28,7 @@ public class Elf extends Card {
 			n = game.getCurrentPlayer().getBoard().getHand()[rand];
 		}
 		game.getCurrentPlayer().getBoard().getKingdom()[rand]+= 1;
-		Card card = game.getCurrentPlayer().getBoard().GetHastable().get(rand);
+		Card card = Card.CARD_MAP.get(rand);
 		card.activatePower(game);
 
 		return rand;
