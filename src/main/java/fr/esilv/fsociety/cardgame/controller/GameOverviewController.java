@@ -1,23 +1,16 @@
 package fr.esilv.fsociety.cardgame.controller;
 
-import com.sun.javafx.font.freetype.HBGlyphLayout;
-import fr.esilv.fsociety.cardgame.Launcher;
-import fr.esilv.fsociety.cardgame.api.Card;
-import fr.esilv.fsociety.cardgame.api.Game;
+import java.util.Hashtable;
 
+import fr.esilv.fsociety.cardgame.Launcher;
+import fr.esilv.fsociety.cardgame.api.Game;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.Hashtable;
 
 
 public class GameOverviewController {
@@ -101,6 +94,7 @@ public class GameOverviewController {
 
     public GameOverviewController(Launcher application) {
         this.application = application;
+        
     }
 
     //this.game.start(); to be called after entering the name (by the login view)
@@ -126,6 +120,8 @@ public class GameOverviewController {
             put(4, hhncard5);
             put(5, hhncard6);
         }};
+        
+        
 
         //optional
         BoardsPanel.setGridLinesVisible(true);
@@ -142,7 +138,7 @@ public class GameOverviewController {
         updateDisplayDeck();
         updateDisplayHand();
         updateDisplayKingdoms();
-
+        
 
     }
 
@@ -168,18 +164,29 @@ public class GameOverviewController {
         for (int i = 0; i < list.length; i++) {
             if (list[i] != 0) {
 
-
-                list_url[i] = getClass().getClassLoader().getResource(hash_image_path.get(i)).toString();
-
-                int n = this.game.getCurrentPlayer().getBoard().getHand()[i];
-                this.hash_hhncard.get(i).setText(String.valueOf(n));
-                this.hash_hhcard.get(i).setImage(new Image(list_url[i]));
-            } else {
+	
+	            list_url[i] = getClass().getClassLoader().getResource(hash_image_path.get(i)).toString();
+	
+	            int n = this.game.getCurrentPlayer().getBoard().getHand()[i];
+	            this.hash_hhncard.get(i).setText(String.valueOf(n));
+	            this.hash_hhcard.get(i).setImage(new Image(list_url[i]));
+	            this.hash_hhcard.get(i).setPickOnBounds(true);
+	            final int cardId = i;
+	            this.hash_hhcard.get(i).setOnMouseClicked(event -> {
+	            	this.cardClicked(cardId);
+	            });
+            }else{
                 hash_hhncard.get(i).setText("0");
                 String image_URL = getClass().getClassLoader().getResource("images/empty.png").toString();
                 this.hash_hhcard.get(i).setImage(new Image(image_URL));
             }
         }
+    }
+    
+    private void cardClicked(int cardId) {
+    	System.out.println("Clicked on card id "+cardId);
+    	
+    	
     }
 
     private void updateDisplayDeck() {
@@ -204,42 +211,4 @@ public class GameOverviewController {
         // Game loop
 
     }
-}/* initialize();
-
-        if(game.isHuman()){
-            // wait on deck clicked
-           // this.gameoverviewcontroller.
-
-        }
-        else {
-            //draw a card
-          //  game.drawCard();
-            //put a random card of the hand in the kingdom
-
-           // this.gameoverviewcontroller.
-
-        }
-        //size of hand before :
-        //int n = game.getCurrentPlayer().getBoard().getHand().size();
-        //System.out.println("size : " + n);
-        //draw a card and add it to his hand
-
-        // size of the hand after drawing a card
-        //n = game.getCurrentPlayer().getBoard().getHand().size();
-        //System.out.println("size : " + n);
-
-    }
-
-
-
-
-
-
-
-    //connect this controller class and the game class
-    public void setGame(Game game){
-        this.game = game;
-    }
-
-
-*/
+}

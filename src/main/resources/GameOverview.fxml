@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox prefHeight="900.0" prefWidth="1750.0">
          <children>
@@ -93,7 +93,7 @@
                         </AnchorPane>
                     </items>
                   </SplitPane>
-                  <SplitPane disable="true" dividerPositions="0.5" layoutX="10.0" layoutY="10.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" GridPane.rowIndex="1">
+                  <SplitPane disable="false" dividerPositions="0.5" layoutX="10.0" layoutY="10.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" GridPane.rowIndex="1">
                      <items>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
@@ -111,10 +111,10 @@
                         </AnchorPane>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <HBox alignment="CENTER" prefHeight="220.0" prefWidth="1598.0" spacing="50.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                              <HBox  alignment="CENTER" prefHeight="220.0" prefWidth="1598.0" spacing="50.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                  <children>
                                     <Text fx:id="hhncard1" strokeType="OUTSIDE" strokeWidth="0.0" />
-                                    <ImageView fx:id="hhcard1" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="hhcard1" fitHeight="200.0" fitWidth="150.0"  preserveRatio="true" />
                                     <Text fx:id="hhncard2" strokeType="OUTSIDE" strokeWidth="0.0" />
                                     <ImageView fx:id="hhcard2" fitHeight="200.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
                                     <Text fx:id="hhncard3" strokeType="OUTSIDE" strokeWidth="0.0" />
