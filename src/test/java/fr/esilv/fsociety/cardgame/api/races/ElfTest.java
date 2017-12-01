@@ -13,7 +13,7 @@ public class ElfTest {
         game.playersDraw5Cards();
 
         //Get the hand (of the two players) # BEFORE
-        int [] arrayCurrentPlayer = game.getCurrentPlayer().getBoard().getHand().clone();
+        int [] arrayCurrentPlayer = game.getCurrentPlayer().getBoard().getKingdom().clone();
 
         Elf elf = new Elf();
 
