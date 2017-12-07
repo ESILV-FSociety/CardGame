@@ -5,6 +5,7 @@ import java.util.Hashtable;
 import fr.esilv.fsociety.cardgame.Launcher;
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
+import fr.esilv.fsociety.cardgame.api.Human;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -81,6 +82,33 @@ public class GameOverviewController {
     private ImageView hhcard5;
     @FXML
     private ImageView hhcard6;
+
+    @FXML
+    private Text hkncard1;
+    @FXML
+    private Text hkncard2;
+    @FXML
+    private Text hkncard3;
+    @FXML
+    private Text hkncard4;
+    @FXML
+    private Text hkncard5;
+    @FXML
+    private Text hkncard6;
+
+    @FXML
+    private ImageView hkcard1;
+    @FXML
+    private ImageView hkcard2;
+    @FXML
+    private ImageView hkcard3;
+    @FXML
+    private ImageView hkcard4;
+    @FXML
+    private ImageView hkcard5;
+    @FXML
+    private ImageView hkcard6;
+
     @FXML
     void ClickOnDeck(MouseEvent event) { // only used
 
@@ -102,6 +130,7 @@ public class GameOverviewController {
 
     public void initialize() {
 
+
         //initialize the hashtable taht will contain match the ImageViews (HumanHand)
         this.hash_hhcard = new Hashtable<Integer, ImageView>() {{
             put(0, hhcard1);
@@ -112,6 +141,8 @@ public class GameOverviewController {
             put(5, hhcard6);
         }};
 
+        initHumanHand();
+
         //initialize the hashtable that will contain the number of the Card
         this.hash_hhncard = new Hashtable<Integer, Text>() {{
             put(0, hhncard1);
@@ -121,12 +152,10 @@ public class GameOverviewController {
             put(4, hhncard5);
             put(5, hhncard6);
         }};
-        
-        
 
-        //optional
+
         BoardsPanel.setGridLinesVisible(true);
-        DeckPanel.setGridLinesVisible(true);
+     //   DeckPanel.setGridLinesVisible(true);
 
         this.game = new Game();
         this.humanName = "Max";
@@ -139,16 +168,14 @@ public class GameOverviewController {
         updateDisplayDeck();
         updateDisplayHand();
         updateDisplayKingdoms();
-        
-
-    }
-
-    private void initElements() {
-
     }
 
     private void initializeDeck() {
-        DeckImageView.fitWidthProperty().bind(DeckPanel.widthProperty());
+
+        //DeckImageView.fitHeightProperty().bind(DeckPanel.heightProperty());
+       // DeckImageView.fitWidthProperty().bind(DeckPanel.widthProperty());
+        DeckImageView.fitWidthProperty().bind(HumanHand.heightProperty());
+        hhcard1.fitHeightProperty().bind(HumanHand.heightProperty());
     }
 
     private void updateDisplayScores() {
@@ -186,6 +213,8 @@ public class GameOverviewController {
     
     private void cardClicked(int cardId) {
     	System.out.println("Clicked on card id "+cardId);
+    	//ajout de la carte au kingdom
+        //
     	
     	if(this.game.getCurrentPlayer().getBoard().emptyRacesOnIndex(cardId))
     		return;
@@ -208,6 +237,16 @@ public class GameOverviewController {
 
     private void updateDisplayKingdoms() {
     	//TODO
+    }
+
+    private void updateDisplayKingdomPlayer(){
+
+    }
+
+    private void initHumanHand(){
+        for(int i = 0; i < hash_hhcard.size(); i++){
+            hash_hhcard.get(i).fitHeightProperty().bind(HumanHand.heightProperty());
+        }
     }
 
     public void start() {

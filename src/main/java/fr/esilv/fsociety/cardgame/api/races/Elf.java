@@ -17,6 +17,7 @@ public class Elf extends Card {
 	public void activatePower(Game game) {
 		activatePowerBis(game);
 	}
+
 	public int activatePowerBis(Game game){
 
 		// We need to copy a card that we have in our kingdom (<==> an index where the value is not equal to 0)
