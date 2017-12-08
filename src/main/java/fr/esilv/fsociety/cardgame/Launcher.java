@@ -44,7 +44,8 @@ public class Launcher extends Application{
         Parent root = fxmlLoader.load();
         Game = new Stage();
         Game.setTitle("Game");
-        Game.setScene(new Scene(root));
+        Scene scene = new Scene(root,800,400);
+        Game.setScene(scene);
         Game.show();
     }
 
