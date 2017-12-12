@@ -1,5 +1,6 @@
 package fr.esilv.fsociety.cardgame.api;
 
+
 public abstract class Player {
 
     //idPlayer of AI is 0
@@ -36,6 +37,22 @@ public abstract class Player {
     }
 
     public boolean isHuman(){
-        return this.getClass().getName() == "Human";
+        return this instanceof Human;
+    }
+
+    public void updateScore(){
+        int [] list = this.getBoard().getKingdom();
+        int n = 0;
+
+        for(int i = 0; i < list.length; i++){
+            if(list[i] > 1) {
+                n++;
+            }
+            else break;;
+            if(n == list.length){
+                score += 1;
+               // for(int)
+            }
+        }
     }
 }

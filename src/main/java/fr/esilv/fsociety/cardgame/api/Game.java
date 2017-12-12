@@ -74,13 +74,18 @@ public class Game {
 
     public boolean emptyHands(){
         return this.getCurrentPlayer().getBoard().emptyHand() && this.getOpponentPlayer().getBoard().emptyHand();
-      }
+    }
 
     // returns the player that will play next
     public void changePlayer() {
-        Player p = this.getOpponentPlayer();
-        this.setOpponentPlayer(this.getCurrentPlayer());
-        this.setCurrentPlayer(p);
+        if(currentPlayer == p1){
+            currentPlayer = p2;
+            opponentPlayer = p1;
+        }
+        else {
+            currentPlayer = p1;
+            opponentPlayer = p2;
+        }
     }
 
 }

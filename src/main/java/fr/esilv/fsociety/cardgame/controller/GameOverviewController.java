@@ -3,9 +3,11 @@ package fr.esilv.fsociety.cardgame.controller;
 import java.util.Hashtable;
 
 import fr.esilv.fsociety.cardgame.Launcher;
+import fr.esilv.fsociety.cardgame.api.AI;
 import fr.esilv.fsociety.cardgame.api.Card;
 import fr.esilv.fsociety.cardgame.api.Game;
 import fr.esilv.fsociety.cardgame.api.Human;
+import gherkin.lexer.Hu;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,9 +15,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import java.lang.Thread;
 
 
-public class GameOverviewController {
+public class GameOverviewController extends Thread{
 
     private static final Hashtable<Integer, String> hash_image_path = new Hashtable<Integer, String>() {{
         put(0, "images/gnome.png");
@@ -29,7 +32,7 @@ public class GameOverviewController {
     Launcher application;
     private Game game;
     private String humanName; // new name of the player
-
+    private boolean AiPlay;
     //for the player
     private Hashtable<Integer, ImageView> hash_hhcard;
     private Hashtable<Integer, Text> hash_hhncard;
@@ -42,6 +45,8 @@ public class GameOverviewController {
     private Hashtable<Integer, ImageView> hash_akcard;
     private Hashtable<Integer, Text> hash_akncard;
 
+    private int threadSleep;
+    private int maxCardInDeck;
     @FXML
     private GridPane BoardsPanel;
     @FXML
@@ -68,6 +73,8 @@ public class GameOverviewController {
     private ImageView DeckImageView;
     @FXML
     private GridPane DeckPanel;
+    @FXML
+    private Text TextInfo;
 
     //AI hand cards number
 
@@ -186,25 +193,27 @@ public class GameOverviewController {
     private ImageView hkcard6;
 
     @FXML
-    void ClickOnDeck(MouseEvent event) { // only used
-
+    void ClickOnDeck(MouseEvent event) throws InterruptedException { // only used
+        TextInfo.setText("Player " + this.game.getCurrentPlayer().getClass().getSimpleName() + " drew a card");
         this.game.drawCard();
         updateDisplayHand();
+
     }
 
     @FXML
-    private void ClickOnHand(MouseEvent event) {
-
+    void startToPlay(MouseEvent event) throws InterruptedException {
+        initGame();
     }
+
 
     public GameOverviewController(Launcher application) {
         this.application = application;
-        
+
     }
 
     //this.game.start(); to be called after entering the name (by the login view)
 
-    public void initialize() {
+    public void initialize() throws InterruptedException {
 
         // for the player
         this.hash_hhcard = new Hashtable<Integer, ImageView>() {{
@@ -283,70 +292,162 @@ public class GameOverviewController {
         }};
 
         initializeComponents();
-        this.game = new Game();
-        this.humanName = "Max";
+        threadSleep = 500;
+        maxCardInDeck = 30;
 
-        game.startingPlayer();
-        game.playersDraw5Cards();
-
-        updateDisplayScores();
-
-        for(int i = 0; i < 2; i++) {
-
-            updateDisplayDeck();
-            updateDisplayHand();
-            updateDisplayKingdoms();
-            game.changePlayer();
-            System.out.println(game.getCurrentPlayer().getClass().toString());
-        }
     }
 
-    private void initializeComponents(){
+    private void initializeComponents() {
         initializeDeck();
         initHumanHand();
         initHumanKingdom();
         initAIHand();
         initAIKingdom();
-
     }
+
     private void initializeDeck() {
+
         DeckImageView.fitWidthProperty().bind(HumanHand.heightProperty());
     }
 
     private void initAIHand() {
         for (int i = 0; i < hash_ahcard.size(); i++) {
+            String imageUrl = getClass().getClassLoader().getResource("images/empty.png").toString();
+            hash_ahcard.get(i).setImage(new Image(imageUrl));
             hash_ahcard.get(i).fitHeightProperty().bind(AiHand.heightProperty());
+            hash_ahncard.get(i).setText("0");
         }
         AiHand.spacingProperty().setValue(15);//to be modified
     }
 
-    private void initAIKingdom(){
-        for(int i = 0 ; i < hash_akcard.size(); i++){
-            hash_akcard.get(i).fitHeightProperty().bind(AiHand.heightProperty());
+    private void initAIKingdom() {
+        for (int i = 0; i < hash_akcard.size(); i++) {
+            String imageUrl = getClass().getClassLoader().getResource("images/empty.png").toString();
+            hash_akcard.get(i).setImage(new Image(imageUrl));
+            hash_akcard.get(i).fitHeightProperty().bind(AiKingdom.heightProperty());
+            hash_akncard.get(i).setText("0");
         }
         AiKingdom.spacingProperty().setValue(15);
     }
 
     private void initHumanHand() {
         for (int i = 0; i < hash_hhcard.size(); i++) {
+            String imageUrl = getClass().getClassLoader().getResource("images/empty.png").toString();
+            hash_hhcard.get(i).setImage(new Image(imageUrl));
             hash_hhcard.get(i).fitHeightProperty().bind(HumanHand.heightProperty());
         }
-        HumanHand.spacingProperty().setValue(15);//to be modified
+        HumanHand.spacingProperty().setValue(15);
     }
 
-    private void initHumanKingdom(){
-        for(int i = 0; i < hash_hkcard.size(); i++){
-            hash_hkcard.get(i).fitHeightProperty().bind(HumanHand.heightProperty());
-            hash_hkcard.get(i).fitWidthProperty().bind(HumanHand.widthProperty());
+    private void initHumanKingdom() {
+        for (int i = 0; i < hash_hkcard.size(); i++) {
+            String imageUrl = getClass().getClassLoader().getResource("images/empty.png").toString();
+            hash_hkcard.get(i).setImage(new Image(imageUrl));
+            hash_hkcard.get(i).fitHeightProperty().bind(HumanKingdom.heightProperty());
+
         }
         HumanKingdom.spacingProperty().setValue(15);
     }
 
 
+    private void initGame() throws InterruptedException { // OK
+        //creating the game
+        AiPlay = false;
+        this.game = new Game();
+        game.startingPlayer();
+        game.playersDraw5Cards();
+        updateDisplayScores();
+        updateDisplayDeck();
+        int i = 0;
+        while (i < 2) {
+            updateBoard();
+            game.changePlayer();
+            i++;
+        }
+        TextInfo.setText("Player : " + game.getCurrentPlayer().getClass().getSimpleName() + " begin !");
+        //after updating the two boards, if the first player to play is the AI => AiPlay = true
+        if (this.game.getCurrentPlayer() instanceof AI){
+            AiPlay = true;
+            AiMove();
+            AiPlay = false;
+        }
+    }
+
+    public void whoIsThePlayer() {
+        System.out.println("turn of the player => " + this.game.getCurrentPlayer());
+    }
+
+    private void ShowCard(){
+        for(int i = 0; i < this.game.getP2().getBoard().getHand().length; i++){
+            this.hash_hhcard.get(i).setOnMouseDragOver(event-> {
+                try {
+
+                }catch (Exception e){
+
+                }
+            });
+        }
+    }
+
+
+
+    private void cardClicked(int cardId) throws InterruptedException {
+        System.out.println(game.getCurrentPlayer().getClass().getSimpleName() + " clicked on index " + cardId + " corresponding to " + hash_image_path.get(cardId));
+
+        this.game.getCurrentPlayer().getBoard().getHand()[cardId] -= 1;
+        this.game.getCurrentPlayer().getBoard().getKingdom()[cardId] += 1;
+        String str = TextInfo.getText();
+        TextInfo.setText(str + " => card at id " + cardId + " played ");
+        updateBoard();
+        this.sleep(threadSleep);
+
+
+        Card.CARD_MAP.get(cardId).activatePower(game);
+        str = TextInfo.getText();
+        TextInfo.setText(str + " => power activated");
+        updateBoards();
+        this.sleep(threadSleep);
+
+        this.game.changePlayer();
+        TextInfo.setText("Turn of the " + game.getCurrentPlayer().getClass().getSimpleName());
+        this.sleep(threadSleep);
+
+        if (this.game.getCurrentPlayer() instanceof AI ) {
+            AiMove();
+        }
+    }
+
+    public void AiMove() throws InterruptedException {
+        game.drawCard(); // player draw a card
+        AI ai = (AI) game.getCurrentPlayer(); // cast from Player to => AI in order to call the Choice method
+        int move = ai.Choice(); // get the index the computer will play
+        AiPlay = false;
+        this.cardClicked(move);
+    }
+
+
+    private void updateBoards(){
+        updateDisplayHand();
+        updateDisplayKingdom();
+        game.changePlayer();
+        updateDisplayHand();
+        updateDisplayKingdom();
+        game.changePlayer();
+    }
+    private void updateBoard() {
+        updateDisplayHand();
+        updateDisplayKingdom();
+    }
 
     private void updateDisplayScores() {
+
         AiScore.setText(String.valueOf(this.game.getP1().getScore()));
         HumanScore.setText(String.valueOf(this.game.getP2().getScore()));
+    }
+
+    private void updateDisplayDeck() {
+        String image_URL = getClass().getClassLoader().getResource("images/deck.png").toString();
+        DeckImageView.setImage(new Image(image_URL));
     }
 
     private void updateDisplayHand() {
@@ -356,83 +457,79 @@ public class GameOverviewController {
 
         //retrieve all the url
         for (int i = 0; i < list.length; i++) {
-            if (list[i] != 0) {
 
-	            list_url[i] = getClass().getClassLoader().getResource(hash_image_path.get(i)).toString();
-	
-	            int n1 = this.game.getCurrentPlayer().getBoard().getHand()[i];
-	            this.hash_hhncard.get(i).setText(String.valueOf(n1));
-	            this.hash_hhcard.get(i).setImage(new Image(list_url[i]));
-	            this.hash_hhcard.get(i).setPickOnBounds(true);
-	            final int cardId = i;
-	            this.hash_hhcard.get(i).setOnMouseClicked(event -> { // c'est pas l'endroit
-	            	this.cardClicked(cardId);
-	            });
-            }else{
-                hash_hhncard.get(i).setText("0");
-                String image_URL = getClass().getClassLoader().getResource("images/empty.png").toString();
-                this.hash_hhcard.get(i).setImage(new Image(image_URL));
+            list_url[i] = getClass().getClassLoader().getResource(hash_image_path.get(i)).toString();
+
+            int n = this.game.getCurrentPlayer().getBoard().getHand()[i];
+
+            if (n != 0) {
+                if (this.game.getCurrentPlayer() instanceof Human) {
+
+                    this.hash_hhncard.get(i).setText(String.valueOf(n));
+                    this.hash_hhcard.get(i).setImage(new Image(list_url[i]));
+                    this.hash_hhcard.get(i).setPickOnBounds(true);
+                    final int cardId = i;
+                    this.hash_hhcard.get(i).setOnMouseClicked(event -> {
+                        try {
+                            this.cardClicked(cardId);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                } else { // if instanceOf "AI"
+                    this.hash_ahncard.get(i).setText(String.valueOf(n)); // set the number
+                    this.hash_ahcard.get(i).setImage(new Image(list_url[i])); // set the Image
+                }
+            } else { // n == 0
+                String imageUrl = getClass().getClassLoader().getResource("images/empty.png").toString();
+
+                if (this.game.getCurrentPlayer() instanceof Human) {
+                    hash_hhncard.get(i).setText("0");
+                    this.hash_hhcard.get(i).setImage(new Image(imageUrl));
+                } else {
+                    hash_ahncard.get(i).setText("0");
+                    this.hash_ahcard.get(i).setImage(new Image(imageUrl));
+                }
             }
         }
     }
-    
-    private void cardClicked(int cardId) {
-    	System.out.println("Clicked on card id "+cardId);
-    	//adding the card to the kingdom
-    	if(this.game.getCurrentPlayer().getBoard().emptyRacesOnIndex(cardId))
-    		return;
-    	
-    	this.game.getCurrentPlayer().getBoard().getHand()[cardId] -= 1;
-    	this.game.getCurrentPlayer().getBoard().getKingdom()[cardId] += 1;
-    	
-    	this.updateDisplayKingdoms();
-    	this.updateDisplayHand();
-    	
-    	
-    	Card.CARD_MAP.get(cardId).activatePower(game);
-    	
-    }
 
-    private void updateDisplayDeck() {
-        String image_URL = getClass().getClassLoader().getResource("images/deck.png").toString();
-        DeckImageView.setImage(new Image(image_URL));
-    }
-
-    private void updateDisplayKingdoms() { // adapt the code to work with Human or AI
-    	int [] list = this.game.getCurrentPlayer().getBoard().getKingdom();
-    	String [] listURL = new String [6];
-    	//retrieve the url
+    private void updateDisplayKingdom() { // adapt the code to work with Human or AI
+        int[] list = this.game.getCurrentPlayer().getBoard().getKingdom();
+        String[] listURL = new String[6];
+        //retrieve the url
         for (int i = 0; i < list.length; i++) {
-            if (list[i] != 0) {
 
-                listURL[i] = getClass().getClassLoader().getResource(hash_image_path.get(i)).toString();
+            listURL[i] = getClass().getClassLoader().getResource(hash_image_path.get(i)).toString();
 
-                int n = this.game.getCurrentPlayer().getBoard().getKingdom()[i];
-                this.hash_hkncard.get(i).setText(String.valueOf(n));
-                this.hash_hkcard.get(i).setImage(new Image(listURL[i]));
-            }else{
-                hash_hkncard.get(i).setText("0");
+            int n = this.game.getCurrentPlayer().getBoard().getKingdom()[i];
+
+            if (n != 0) {
+
+                if (this.game.getCurrentPlayer() instanceof Human) {
+
+                    this.hash_hkncard.get(i).setText(String.valueOf(n));
+                    this.hash_hkcard.get(i).setImage(new Image(listURL[i]));
+                } else { // "AI"
+                    this.hash_akncard.get(i).setText(String.valueOf(n));
+                    this.hash_akcard.get(i).setImage((new Image(listURL[i])));
+                }
+
+            } else {
                 String image_URL = getClass().getClassLoader().getResource("images/empty.png").toString();
-                this.hash_hkcard.get(i).setImage(new Image(image_URL));
+
+                if (this.game.getCurrentPlayer() instanceof Human) {
+                    hash_hkncard.get(i).setText("0");
+                    this.hash_hkcard.get(i).setImage(new Image(image_URL));
+                } else {
+                    hash_akncard.get(i).setText(("0"));
+                    this.hash_akcard.get(i).setImage((new Image(image_URL)));
+                }
             }
         }
     }
 
-    public void start() {
-        //initialization
-        Game game = new Game();
-        game.startingPlayer();
-        game.playersDraw5Cards();
-        // while !endGame (no more cards)
-            //choose a random player
-            //the player draw a card
-            //the player play a card
-            //change player
-            //all the methods to update ...
-        //at the end : open a message to say sth like "You Win / Lose with a score of ...
 
 
 
-
-    }
 }

@@ -16,6 +16,7 @@ public class Gnome extends Card {
 		for(int i = 0; i < 2; i++){
 			Card card = game.getDealer().GetCard();
 			activatePowerBis(game,card);
+			System.out.print("Gnome power : draw 2 cards");
 		}
 	}
 
