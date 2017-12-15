@@ -8,11 +8,13 @@ public abstract class Player {
 
     private Board board;
     private int score;
+    private String name;
 
     public Player(int idPLayer) {
 
         this.board = new Board();
         this.score = 0;
+        this.name = "Player";
     }
 
     public void setBoard(Board board) {
@@ -22,6 +24,8 @@ public abstract class Player {
     public int getScore() {
         return score;
     }
+
+
 
     public void setScore(int score) {
         score = score;
@@ -55,4 +59,13 @@ public abstract class Player {
             }
         }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }

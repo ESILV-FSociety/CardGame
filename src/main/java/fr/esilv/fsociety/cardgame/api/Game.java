@@ -1,7 +1,12 @@
 package fr.esilv.fsociety.cardgame.api;
 
 import fr.esilv.fsociety.cardgame.controller.GameOverviewController;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -19,6 +24,23 @@ public class Game {
         this.p1 = new AI();
         this.p2 = new Human();
         this.dealer = new Dealer();
+
+        JSONParser parser = new JSONParser();
+        try {
+            Object obj = parser.parse(new FileReader("players.json"));
+            JSONObject jsonObject = (JSONObject) obj;
+
+
+            p1.setName((String) jsonObject.get("player 1"));
+            p2.setName((String) jsonObject.get("player 2"));
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
     }
 
     // Modify the this.currentPlayer (Player that will start) // unit test => yes
@@ -36,10 +58,12 @@ public class Game {
     }
 
     public void setOpponentPlayer(Player opponentPlayer) {
+
         this.opponentPlayer = opponentPlayer;
     }
 
     public Player getCurrentPlayer() {
+
         return this.currentPlayer;
     }
 
