@@ -42,6 +42,7 @@ public class Launcher extends Application{
         GameOverviewController controller = new GameOverviewController(this);
         fxmlLoader.setController(controller);
         Parent root = fxmlLoader.load();
+        Menu.hide();
         Game = new Stage();
         Game.setTitle("Game");
         Scene scene = new Scene(root,800,400);

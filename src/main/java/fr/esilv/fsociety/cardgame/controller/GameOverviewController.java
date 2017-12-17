@@ -3,10 +3,7 @@ package fr.esilv.fsociety.cardgame.controller;
 import java.util.Hashtable;
 
 import fr.esilv.fsociety.cardgame.Launcher;
-import fr.esilv.fsociety.cardgame.api.AI;
-import fr.esilv.fsociety.cardgame.api.Card;
-import fr.esilv.fsociety.cardgame.api.Game;
-import fr.esilv.fsociety.cardgame.api.Human;
+import fr.esilv.fsociety.cardgame.api.*;
 import gherkin.lexer.Hu;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
@@ -16,6 +13,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import java.lang.Thread;
+
+import static sun.audio.AudioPlayer.player;
 
 
 public class GameOverviewController extends Thread{
@@ -196,6 +195,8 @@ public class GameOverviewController extends Thread{
     @FXML
     private Text name2;
 
+
+
     @FXML
     void ClickOnDeck(MouseEvent event) throws InterruptedException { // only used
         TextInfo.setText("Player " + game.getCurrentPlayer().getName() + " drew a card");
@@ -368,6 +369,7 @@ public class GameOverviewController extends Thread{
         game.playersDraw5Cards();
         name1.setText(this.game.getCurrentPlayer().getName());
         name2.setText(this.game.getOpponentPlayer().getName());
+
         updateDisplayScores();
         updateDisplayDeck();
 
@@ -381,6 +383,7 @@ public class GameOverviewController extends Thread{
         //after updating the two boards, if the first player to play is the AI => AiPlay = true
         if (this.game.getCurrentPlayer() instanceof AI){
             AiPlay = true;
+
             AiMove();
             AiPlay = false;
         }
@@ -415,15 +418,20 @@ public class GameOverviewController extends Thread{
         this.sleep(threadSleep);
 
 
+
+
+
         Card.CARD_MAP.get(cardId).activatePower(game);
         str = TextInfo.getText();
         TextInfo.setText(str + " => power activated");
+
         updateBoards();
         this.sleep(threadSleep);
 
         this.game.changePlayer();
         TextInfo.setText("Turn of the " + game.getCurrentPlayer().getName());
         this.sleep(threadSleep);
+
 
         if (this.game.getCurrentPlayer() instanceof AI ) {
             AiMove();

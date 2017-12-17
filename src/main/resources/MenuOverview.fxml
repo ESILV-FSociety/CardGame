@@ -6,17 +6,13 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@Menu.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <!--<TextField layoutX="226.0" layoutY="100.0" promptText="Player 1" />-->
       <TextField fx:id="p1" layoutX="47.0" layoutY="100.0" promptText="Player 1" />
-      <!--<TextField layoutX="77.0" layoutY="188.0" promptText="Player 2" />-->
        <TextField fx:id="p2" layoutX="47.0" layoutY="150.0" promptText="Player 2" />
-      <!--<Label layoutX="295.0" layoutY="200.0" text="OR" />-->
        <Label layoutX="260.0" layoutY="125.0" text="OR" />
-      <!--<CheckBox layoutX="375.0" layoutY="192.0" mnemonicParsing="false" text="AI Mode" />-->
        <CheckBox layoutX="325.0" layoutY="125.0" mnemonicParsing="false" text="AI Mode" />
-      <!--<Button fx:id="btn" layoutX="283.0" layoutY="305.0" mnemonicParsing="false" text="Play!" />-->
        <Button fx:id="btn" layoutX="240.0" layoutY="305.0" mnemonicParsing="false" text="Play!" />
+      <Button fx:id="btn2" layoutX="400.0" layoutY="305.0" mnemonicParsing="false" text="Button" />
    </children>
 </AnchorPane>
