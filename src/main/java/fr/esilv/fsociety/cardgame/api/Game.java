@@ -88,7 +88,9 @@ public class Game {
     public void playersDraw5Cards(){
         for(int i = 0; i < 5; i++){
             this.getP1().getBoard().addCardToHand(this.dealer.GetCard());
+
             this.getP2().getBoard().addCardToHand((this.dealer.GetCard()));
+
         }
     }
     // method where the currentPlayer draw a card (the card is added to his hand)

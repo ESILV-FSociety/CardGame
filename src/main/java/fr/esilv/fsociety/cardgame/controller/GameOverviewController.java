@@ -195,14 +195,19 @@ public class GameOverviewController {
     @FXML
     private Text name2;
 
-
+    @FXML
+    private Text compteurDeck;
 
     @FXML
     void ClickOnDeck(MouseEvent event) throws InterruptedException { // only used
         TextInfo.setText("Player " + game.getCurrentPlayer().getName() + " drew a card");
-
-        this.game.drawCard();
+        if(this.game.getDealer().isLock()==false)
+        {
+            this.game.drawCard();
+        }
+        this.game.getDealer().setLock(true);
         updateDisplayHand();
+        updateDisplayDeck();
 
     }
 
@@ -440,10 +445,14 @@ public class GameOverviewController {
 
     public void AiMove() throws InterruptedException {
         game.drawCard(); // player draw a card
+        updateDisplayHand();
+        updateDisplayDeck();
         AI ai = (AI) game.getCurrentPlayer(); // cast from Player to => AI in order to call the Choice method
         int move = ai.Choice(); // get the index the computer will play
         AiPlay = false;
         this.cardClicked(move);
+        this.game.getDealer().setLock(false);
+
     }
 
 
@@ -469,6 +478,7 @@ public class GameOverviewController {
     private void updateDisplayDeck() {
         String image_URL = getClass().getClassLoader().getResource("images/deck.png").toString();
         DeckImageView.setImage(new Image(image_URL));
+        compteurDeck.setText((String.valueOf(game.getDealer().getCards())));
     }
 
     private void updateDisplayHand() {
