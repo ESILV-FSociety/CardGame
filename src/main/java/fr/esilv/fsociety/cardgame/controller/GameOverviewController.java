@@ -12,12 +12,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+
 import java.lang.Thread;
 
 import static sun.audio.AudioPlayer.player;
 
 
-public class GameOverviewController extends Thread{
+public class GameOverviewController extends Thread {
 
     private static final Hashtable<Integer, String> hash_image_path = new Hashtable<Integer, String>() {{
         put(0, "images/gnome.png");
@@ -196,7 +197,6 @@ public class GameOverviewController extends Thread{
     private Text name2;
 
 
-
     @FXML
     void ClickOnDeck(MouseEvent event) throws InterruptedException { // only used
         TextInfo.setText("Player " + game.getCurrentPlayer().getName() + " drew a card");
@@ -312,7 +312,6 @@ public class GameOverviewController extends Thread{
         initAIKingdom();
 
 
-
     }
 
     private void initializeDeck() {
@@ -381,30 +380,33 @@ public class GameOverviewController extends Thread{
         }
         TextInfo.setText("Player : " + game.getCurrentPlayer().getName() + " begin !");
         //after updating the two boards, if the first player to play is the AI => AiPlay = true
-        if (this.game.getCurrentPlayer() instanceof AI){
+        if (this.game.getCurrentPlayer() instanceof AI) {
             AiPlay = true;
 
             AiMove();
             AiPlay = false;
         }
+
+
+        HumanScore.setText(Integer.toString(this.game.getCurrentPlayer().getScore()));
+        AiScore.setText(Integer.toString(this.game.getOpponentPlayer().getScore()));
     }
 
     public void whoIsThePlayer() {
         System.out.println("turn of the player => " + this.game.getCurrentPlayer());
     }
 
-    private void ShowCard(){
-        for(int i = 0; i < this.game.getP2().getBoard().getHand().length; i++){
-            this.hash_hhcard.get(i).setOnMouseDragOver(event-> {
+    private void ShowCard() {
+        for (int i = 0; i < this.game.getP2().getBoard().getHand().length; i++) {
+            this.hash_hhcard.get(i).setOnMouseDragOver(event -> {
                 try {
 
-                }catch (Exception e){
+                } catch (Exception e) {
 
                 }
             });
         }
     }
-
 
 
     private void cardClicked(int cardId) throws InterruptedException {
@@ -418,23 +420,60 @@ public class GameOverviewController extends Thread{
         this.sleep(threadSleep);
 
 
-
-
-
         Card.CARD_MAP.get(cardId).activatePower(game);
         str = TextInfo.getText();
         TextInfo.setText(str + " => power activated");
-
+        countPoints();
         updateBoards();
         this.sleep(threadSleep);
+
 
         this.game.changePlayer();
         TextInfo.setText("Turn of the " + game.getCurrentPlayer().getName());
         this.sleep(threadSleep);
 
 
-        if (this.game.getCurrentPlayer() instanceof AI ) {
+
+
+        if (this.game.getCurrentPlayer() instanceof AI) {
             AiMove();
+        }
+    }
+
+    private void countPoints() {
+        int [] tab = game.getCurrentPlayer().getBoard().getKingdom();
+        int n = 0;
+
+        // 1 point for each individual within its kingdom
+        for(int i = 0; i < tab.length; i++){
+            if(tab[i] > 0){
+                n += tab[i];
+            }
+        }
+        //3 extra point if he/she has almost one individual of each of the 6 races.
+        int d = 0;
+        int [] tab2 = tab.clone();
+        boolean ok = false;
+        int u = 0;
+        while(!ok) {
+            for (int i = 0; i < tab2.length; i++) {
+                if (tab2[i] > 0) {
+                    u++;
+                    if(u == tab2.length - 1) d++; // 1 of each races
+                }
+                else {
+                    ok = true;
+                    //end
+                }
+            }
+            if(u == tab2.length - 1){
+                for(int j = 0; j < tab2.length; j++ ){
+                    tab2[j]--;
+                }
+            }
+            d *= 3;
+            int points = d + n;
+            game.getCurrentPlayer().setScore(points);
         }
     }
 
@@ -447,17 +486,20 @@ public class GameOverviewController extends Thread{
     }
 
 
-    private void updateBoards(){
+    private void updateBoards() {
         updateDisplayHand();
         updateDisplayKingdom();
         game.changePlayer();
         updateDisplayHand();
         updateDisplayKingdom();
         game.changePlayer();
+        updateDisplayScores();
     }
+
     private void updateBoard() {
         updateDisplayHand();
         updateDisplayKingdom();
+        updateDisplayScores();
     }
 
     private void updateDisplayScores() {
@@ -518,12 +560,14 @@ public class GameOverviewController extends Thread{
     private void updateDisplayKingdom() { // adapt the code to work with Human or AI
         int[] list = this.game.getCurrentPlayer().getBoard().getKingdom();
         String[] listURL = new String[6];
+        int points = 0;
         //retrieve the url
         for (int i = 0; i < list.length; i++) {
 
             listURL[i] = getClass().getClassLoader().getResource(hash_image_path.get(i)).toString();
 
             int n = this.game.getCurrentPlayer().getBoard().getKingdom()[i];
+            points += n;
 
             if (n != 0) {
 
@@ -547,10 +591,9 @@ public class GameOverviewController extends Thread{
                     this.hash_akcard.get(i).setImage((new Image(image_URL)));
                 }
             }
+
         }
     }
-
-
 
 
 }
