@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane id="pane" prefHeight="600.0" prefWidth="800.0" stylesheets="@Menu.css"  xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
     <center>
         <AnchorPane>
             <children>
@@ -135,6 +135,7 @@
                     <children>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                             <children>
+                        <Text fx:id="name2" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" />
                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Score :" underline="true" VBox.vgrow="ALWAYS">
                                     <font>
                                         <Font name="Copperplate Gothic Bold" size="24.0" />
@@ -149,6 +150,7 @@
                           <ImageView fx:id="DeckImageView" onMousePressed="#ClickOnDeck" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.rowIndex="2">
                             <children>
+                        <Text fx:id="name1" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1 " />
                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Score :" underline="true">
                                     <font>
                                         <Font name="Copperplate Gothic Bold" size="24.0" />
