@@ -203,11 +203,11 @@ public class GameOverviewController extends Thread {
     @FXML
     void ClickOnDeck(MouseEvent event) throws InterruptedException { // only used
         TextInfo.setText("Player " + game.getCurrentPlayer().getName() + " drew a card");
-        if(lock==false)
+        if(!lock)
         {
             this.game.drawCard();
         }
-        lock=true;
+        lock = true;
         updateDisplayHand();
         updateDisplayDeck();
 
@@ -423,7 +423,7 @@ public class GameOverviewController extends Thread {
         str = TextInfo.getText();
         System.out.println(str + " => power activated");
         countPoints();
-        updateBoard();
+        updateBoards();
         this.sleep(threadSleep);
 
 
@@ -502,7 +502,7 @@ public class GameOverviewController extends Thread {
     private void updateBoard() {
         updateDisplayHand();
         updateDisplayKingdom();
-        updateDisplayScores();
+       updateDisplayScores();
     }
 
     private void updateDisplayScores() {

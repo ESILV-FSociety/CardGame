@@ -45,7 +45,7 @@ public class Launcher extends Application{
         Menu.hide();
         Game = new Stage();
         Game.setTitle("Game");
-        Scene scene = new Scene(root,800,400);
+        Scene scene = new Scene(root,650,400);
         Game.setScene(scene);
         Game.show();
     }

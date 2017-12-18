@@ -26,9 +26,8 @@ public abstract class Player {
     }
 
 
-
     public void setScore(int score) {
-        score = score;
+        this.score = score;
     }
 
     public Board getBoard() {
