@@ -7,7 +7,7 @@ import fr.esilv.fsociety.cardgame.api.Game;
 
 public class DryadTest {
 
-    public void activatePowerBis throws Exception {
+    public void activatePowerBis() throws Exception {
 
         Game game = new Game();
         game.startingPlayer();

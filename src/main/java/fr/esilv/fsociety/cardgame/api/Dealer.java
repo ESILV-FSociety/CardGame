@@ -13,7 +13,6 @@ public class Dealer {
 
 	private ArrayList<Card> Deck;
 	private int cards;
-	private boolean lock;
 
 	public Dealer() {
 		Deck = new ArrayList<Card>();
@@ -27,17 +26,10 @@ public class Dealer {
 			Deck.add(new Korrigan());
 		}
 		cards=30;
-		lock=false;
 
 	}
 
-	public boolean isLock() {
-		return lock;
-	}
 
-	public void setLock(boolean lock) {
-		this.lock = lock;
-	}
 
 	public int getCards() {
 		return cards;

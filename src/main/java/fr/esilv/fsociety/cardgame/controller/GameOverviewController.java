@@ -32,6 +32,7 @@ public class GameOverviewController {
     private Game game;
     private String humanName; // new name of the player
     private boolean AiPlay;
+    private boolean lock;
     //for the player
     private Hashtable<Integer, ImageView> hash_hhcard;
     private Hashtable<Integer, Text> hash_hhncard;
@@ -201,11 +202,11 @@ public class GameOverviewController {
     @FXML
     void ClickOnDeck(MouseEvent event) throws InterruptedException { // only used
         TextInfo.setText("Player " + game.getCurrentPlayer().getName() + " drew a card");
-        if(this.game.getDealer().isLock()==false)
+        if(lock==false)
         {
             this.game.drawCard();
         }
-        this.game.getDealer().setLock(true);
+        lock=true;
         updateDisplayHand();
         updateDisplayDeck();
 
@@ -315,9 +316,7 @@ public class GameOverviewController {
         initHumanKingdom();
         initAIHand();
         initAIKingdom();
-
-
-
+        lock=false;
     }
 
     private void initializeDeck() {
@@ -451,7 +450,7 @@ public class GameOverviewController {
         int move = ai.Choice(); // get the index the computer will play
         AiPlay = false;
         this.cardClicked(move);
-        this.game.getDealer().setLock(false);
+        lock=false;
 
     }
 
