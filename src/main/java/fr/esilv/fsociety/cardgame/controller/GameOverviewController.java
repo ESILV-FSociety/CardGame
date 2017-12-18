@@ -78,6 +78,7 @@ public class GameOverviewController extends Thread {
 
     //AI hand cards number
 
+
     @FXML
     private Text ahncard1;
     @FXML
