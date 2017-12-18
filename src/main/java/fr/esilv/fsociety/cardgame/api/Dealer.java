@@ -10,7 +10,9 @@ import java.util.Collections;
 
 public class Dealer {
 
+
 	private ArrayList<Card> Deck;
+	private int cards;
 
 	public Dealer() {
 		Deck = new ArrayList<Card>();
@@ -23,7 +25,23 @@ public class Dealer {
 			Deck.add(new Troll());
 			Deck.add(new Korrigan());
 		}
+		cards=30;
 
+	}
+
+
+
+	public int getCards() {
+		return cards;
+	}
+
+	public void setCards(int cards) {
+		this.cards = cards;
+	}
+
+	public void DecreaseCards(int cardsleft)
+	{
+		this.cards=cards-cardsleft;
 	}
 
 	public void MixDeck(){
@@ -38,6 +56,7 @@ public class Dealer {
 		this.MixDeck();
 		Card cardDrew=this.Deck.get(0);
 		this.Deck.remove(cardDrew);
+		cards=cards-1;
 		return cardDrew;
 	}
 }

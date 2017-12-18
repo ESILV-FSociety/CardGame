@@ -88,12 +88,21 @@ public class Game {
     public void playersDraw5Cards(){
         for(int i = 0; i < 5; i++){
             this.getP1().getBoard().addCardToHand(this.dealer.GetCard());
+
             this.getP2().getBoard().addCardToHand((this.dealer.GetCard()));
+
         }
     }
     // method where the currentPlayer draw a card (the card is added to his hand)
+   // public void drawCard() {
+//        this.currentPlayer.getBoard().addCardToHand(dealer.GetCard());
+//    }
     public void drawCard() {
-        this.currentPlayer.getBoard().addCardToHand(dealer.GetCard());
+        if((this.getDealer().getDeck().size()>0)){
+            this.currentPlayer.getBoard().addCardToHand(dealer.GetCard());}
+        else{
+            System.out.println("Run out of cards");
+        }
     }
 
     public boolean emptyHands(){
