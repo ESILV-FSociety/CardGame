@@ -450,7 +450,7 @@ public class GameOverviewController {
         int move = ai.Choice(); // get the index the computer will play
         AiPlay = false;
         this.cardClicked(move);
-        lock=false;
+        lock=false ;
 
     }
 
