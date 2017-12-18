@@ -33,6 +33,7 @@ public class GameOverviewController extends Thread {
     private Game game;
     private String humanName; // new name of the player
     private boolean AiPlay;
+    private boolean lock;
     //for the player
     private Hashtable<Integer, ImageView> hash_hhcard;
     private Hashtable<Integer, Text> hash_hhncard;
@@ -197,16 +198,20 @@ public class GameOverviewController extends Thread {
     @FXML
     private Text name2;
 
-
+    @FXML
+    private Text compteurDeck;
     @FXML
     void ClickOnDeck(MouseEvent event) throws InterruptedException { // only used
-        System.out.println("Player " + game.getCurrentPlayer().getName() + " drew a card");
-
-        this.game.drawCard();
+        TextInfo.setText("Player " + game.getCurrentPlayer().getName() + " drew a card");
+        if(lock==false)
+        {
+            this.game.drawCard();
+        }
+        lock=true;
         updateDisplayHand();
+        updateDisplayDeck();
 
     }
-
     @FXML
     void startToPlay(MouseEvent event) throws InterruptedException {
         initGame();
@@ -473,10 +478,14 @@ public class GameOverviewController extends Thread {
 
     public void AiMove() throws InterruptedException {
         game.drawCard(); // player draw a card
+        updateDisplayHand();
+        updateDisplayDeck();
         AI ai = (AI) game.getCurrentPlayer(); // cast from Player to => AI in order to call the Choice method
         int move = ai.Choice(); // get the index the computer will play
         AiPlay = false;
         this.cardClicked(move);
+        lock=false;
+
     }
 
 
@@ -505,6 +514,7 @@ public class GameOverviewController extends Thread {
     private void updateDisplayDeck() {
         String image_URL = getClass().getClassLoader().getResource("images/deck.png").toString();
         DeckImageView.setImage(new Image(image_URL));
+        compteurDeck.setText((String.valueOf(game.getDealer().getCards())));
     }
 
     private void updateDisplayHand() {
