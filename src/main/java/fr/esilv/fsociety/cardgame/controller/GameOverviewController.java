@@ -304,7 +304,7 @@ public class GameOverviewController extends Thread {
         }};
 
         initializeComponents();
-        threadSleep = 1000;
+        threadSleep = 0;
         maxCardInDeck = 30;
 
     }
