@@ -94,8 +94,15 @@ public class Game {
         }
     }
     // method where the currentPlayer draw a card (the card is added to his hand)
+   // public void drawCard() {
+//        this.currentPlayer.getBoard().addCardToHand(dealer.GetCard());
+//    }
     public void drawCard() {
-        this.currentPlayer.getBoard().addCardToHand(dealer.GetCard());
+        if((this.getDealer().getDeck().size()>0)){
+            this.currentPlayer.getBoard().addCardToHand(dealer.GetCard());}
+        else{
+            System.out.println("Run out of cards");
+        }
     }
 
     public boolean emptyHands(){

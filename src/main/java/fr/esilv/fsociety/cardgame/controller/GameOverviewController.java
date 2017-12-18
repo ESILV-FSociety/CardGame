@@ -395,7 +395,7 @@ public class GameOverviewController {
     }
 
     public void whoIsThePlayer() {
-        System.out.println("turn of the player => " + this.game.getCurrentPlayer());
+        System.out.println("turn of the player => " + this.game.getCurrentPlayer().getName());
     }
 
     private void ShowCard(){
