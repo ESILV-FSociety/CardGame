@@ -17,7 +17,7 @@ import java.lang.Thread;
 import static sun.audio.AudioPlayer.player;
 
 
-public class GameOverviewController extends Thread{
+public class GameOverviewController {
 
     private static final Hashtable<Integer, String> hash_image_path = new Hashtable<Integer, String>() {{
         put(0, "images/gnome.png");
@@ -409,13 +409,13 @@ public class GameOverviewController extends Thread{
 
     private void cardClicked(int cardId) throws InterruptedException {
         System.out.println(game.getCurrentPlayer().getName() + " clicked on index " + cardId + " corresponding to " + hash_image_path.get(cardId));
-
+  
         this.game.getCurrentPlayer().getBoard().getHand()[cardId] -= 1;
         this.game.getCurrentPlayer().getBoard().getKingdom()[cardId] += 1;
         String str = TextInfo.getText();
         TextInfo.setText(str + " => card at id " + cardId + " played ");
         updateBoard();
-        this.sleep(threadSleep);
+        Thread.sleep(threadSleep);
 
 
 
@@ -426,11 +426,11 @@ public class GameOverviewController extends Thread{
         TextInfo.setText(str + " => power activated");
 
         updateBoards();
-        this.sleep(threadSleep);
+        Thread.sleep(threadSleep);
 
         this.game.changePlayer();
         TextInfo.setText("Turn of the " + game.getCurrentPlayer().getName());
-        this.sleep(threadSleep);
+        Thread.sleep(threadSleep);
 
 
         if (this.game.getCurrentPlayer() instanceof AI ) {
