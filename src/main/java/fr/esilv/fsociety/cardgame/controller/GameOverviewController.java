@@ -199,7 +199,7 @@ public class GameOverviewController extends Thread {
 
     @FXML
     void ClickOnDeck(MouseEvent event) throws InterruptedException { // only used
-        TextInfo.setText("Player " + game.getCurrentPlayer().getName() + " drew a card");
+        System.out.println("Player " + game.getCurrentPlayer().getName() + " drew a card");
 
         this.game.drawCard();
         updateDisplayHand();
@@ -298,20 +298,17 @@ public class GameOverviewController extends Thread {
         }};
 
         initializeComponents();
-        threadSleep = 500;
+        threadSleep = 1000;
         maxCardInDeck = 30;
 
     }
 
     private void initializeComponents() {
-
         initializeDeck();
         initHumanHand();
         initHumanKingdom();
         initAIHand();
         initAIKingdom();
-
-
     }
 
     private void initializeDeck() {
@@ -344,6 +341,7 @@ public class GameOverviewController extends Thread {
             String imageUrl = getClass().getClassLoader().getResource("images/empty.png").toString();
             hash_hhcard.get(i).setImage(new Image(imageUrl));
             hash_hhcard.get(i).fitHeightProperty().bind(HumanHand.heightProperty());
+            hash_hhncard.get(i).setText("0");
         }
         HumanHand.spacingProperty().setValue(15);
     }
@@ -353,17 +351,16 @@ public class GameOverviewController extends Thread {
             String imageUrl = getClass().getClassLoader().getResource("images/empty.png").toString();
             hash_hkcard.get(i).setImage(new Image(imageUrl));
             hash_hkcard.get(i).fitHeightProperty().bind(HumanKingdom.heightProperty());
+            hash_hkncard.get(i).setText("0");
 
         }
         HumanKingdom.spacingProperty().setValue(15);
     }
 
-
     private void initGame() throws InterruptedException { // OK
-        //creating the game
+
         AiPlay = false;
         this.game = new Game();
-
         game.startingPlayer();
         game.playersDraw5Cards();
         name1.setText(this.game.getCurrentPlayer().getName());
@@ -378,15 +375,13 @@ public class GameOverviewController extends Thread {
             game.changePlayer();
             i++;
         }
-        TextInfo.setText("Player : " + game.getCurrentPlayer().getName() + " begin !");
+        TextInfo.setText("Player : " + game.getCurrentPlayer().getClass().getSimpleName() + " begin !");
         //after updating the two boards, if the first player to play is the AI => AiPlay = true
         if (this.game.getCurrentPlayer() instanceof AI) {
             AiPlay = true;
-
             AiMove();
             AiPlay = false;
         }
-
 
         HumanScore.setText(Integer.toString(this.game.getCurrentPlayer().getScore()));
         AiScore.setText(Integer.toString(this.game.getOpponentPlayer().getScore()));
@@ -415,22 +410,20 @@ public class GameOverviewController extends Thread {
         this.game.getCurrentPlayer().getBoard().getHand()[cardId] -= 1;
         this.game.getCurrentPlayer().getBoard().getKingdom()[cardId] += 1;
         String str = TextInfo.getText();
-        TextInfo.setText(str + " => card at id " + cardId + " played ");
-        updateBoard();
-        this.sleep(threadSleep);
+        System.out.println(str + " => card at id " + cardId + " played ");
 
 
         Card.CARD_MAP.get(cardId).activatePower(game);
         str = TextInfo.getText();
-        TextInfo.setText(str + " => power activated");
+        System.out.println(str + " => power activated");
         countPoints();
-        updateBoards();
+        updateBoard();
         this.sleep(threadSleep);
 
 
         this.game.changePlayer();
-        TextInfo.setText("Turn of the " + game.getCurrentPlayer().getName());
-        this.sleep(threadSleep);
+        System.out.println("Turn of the " + game.getCurrentPlayer().getClass().getSimpleName().toString());
+
 
 
 
