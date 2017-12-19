@@ -25,38 +25,44 @@ public class Korrigan extends Card {
         else{
             if(game.getOpponentPlayer().getBoard().numOfCardInHand()==0)
             {
-                System.out.print("Oponent's hand run out of cards");
+                System.out.print("Opponent's hand run out of cards");
             }
             else
             {
                 if(game.getOpponentPlayer().getBoard().numOfCardInHand()==1)
                 {
                     activatePowerBis(game);
-                    System.out.print("Oponent's hand had only one card");
+                    System.out.print("Opponent's hand had only one card");
                 }
 
             }
         }
-
-
     }
-
     public int activatePowerBis(Game game) {
-
-        // take a random number between 0 and 6(excluded)
         Random random = new Random();
-        int rand = 0;
-        int n = 0;
+        int n [] = game.getOpponentPlayer().getBoard().getHand();
+        Boolean empty = true;
+        int rand= random.nextInt(n.length);
+        for (int i = 0;  i<n.length; i++)
+        {
+            if (game.getOpponentPlayer().getBoard().getHand()[i] != 0){
 
-        while (n == 0) {
-            rand = random.nextInt(6);
-            n = game.getOpponentPlayer().getBoard().getHand()[rand];
+                empty = false;
+            }
         }
-        // remove one card from the opponent hand at the correct index
-        game.getOpponentPlayer().getBoard().getHand()[rand] -= 1;
-        // add one card to the currentplayer hand at the correct index
-        game.getCurrentPlayer().getBoard().getHand()[rand] += 1;
+        if (empty == true){
+            rand = -1;
+        }
+        else{
 
+            while( game.getOpponentPlayer().getBoard().getHand()[rand] == 0){
+                rand = random.nextInt(n.length);
+            }
+            game.getOpponentPlayer().getBoard().getHand()[rand]-= 1;
+            game.getCurrentPlayer().getBoard().getHand()[rand]+= 1;
+
+        }
         return rand;
     }
 }
+
