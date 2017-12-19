@@ -135,13 +135,13 @@
                     <children>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                             <children>
-                        <Text fx:id="name2" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" />
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Score :" underline="true" VBox.vgrow="ALWAYS">
+                        <Text fx:id="name2" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" />
+                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Score :" underline="true" VBox.vgrow="ALWAYS">
                                     <font>
                                         <Font name="Copperplate Gothic Bold" size="24.0" />
                                     </font>
                                 </Text>
-                                <Text fx:id="AiScore" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                <Text fx:id="AiScore" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" />
                             </children>
                             <GridPane.margin>
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -149,19 +149,19 @@
                         </VBox>
                         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0" GridPane.rowIndex="2">
                             <children>
-                        <Text fx:id="name1" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1 " />
-                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Score :" underline="true">
+                        <Text fx:id="name1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1 " />
+                                <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Score :" underline="true">
                                     <font>
                                         <Font name="Copperplate Gothic Bold" size="24.0" />
                                     </font>
                                 </Text>
-                                <Text fx:id="HumanScore" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                <Text fx:id="HumanScore" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" />
                             </children>
                         </VBox>
                   <VBox alignment="CENTER" spacing="10.0" GridPane.rowIndex="1">
                      <children>
                                 <ImageView fx:id="DeckImageView" onMousePressed="#ClickOnDeck" pickOnBounds="true" preserveRatio="true" />
-                        <Text fx:id="compteurDeck" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Text fx:id="compteurDeck" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" />
                      </children>
                   </VBox>
 
