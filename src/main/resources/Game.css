@@ -3,6 +3,8 @@
 
 #pane, #side{
 -fx-background-image: url("images/wall.jpg");
+-fx-background-size: auto;
+
 }
 
 

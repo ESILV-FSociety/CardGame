@@ -31,6 +31,7 @@ public class Launcher extends Application{
         Menu = new Stage();
         Menu.setTitle("Menu");
         Menu.setScene(new Scene(root));
+        Menu.setResizable(false);
         Menu.show();
         controller.init();
 //        System.out.println("ca marche");
@@ -45,7 +46,8 @@ public class Launcher extends Application{
         Menu.hide();
         Game = new Stage();
         Game.setTitle("Game");
-        Scene scene = new Scene(root,1000,800);
+        Scene scene = new Scene(root,1024,630);
+        Game.setResizable(false);
         Game.setScene(scene);
         Game.show();
     }
