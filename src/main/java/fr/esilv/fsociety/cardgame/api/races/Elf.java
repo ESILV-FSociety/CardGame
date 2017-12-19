@@ -18,40 +18,37 @@ public class Elf extends Card {
 		activatePowerBis(game);
 	}
 
-	public int activatePowerBis(Game game){
 
-		// We need to copy a card that we have in our kingdom (<==> an index where the value is not equal to 0)
-		int[] kingdom = game.getCurrentPlayer().getBoard().getKingdom();
-		ArrayList<Integer> onlyExistantCard = new ArrayList<>();
-		for(int i = 1; i < kingdom.length; i++)
-		{
-			if (kingdom[i] != 0)
+
+		public Card activatePowerBis(Game game){
+
+			// We need to copy a card that we have in our kingdom (<==> an index where the value is not equal to 0)
+			int[] kingdom = game.getCurrentPlayer().getBoard().getKingdom();
+			ArrayList<Integer> onlyExistantCard = new ArrayList<>();
+			for(int i = 1; i < kingdom.length; i++)
 			{
-				onlyExistantCard.add(kingdom[i]);
+				if (kingdom[i] != 0)
+				{
+					onlyExistantCard.add(kingdom[i]);
+				}
 			}
-		}
 
-		// Generate a random number
+			// Generate a random number
 
-        Random random = new Random();
-		int rand = -1;
-		// add the new card in the kingdom
-		if ( onlyExistantCard.size() != 0 )
-		{
-            rand = random.nextInt(onlyExistantCard.size());
-			game.getCurrentPlayer().getBoard().getKingdom()[rand]+= 1;
-			Card card = Card.CARD_MAP.get(rand);
-			card.activatePower(game);
-		}
-		else
-        {
-            rand = 0;
-        }
-		// else nothing appends, the card is played with no consequences
+			Random random = new Random();
+			Card card = null;
+			// add the new card in the kingdom
+			if ( onlyExistantCard.size() != 0 )
+			{
+				int rand = random.nextInt(onlyExistantCard.size());
+				game.getCurrentPlayer().getBoard().getKingdom()[rand]+= 1;
+				card = Card.CARD_MAP.get(rand);
+				card.activatePower(game);
+			}
 
-		return rand;
+			// else nothing appends, the card is played with no consequences
 
-		//tester que la carte a été ajouté au royaume
+			return card;
 	}
 
 }

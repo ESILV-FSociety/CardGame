@@ -12,6 +12,7 @@
 
 #TextInfo, #HumanScore, #AiScore, #name1, #name2{
 -fx-font:  italic 20pt "Copperplate Gothic Bold";
+   -fx-text-fill: white;
 }
 
 #HumanKingdom, #AiKingdom,#AiHand, #HumanHand, #compteurDeck{
@@ -37,7 +38,7 @@
        -fx-background-insets: 0,1,2,0;
        -fx-text-fill: white;
        -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
-       -fx-font-family: "alegreya";
+       -fx-font-family: "Copperplate Gothic Bold";
 
        -fx-text-fill: linear-gradient(white, #d0d0d0);
        -fx-font-size: 16px;

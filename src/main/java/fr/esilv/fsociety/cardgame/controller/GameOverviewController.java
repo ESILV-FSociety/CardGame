@@ -649,6 +649,9 @@ public class GameOverviewController  {
         {
             end=true;
             System.out.print("Gnome power : draw only 1 card cause deck is out of card");
+
+
+
         }
     }
 

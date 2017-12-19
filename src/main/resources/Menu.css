@@ -3,7 +3,7 @@
 }
 
 #log, #title{
--fx-font:  bold 20pt "Time";
+-fx-font:  bold 20pt "Copperplate Gothic Bold;
 
 
 }
@@ -20,7 +20,7 @@
        -fx-background-insets: 0,1,2,0;
        -fx-text-fill: white;
        -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
-       -fx-font-family: "alegreya";
+       -fx-font-family: "Copperplate Gothic Bold;
 
        -fx-text-fill: linear-gradient(white, #d0d0Ouid0);
        -fx-font-size: 16px;
@@ -36,6 +36,6 @@
 }
 
 .label{
-        -fx-font-family: "Roboto Condensed";
+        -fx-font-family: "Copperplate Gothic Bold";
         -fx-opacity: 1.5;
 }.

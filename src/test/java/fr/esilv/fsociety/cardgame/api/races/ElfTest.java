@@ -17,7 +17,7 @@ public class ElfTest {
 
         Elf elf = new Elf();
 
-        int n = elf.activatePowerBis(game);
+        //int n = elf.activatePowerBis(game);
 
 
 

@@ -111,13 +111,18 @@ public class Game {
 
     // returns the player that will play next
     public void changePlayer() {
-        if(currentPlayer == p1){
-            currentPlayer = p2;
-            opponentPlayer = p1;
+
+        if(!this.getCurrentPlayer().getBoard().emptyHand()) {
+            if (currentPlayer == p1) {
+                currentPlayer = p2;
+                opponentPlayer = p1;
+            } else {
+                currentPlayer = p1;
+                opponentPlayer = p2;
+            }
         }
-        else {
-            currentPlayer = p1;
-            opponentPlayer = p2;
+        else{
+           opponentPlayer = currentPlayer;
         }
     }
 
