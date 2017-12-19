@@ -176,7 +176,7 @@
             <HBox alignment="CENTER_LEFT" spacing="50.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <Button fx:id="startButton" mnemonicParsing="false" onMousePressed="#startToPlay" text="START" />
-                  <Text fx:id="TextInfo" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                  <Text fx:id="TextInfo" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" />
                </children>
                <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
