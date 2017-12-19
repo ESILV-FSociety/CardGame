@@ -1,5 +1,4 @@
-#HumanScore{
-}
+
 
 
 #pane, #side{
@@ -9,12 +8,15 @@
 
 
 
-#TextInfo{
--fx-font:  bold italic 24pt "Time";
--fx-margin: 24px;
--fx-padding: 300 0 0 0;
-
+#TextInfo, #HumanScore, #AiScore, #name1, #name2{
+-fx-font:  italic 20pt "Copperplate Gothic Bold";
 }
+
+#HumanKingdom, #AiKingdom,#AiHand, #HumanHand{
+-fx-font:  italic 12pt "Copperplate Gothic Bold";
+}
+
+
 #startButton{
          -fx-background-color: #4CAF50; /* Green */
 }

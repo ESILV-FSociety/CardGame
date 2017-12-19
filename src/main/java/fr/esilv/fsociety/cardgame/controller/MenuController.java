@@ -20,12 +20,11 @@ public class MenuController extends Stage {
 
     @FXML
     private Button btn;
-    @FXML
-    private Button btn2;
+
     @FXML
     private TextField p1;
-    @FXML
-    private TextField p2;
+
+
     @FXML
     private CheckBox ai;
 
@@ -36,42 +35,17 @@ public class MenuController extends Stage {
 
    public void init(){
 
-        btn2.setOnAction((ActionEvent event) -> {
 
-            try {
-                JSONObject obj = new JSONObject();
-                    obj.put("player 1", "The Challenger");
-                    obj.put("player 2", "AI");
-
-                try (FileWriter file = new FileWriter("players.json")) {
-                    file.write(obj.toJSONString());
-                    file.flush();
-                }
-                hide();
-                application.startGame();
-
-            }catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
        btn.setOnAction((ActionEvent event) -> {
            try {
                JSONObject obj = new JSONObject();
 
-                   if ((p1.getText() != null && p1.getText() != null)) {
-                       obj.put("player 1", p1.getText().toString());
-                       obj.put("player 2", p2.getText().toString());
-
+                   if ((p1.getText() != null )) {
+                       obj.put("player 2", p1.getText().toString());
                    } else {
-                       obj.put("player 1", "player 1");
-                       obj.put("player 2", "player 2");
+                       obj.put("player 2", "The Challenger");
                    }
-
-
-
-
-
-
+               obj.put("player 1", "The Guardian");
                try (FileWriter file = new FileWriter("players.json")) {
                    file.write(obj.toJSONString());
                    file.flush();

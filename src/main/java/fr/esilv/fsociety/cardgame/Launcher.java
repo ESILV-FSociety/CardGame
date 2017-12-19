@@ -30,7 +30,7 @@ public class Launcher extends Application{
         Parent root = fxmlLoader.load();
         Menu = new Stage();
         Menu.setTitle("Menu");
-        Menu.setScene(new Scene(root, 500, 500));
+        Menu.setScene(new Scene(root));
         Menu.show();
         controller.init();
 //        System.out.println("ca marche");
