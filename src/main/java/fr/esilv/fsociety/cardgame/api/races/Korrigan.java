@@ -17,9 +17,28 @@ public class Korrigan extends Card {
 
     @Override
     public void activatePower(Game game) {
-        for (int i = 0; i < 2; i++) {
+        if(game.getOpponentPlayer().getBoard().numOfCardInHand()>2)
+        {
+            activatePowerBis(game);
             activatePowerBis(game);
         }
+        else{
+            if(game.getOpponentPlayer().getBoard().numOfCardInHand()==0)
+            {
+                System.out.print("Oponent's hand run out of cards");
+            }
+            else
+            {
+                if(game.getOpponentPlayer().getBoard().numOfCardInHand()==1)
+                {
+                    activatePowerBis(game);
+                    System.out.print("Oponent's hand had only one card");
+                }
+
+            }
+        }
+
+
     }
 
     public int activatePowerBis(Game game) {

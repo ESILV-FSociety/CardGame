@@ -409,7 +409,8 @@ public class GameOverviewController  {
     }
 
 
-    private void cardClicked(int cardId) throws InterruptedException {
+    private void playCard (int cardId) throws InterruptedException {
+
         System.out.println(game.getCurrentPlayer().getName() + " clicked on index " + cardId + " corresponding to " + hash_image_path.get(cardId));
 
         if(this.game.getCurrentPlayer().getBoard().getHand()[cardId] <= 0)
@@ -434,11 +435,21 @@ public class GameOverviewController  {
 
 
 
-
-
         if (this.game.getCurrentPlayer() instanceof AI) {
             AiMove();
         }
+    }
+
+    private void cardClicked(int cardId) throws InterruptedException {
+
+        if(lock==true || game.getDealer().getCards()==0)
+        {
+            playCard(cardId);
+        }
+        else{
+            System.out.println("You must drew a card before play one");
+        }
+
     }
 
     private void countPoints() {
@@ -485,7 +496,7 @@ public class GameOverviewController  {
         AI ai = (AI) game.getCurrentPlayer(); // cast from Player to => AI in order to call the Choice method
         int move = ai.Choice(); // get the index the computer will play
         AiPlay = false;
-        this.cardClicked(move);
+        this.playCard(move);
         lock=false;
 
     }
@@ -547,13 +558,13 @@ public class GameOverviewController  {
                         }
                     });
                 } else { // if instanceOf "AI"
-                	if(SHOW_OPPONENT_HAND) {
+                	/*if(SHOW_OPPONENT_HAND) {
                     this.hash_ahncard.get(i).setText(String.valueOf(n)); // set the number
                     this.hash_ahcard.get(i).setImage(new Image(list_url[i])); // set the Image
                 	} else {
                 		this.hash_ahncard.get(i).setText("?"); // set the number
                         this.hash_ahcard.get(i).setImage(new Image(imageUrl)); // set the Image
-                	}
+                	}*/
                     
                 }
             } else { // n == 0
@@ -561,14 +572,14 @@ public class GameOverviewController  {
                 if (this.game.getCurrentPlayer() instanceof Human) {
                     hash_hhncard.get(i).setText("0");
                     this.hash_hhcard.get(i).setImage(new Image(imageUrl));
-                } else {
+                } /*else {
                 	if(SHOW_OPPONENT_HAND) {
                     hash_ahncard.get(i).setText("0");
                 	} else {
                 		hash_ahncard.get(i).setText("?");
                 	}   
                     this.hash_ahcard.get(i).setImage(new Image(imageUrl));
-                }
+                }*/
             }
         }
     }

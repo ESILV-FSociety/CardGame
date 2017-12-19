@@ -23,7 +23,15 @@ public class Board {
     public int[] getHand() {
         return hand;
     }
-
+    public int numOfCardInHand()
+    {
+        int numofCard=0;
+        for(int i=0; i<this.getHand().length;i++)
+        {
+            numofCard=this.hand[i];
+        }
+        return numofCard;
+    }
     public void setHand(int[] hand) {
         this.hand = hand;
     }
