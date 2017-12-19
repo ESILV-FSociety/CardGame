@@ -463,6 +463,7 @@ public class GameOverviewController  {
 
     private void cardClicked(int cardId) throws InterruptedException {
 
+        TextInfo.setText((""));
         if(lock==true || game.getDealer().getCards()==0)
         {
             if(Integer.parseInt(hash_hhncard.get(cardId).getText()) > 0){
