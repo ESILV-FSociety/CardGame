@@ -16,7 +16,20 @@
         </configuration>
       </plugin>
     </plugins>
+    <!-- directory pour cucumber!-->
+    <testResources>
+      <testResource>
+        <directory>src/test/resources</directory>
+      </testResource>
+      <testResource>
+        <directory>src/test/java</directory>
+        <includes>
+          <include>**/*.feature</include>
+        </includes>
+      </testResource>
+    </testResources>
   </build>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>

@@ -2,7 +2,7 @@ Feature: Goblin:
   #switch your hand with you opponent
 
   Scenario: activate power of the goblin
-    Given a goblin card in my hand
+    Given I have a goblin card in my hand
     When I choose to play the goblin card
-    Then the card is added to my kingdom
-    And The power is activated
+    Then The card goblin is added to my kingdom, its power is activate
+    And I change my hand with the hand of my opponent

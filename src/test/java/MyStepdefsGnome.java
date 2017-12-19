@@ -1,18 +1,19 @@
+import cucumber.api.CucumberOptions;
 import cucumber.api.PendingException;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import fr.esilv.fsociety.cardgame.api.Game;
-import fr.esilv.fsociety.cardgame.api.Human;
-import fr.esilv.fsociety.cardgame.api.Player;
+import cucumber.api.junit.Cucumber;
+import fr.esilv.fsociety.cardgame.api.*;
 import fr.esilv.fsociety.cardgame.api.races.Gnome;
+import org.junit.runner.RunWith;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 
+@RunWith(Cucumber.class)
 
 public class MyStepdefsGnome {
 
@@ -28,29 +29,18 @@ public class MyStepdefsGnome {
 
     @Then("^The number of cards in my hand is (\\d+)$")
     public void theNumberOfCardsInMyHandIs(int arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
         assertEquals(game.getCurrentPlayer().getBoard().getHand().length, is(arg0));
-        throw new PendingException();
     }
 
-    @When("^I choose the card gnome$")
-    public void iChooseTheCardGnome() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
+
+    @When("^I choose the card gnome and the power is activate$")
+    public void iChooseTheCardGnomeAndThePowerIsActivate() throws Throwable {
+        game.getCurrentPlayer().getBoard().emptyHand();
         cardGnome.activatePower(game);
-        throw new PendingException();
     }
 
-    @Then("^The card mooves to the board$")
-    public void theCardMoovesToTheBoard() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        assertEquals(game.getCurrentPlayer().getBoard().getHand().length, is(0));
-        throw new PendingException();
-    }
-
-    @And("^The power is activate and I have (\\d+) cards in my hand$")
-    public void thePowerIsActivateAndIHaveCardsInMyHand(int arg0) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
+    @Then("^I have (\\d+) cards in my hand$")
+    public void iHaveCardsInMyHand(int arg0) throws Throwable {
         assertEquals(game.getCurrentPlayer().getBoard().getHand().length, is(arg0));
-        throw new PendingException();
     }
 }
