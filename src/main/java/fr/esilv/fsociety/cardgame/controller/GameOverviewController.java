@@ -4,7 +4,6 @@ import java.util.Hashtable;
 
 import fr.esilv.fsociety.cardgame.Launcher;
 import fr.esilv.fsociety.cardgame.api.*;
-import gherkin.lexer.Hu;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -18,7 +17,7 @@ import java.lang.Thread;
 import static sun.audio.AudioPlayer.player;
 
 
-public class GameOverviewController extends Thread {
+public class GameOverviewController  {
 
     private static final Hashtable<Integer, String> hash_image_path = new Hashtable<Integer, String>() {{
         put(0, "images/gnome.png");
@@ -413,6 +412,9 @@ public class GameOverviewController extends Thread {
     private void cardClicked(int cardId) throws InterruptedException {
         System.out.println(game.getCurrentPlayer().getName() + " clicked on index " + cardId + " corresponding to " + hash_image_path.get(cardId));
 
+        if(this.game.getCurrentPlayer().getBoard().getHand()[cardId] <= 0)
+        	return;
+        
         this.game.getCurrentPlayer().getBoard().getHand()[cardId] -= 1;
         this.game.getCurrentPlayer().getBoard().getKingdom()[cardId] += 1;
         String str = TextInfo.getText();
@@ -424,7 +426,7 @@ public class GameOverviewController extends Thread {
         System.out.println(str + " => power activated");
         countPoints();
         updateBoards();
-        this.sleep(threadSleep);
+        Thread.sleep(threadSleep);
 
 
         this.game.changePlayer();
@@ -522,6 +524,7 @@ public class GameOverviewController extends Thread {
         int[] list = this.game.getCurrentPlayer().getBoard().getHand();
         String[] list_url = new String[6];
 
+        String imageUrl = getClass().getClassLoader().getResource("images/empty.png").toString();
         //retrieve all the url
         for (int i = 0; i < list.length; i++) {
 
@@ -544,17 +547,26 @@ public class GameOverviewController extends Thread {
                         }
                     });
                 } else { // if instanceOf "AI"
+                	if(SHOW_OPPONENT_HAND) {
                     this.hash_ahncard.get(i).setText(String.valueOf(n)); // set the number
                     this.hash_ahcard.get(i).setImage(new Image(list_url[i])); // set the Image
+                	} else {
+                		this.hash_ahncard.get(i).setText("?"); // set the number
+                        this.hash_ahcard.get(i).setImage(new Image(imageUrl)); // set the Image
+                	}
+                    
                 }
             } else { // n == 0
-                String imageUrl = getClass().getClassLoader().getResource("images/empty.png").toString();
 
                 if (this.game.getCurrentPlayer() instanceof Human) {
                     hash_hhncard.get(i).setText("0");
                     this.hash_hhcard.get(i).setImage(new Image(imageUrl));
                 } else {
+                	if(SHOW_OPPONENT_HAND) {
                     hash_ahncard.get(i).setText("0");
+                	} else {
+                		hash_ahncard.get(i).setText("?");
+                	}   
                     this.hash_ahcard.get(i).setImage(new Image(imageUrl));
                 }
             }
