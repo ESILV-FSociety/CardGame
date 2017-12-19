@@ -25,7 +25,7 @@
             <TextField fx:id="p1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="37.0" prefWidth="149.0" promptText="Player 1" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
              <Button fx:id="btn" mnemonicParsing="false" prefHeight="56.0" prefWidth="142.0" text="Play!" GridPane.rowIndex="3" />
             <Label id="log" text="What is your name Adventurer " GridPane.rowIndex="1" />
-            <Label id="title" text="[InsertNameHere]" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Label id="title" text="Regno: Cards of Fate" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
          <padding>
             <Insets bottom="10.0" top="10.0" />

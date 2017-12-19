@@ -47,7 +47,7 @@ public class Launcher extends Application{
         Game = new Stage();
         Game.setTitle("Game");
         Scene scene = new Scene(root,1024,630);
-        Game.setResizable(false);
+        //Game.setResizable(false);
         Game.setScene(scene);
         Game.show();
     }

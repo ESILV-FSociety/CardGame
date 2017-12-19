@@ -3,7 +3,7 @@
 }
 
 #log, #title{
--fx-font:  bold 20pt "Copperplate Gothic Bold;
+-fx-font:  bold 80pt "Copperplate Gothic Bold;
 
 
 }
@@ -38,4 +38,5 @@
 .label{
         -fx-font-family: "Copperplate Gothic Bold";
         -fx-opacity: 1.5;
-}.
+        -fx-text-fill: white;
+}
