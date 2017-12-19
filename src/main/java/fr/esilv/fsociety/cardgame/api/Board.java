@@ -28,7 +28,7 @@ public class Board {
         int numofCard=0;
         for(int i=0; i<this.getHand().length;i++)
         {
-            numofCard=this.hand[i];
+            numofCard+=this.hand[i];
         }
         return numofCard;
     }

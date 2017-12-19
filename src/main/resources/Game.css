@@ -3,6 +3,8 @@
 
 #pane, #side{
 -fx-background-image: url("images/wall.jpg");
+-fx-background-size: auto;
+
 }
 
 
@@ -12,7 +14,7 @@
 -fx-font:  italic 20pt "Copperplate Gothic Bold";
 }
 
-#HumanKingdom, #AiKingdom,#AiHand, #HumanHand{
+#HumanKingdom, #AiKingdom,#AiHand, #HumanHand, #compteurDeck{
 -fx-font:  italic 12pt "Copperplate Gothic Bold";
 }
 
