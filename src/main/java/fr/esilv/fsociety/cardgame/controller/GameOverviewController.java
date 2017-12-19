@@ -31,13 +31,14 @@ public class GameOverviewController  {
         put(5, "images/troll.png");
     }};
 
-	private static final boolean SHOW_OPPONENT_HAND = false;
+	private static final boolean SHOW_OPPONENT_HAND = true;
 
     Launcher application;
     private Game game;
     private String humanName; // new name of the player
     private boolean AiPlay;
     private boolean lock;
+    private boolean end;
     //for the player
     private Hashtable<Integer, ImageView> hash_hhcard;
     private Hashtable<Integer, Text> hash_hhncard;
@@ -453,6 +454,7 @@ public class GameOverviewController  {
         if (this.game.getCurrentPlayer() instanceof AI) {
             AiMove();
         }
+        endOfTheGame(); // Test if the game is ended
     }
 
     private void cardClicked(int cardId) throws InterruptedException {
@@ -638,6 +640,15 @@ public class GameOverviewController  {
                 }
             }
 
+        }
+    }
+
+    private void endOfTheGame()
+    {
+        if((game.getDealer().getCards() == 0)&&(game.getOpponentPlayer().getBoard().numOfCardInHand()==0)&&(game.getCurrentPlayer().getBoard().numOfCardInHand()==0))
+        {
+            end=true;
+            System.out.print("Gnome power : draw only 1 card cause deck is out of card");
         }
     }
 
