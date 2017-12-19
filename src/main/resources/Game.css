@@ -12,7 +12,7 @@
 -fx-font:  italic 20pt "Copperplate Gothic Bold";
 }
 
-#HumanKingdom, #AiKingdom,#AiHand, #HumanHand{
+#HumanKingdom, #AiKingdom,#AiHand, #HumanHand, #compteurDeck{
 -fx-font:  italic 12pt "Copperplate Gothic Bold";
 }
 
