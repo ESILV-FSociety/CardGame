@@ -4,6 +4,9 @@ import java.util.Hashtable;
 
 import fr.esilv.fsociety.cardgame.Launcher;
 import fr.esilv.fsociety.cardgame.api.*;
+import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -14,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.lang.Thread;
 
@@ -461,11 +465,13 @@ public class GameOverviewController  {
 
         if(lock==true || game.getDealer().getCards()==0)
         {
-            playCard(cardId);
+            if(Integer.parseInt(hash_hhncard.get(cardId).getText()) > 0){
+                animation(cardId);
+            }
+            //playCard(cardId);
         }
         else{
             System.out.println("You must drew a card before play one");
-            new Alert(AlertType.INFORMATION, "Please draw a card before playing").showAndWait();
         }
 
     }
@@ -653,6 +659,29 @@ public class GameOverviewController  {
 
 
         }
+    }
+
+    public void animation(int cardid){
+        TranslateTransition transition = new TranslateTransition();
+        transition.setDuration(Duration.millis(150));
+        transition.setNode(hash_hhcard.get(cardid));
+        transition.setToY(-100);
+        transition.setAutoReverse(true);
+        transition.setCycleCount(2);
+
+        transition.setOnFinished(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    playCard(cardid);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        transition.play();
+
     }
 
 
