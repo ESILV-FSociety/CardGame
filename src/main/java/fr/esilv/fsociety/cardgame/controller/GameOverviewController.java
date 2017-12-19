@@ -323,7 +323,7 @@ public class GameOverviewController  {
 
     private void initAIHand() {
         for (int i = 0; i < hash_ahcard.size(); i++) {
-            String imageUrl = getClass().getClassLoader().getResource("images/empty.png").toString();
+            String imageUrl = getClass().getClassLoader().getResource("images/empty.jpg").toString();
             hash_ahcard.get(i).setImage(new Image(imageUrl));
             hash_ahcard.get(i).fitHeightProperty().bind(AiHand.heightProperty());
             hash_ahncard.get(i).setText("0");
@@ -333,7 +333,7 @@ public class GameOverviewController  {
 
     private void initAIKingdom() {
         for (int i = 0; i < hash_akcard.size(); i++) {
-            String imageUrl = getClass().getClassLoader().getResource("images/empty.png").toString();
+            String imageUrl = getClass().getClassLoader().getResource("images/empty.jpg").toString();
             hash_akcard.get(i).setImage(new Image(imageUrl));
             hash_akcard.get(i).fitHeightProperty().bind(AiKingdom.heightProperty());
             hash_akncard.get(i).setText("0");
@@ -343,7 +343,7 @@ public class GameOverviewController  {
 
     private void initHumanHand() {
         for (int i = 0; i < hash_hhcard.size(); i++) {
-            String imageUrl = getClass().getClassLoader().getResource("images/empty.png").toString();
+            String imageUrl = getClass().getClassLoader().getResource("images/empty.jpg").toString();
             hash_hhcard.get(i).setImage(new Image(imageUrl));
             hash_hhcard.get(i).fitHeightProperty().bind(HumanHand.heightProperty());
             hash_hhncard.get(i).setText("0");
@@ -353,7 +353,7 @@ public class GameOverviewController  {
 
     private void initHumanKingdom() {
         for (int i = 0; i < hash_hkcard.size(); i++) {
-            String imageUrl = getClass().getClassLoader().getResource("images/empty.png").toString();
+            String imageUrl = getClass().getClassLoader().getResource("images/empty.jpg").toString();
             hash_hkcard.get(i).setImage(new Image(imageUrl));
             hash_hkcard.get(i).fitHeightProperty().bind(HumanKingdom.heightProperty());
             hash_hkncard.get(i).setText("0");
@@ -535,7 +535,7 @@ public class GameOverviewController  {
         int[] list = this.game.getCurrentPlayer().getBoard().getHand();
         String[] list_url = new String[6];
 
-        String imageUrl = getClass().getClassLoader().getResource("images/empty.png").toString();
+        String imageUrl = getClass().getClassLoader().getResource("images/empty.jpg").toString();
         //retrieve all the url
         for (int i = 0; i < list.length; i++) {
 
@@ -558,13 +558,10 @@ public class GameOverviewController  {
                         }
                     });
                 } else { // if instanceOf "AI"
-                	/*if(SHOW_OPPONENT_HAND) {
-                    this.hash_ahncard.get(i).setText(String.valueOf(n)); // set the number
-                    this.hash_ahcard.get(i).setImage(new Image(list_url[i])); // set the Image
-                	} else {
+
                 		this.hash_ahncard.get(i).setText("?"); // set the number
-                        this.hash_ahcard.get(i).setImage(new Image(imageUrl)); // set the Image
-                	}*/
+                        this.hash_ahcard.get(i).setImage(new Image("images/deck.png")); // set the Image
+
                     
                 }
             } else { // n == 0
@@ -572,14 +569,10 @@ public class GameOverviewController  {
                 if (this.game.getCurrentPlayer() instanceof Human) {
                     hash_hhncard.get(i).setText("0");
                     this.hash_hhcard.get(i).setImage(new Image(imageUrl));
-                } /*else {
-                	if(SHOW_OPPONENT_HAND) {
-                    hash_ahncard.get(i).setText("0");
-                	} else {
+                } else {
                 		hash_ahncard.get(i).setText("?");
-                	}   
-                    this.hash_ahcard.get(i).setImage(new Image(imageUrl));
-                }*/
+                    this.hash_ahcard.get(i).setImage(new Image("images/deck.png"));
+                }
             }
         }
     }
@@ -608,7 +601,7 @@ public class GameOverviewController  {
                 }
 
             } else {
-                String image_URL = getClass().getClassLoader().getResource("images/empty.png").toString();
+                String image_URL = getClass().getClassLoader().getResource("images/empty.jpg").toString();
 
                 if (this.game.getCurrentPlayer() instanceof Human) {
                     hash_hkncard.get(i).setText("0");

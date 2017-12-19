@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class MainController extends Application {
 
-	private static MainController ins; // singleton
+	/*private static MainController ins; // singleton
 	public static  MainController getInstance() {
 		return ins;
 	}
