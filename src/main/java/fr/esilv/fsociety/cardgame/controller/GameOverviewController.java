@@ -29,6 +29,8 @@ public class GameOverviewController  {
         put(5, "images/troll.png");
     }};
 
+	private static final boolean SHOW_OPPONENT_HAND = false;
+
     Launcher application;
     private Game game;
     private String humanName; // new name of the player
@@ -459,6 +461,7 @@ public class GameOverviewController  {
         }
         else{
             System.out.println("You must drew a card before play one");
+            new Alert(AlertType.INFORMATION, "Please draw a card before playing").showAndWait();
         }
 
     }
@@ -570,9 +573,13 @@ public class GameOverviewController  {
                     });
                 } else { // if instanceOf "AI"
 
+                	if(SHOW_OPPONENT_HAND) {
+                		this.hash_ahncard.get(i).setText(String.valueOf(n)); // set the number
+                        this.hash_ahcard.get(i).setImage(new Image(list_url[i])); // set the Image
+                	} else {
                 		this.hash_ahncard.get(i).setText("?"); // set the number
                         this.hash_ahcard.get(i).setImage(new Image("images/deck.png")); // set the Image
-
+                	}
                     
                 }
             } else { // n == 0
@@ -581,8 +588,14 @@ public class GameOverviewController  {
                     hash_hhncard.get(i).setText("0");
                     this.hash_hhcard.get(i).setImage(new Image(imageUrl));
                 } else {
+                	if(SHOW_OPPONENT_HAND) {
+                		this.hash_ahncard.get(i).setText("0"); // set the number
+                        this.hash_ahcard.get(i).setImage(new Image("images/empty.jpg")); // set the Image
+                	}else {
                 		hash_ahncard.get(i).setText("?");
                     this.hash_ahcard.get(i).setImage(new Image("images/deck.png"));
+                }
+                	
                 }
             }
         }
